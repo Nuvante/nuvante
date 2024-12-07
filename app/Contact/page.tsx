@@ -51,19 +51,19 @@ const Page = (props: Props) => {
                     </div>
                     <div className='w-full md:w-2/3 h-auto md:h-auto bg-white md:mt-16 lg:ml-5'>
                         <div className='flex flex-col w-full h-auto mt-9'>
-                            <div className='flex flex-col md:flex-row justify-evenly'>
-                                <div className='w-full md:w-1/3 mb-4 md:mb-0'>
-                                    <input className='w-full h-[50px] p-2 bg-slate-200' type="text" placeholder='Your Name *' />
+                            <div className='flex flex-col md:flex-row md:justify-evenly md:space-x-4'>
+                                <div className='w-full md:w-1/3 md:ml-1 mb-4 md:mb-0'>
+                                    <input className='w-full h-[50px] p-2 bg-[#F5F5F5]' type="text" placeholder='Your Name *' />
                                 </div>
                                 <div className='w-full md:w-1/3 mb-4 md:mb-0'>
-                                    <input className='w-full h-[50px] p-2 bg-slate-200' type="text" placeholder='Your Email *' />
+                                    <input className='w-full h-[50px] p-2 bg-[#F5F5F5]' type="text" placeholder='Your Email *' />
                                 </div>
-                                <div className='w-full md:w-1/3'>
-                                    <input className='w-full h-[50px] p-2 bg-slate-200' type="tel" placeholder='Your Phone *' />
+                                <div className='w-full md:w-[28%]'>
+                                    <input className='w-full h-[50px] p-2 bg-[#F5F5F5]' type="tel" placeholder='Your Phone *' />
                                 </div>
                             </div>
                             <div className='mt-8'>
-                                <textarea className='h-[207px] w-full bg-slate-200' name="message" id="" placeholder='Your Message *'></textarea>
+                                <textarea className='h-[207px] w-full md:w-[99%] md:ml-2 bg-[#F5F5F5]' name="message" id="" placeholder='Your Message *'></textarea>
                             </div>
                             <div className='flex justify-center mt-4'>
                                 <button className='text-center bg-red-600 h-[56px] w-[215px] mb-10'>Send Message</button>

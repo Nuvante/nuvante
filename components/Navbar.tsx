@@ -38,7 +38,7 @@ export default function Navbar() {
           <div>
             <ul className="flex gap-10 items-center text-black">
               <li>
-                <a href="#" className="underline underline-offset-4">
+                <a href="/" className="underline underline-offset-4">
                   Home
                 </a>
               </li>
