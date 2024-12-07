@@ -78,13 +78,13 @@ const page = (props: Props) => {
                                 <h1 className='font-normal'>
                                     First Name
                                 </h1>
-                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm' type="text" placeholder='Daksh' />
+                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3' type="text" placeholder='Daksh' />
                             </div>
                             <div className='w-full lg:w-[330px] h-[62px] mt-4 lg:mt-0 lg:ml-10'>
                                 <h1 className='font-normal'>
                                     Last Name
                                 </h1>
-                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm' type="text" placeholder='XYZ' />
+                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3' type="text" placeholder='XYZ' />
                             </div>
                         </div>
                         <div className='flex flex-col lg:flex-row ml-4 lg:ml-[80px] w-full lg:w-[710px] h-auto lg:h-[82px] mt-8'>
@@ -92,22 +92,22 @@ const page = (props: Props) => {
                                 <h1 className='font-normal'>
                                     Email
                                 </h1>
-                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm' type="text" placeholder='xyz@gmail.com' />
+                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3' type="text" placeholder='xyz@gmail.com' />
                             </div>
                             <div className='w-full lg:w-[330px] h-[62px] mt-4 lg:mt-0 lg:ml-10'>
                                 <h1 className='font-normal'>
                                     Address
                                 </h1>
-                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm' type="text" placeholder='Delhi' />
+                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3' type="text" placeholder='Delhi' />
                             </div>
                         </div>
                         <div className='flex flex-col ml-4 lg:ml-[80px] w-full lg:w-[710px] h-auto lg:h-[214px] mt-8'>
                             <h1 className='font-normal'>
                                 Password Changes
                             </h1>
-                            <input className='w-full lg:w-[710px] h-[50px] bg-[#F5F5F5] rounded-sm mt-1' type="text" placeholder='Current Password' />
-                            <input className='w-full lg:w-[710px] h-[50px] bg-[#F5F5F5] rounded-sm mt-2' type="text" placeholder='New Password' />
-                            <input className='w-full lg:w-[710px] h-[50px] bg-[#F5F5F5] rounded-sm mt-2' type="text" placeholder='Confirm New Password' />
+                            <input className='w-full lg:w-[710px] h-[50px] bg-[#F5F5F5] rounded-sm mt-1 placeholder:pl-3' type="text" placeholder='Current Password' />
+                            <input className='w-full lg:w-[710px] h-[50px] bg-[#F5F5F5] rounded-sm mt-2 placeholder:pl-3' type="text" placeholder='New Password' />
+                            <input className='w-full lg:w-[710px] h-[50px] bg-[#F5F5F5] rounded-sm mt-2 placeholder:pl-3' type="text" placeholder='Confirm New Password' />
                         </div>
                         <div className='flex flex-row justify-end mt-4 lg:mt-0'>
                             <button className='mr-4 lg:mr-6'>Cancel</button>
