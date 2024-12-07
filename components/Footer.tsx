@@ -50,9 +50,9 @@ export default function Footer() {
         {/* Support Section */}
         <div className="w-full md:w-1/4 flex flex-col gap-4">
           <h3 className="font-semibold text-lg">Support</h3>
-          <p className="text-gray-400">New Delhi, Rohini 110034, India.</p>
-          <p className="text-gray-400">founder@gmail.com</p>
-          <p className="text-gray-400">+91 9090908080</p>
+          <p className="text-gray-400">G - 41/2, Molarband Extn, Badarpur Border, New Delhi - 110044</p>
+          <p className="text-gray-400">nuvantestores@gmail.com</p>
+          <p className="text-gray-400">+91 9899044148</p>
         </div>
 
         {/* Account Section */}

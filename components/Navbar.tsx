@@ -46,7 +46,7 @@ export default function Navbar() {
                 <a href="/Contact">Contact</a>
               </li>
               <li>
-                <a href="#">About</a>
+                <a href="/404-error">About</a>
               </li>
               <li>
                 <a href="#">Products</a>
