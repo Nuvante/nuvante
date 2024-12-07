@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const logo_l = "./logo_l.svg";
 const logo_r = "./logo_r.svg";
@@ -84,14 +85,15 @@ export default function Navbar() {
               className="cursor-pointer"
               alt="cart"
             ></Image>
-
-            <Image
-              src={user}
-              width={30}
-              height={30}
-              className="cursor-pointer"
-              alt="user"
-            ></Image>
+            <Link href="/Profile">
+              <Image
+                src={user}
+                width={30}
+                height={30}
+                className="cursor-pointer mt-2"
+                alt="user"
+              ></Image>
+            </Link>
           </div>
         </div>
       </div>
