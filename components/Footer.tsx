@@ -1,62 +1,76 @@
 import React from "react";
 import Image from "next/image";
 
+const facebook_icon = "./facebook.svg";
+const gram_icon = "./instagram.svg";
+const linkedin_icon = "./linkedin.svg";
+const caret_right = "./caret-right.svg";
+
 export default function Footer() {
   return (
-    <footer className="px-10 mt-40 bg-black text-white py-10">
-      <div className="container mx-auto flex flex-wrap justify-between gap-10 px-6 md:px-10">
-        {/* Nuvante Section */}
-        <div className="w-full md:w-1/4 flex flex-col gap-4">
-          <h3 className="font-semibold text-lg">Nuvante</h3>
-          <p className="text-gray-400">
+    <footer className="bg-black text-white py-20 mt-40">
+      <div className=" w-[90%] mx-auto flex lg:flex-row flex-col lg:gap-20 justify-between gap-10 px-6">
+        <div className="w-full  flex flex-col">
+          <h3 className="font-semibold text-2xl">Nuvante</h3>
+          <p className="text-[20px] mt-4">
             Subscribe
             <br />
+          </p>
+          <p className="mt-6 mb-5">
             Get The Latest Notifications About Offers & Deals.
           </p>
-          <div className="flex items-center bg-white text-black rounded-lg overflow-hidden">
+          <div className="flex items-center border border-white rounded-md overflow-hidden">
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-4 py-3 w-full outline-none bg-black text-white text-sm rounded-l-lg"
-              style={{ border: "2px solid white" }}
+              className="px-4 py-3 w-full outline-none bg-black text-white text-sm"
             />
-            <button className=" p-3 rounded-r-lg">
-              <Image src="/send.svg" alt="send" width={20} height={20} />
+            <button className="p-3 bg-white text-black">
+              <Image
+                src={caret_right}
+                width={26}
+                height={26}
+                alt="caret"
+              ></Image>
             </button>
           </div>
-          <div className="flex gap-4 mt-4 items-center">
-            <a href="#" className="text-white hover:text-gray-500">
+          <div className="flex gap-6 mt-6 text-xl">
+            <a href="#" className="hover:text-gray-500">
               <Image
-                src="/facebook.svg"
-                alt="facebook"
-                width={24}
-                height={24}
-              />
+                src={facebook_icon}
+                alt="facebook_icon_footer"
+                width={25}
+                height={25}
+              ></Image>
             </a>
-            <a href="#" className="text-white hover:text-gray-500">
-              <Image src="/twitter.svg" alt="twitter" width={24} height={24} />
-            </a>
-            <a href="#" className="text-white hover:text-gray-500">
+            <a href="#" className="hover:text-gray-500">
               <Image
-                src="/linkedin.svg"
-                alt="linkedin"
-                width={24}
-                height={24}
-              />
+                src={gram_icon}
+                alt="gram_icon_footer"
+                width={25}
+                height={25}
+              ></Image>
+            </a>
+            <a href="#" className="hover:text-white">
+              <Image
+                src={linkedin_icon}
+                alt="linkedin_icon_footer"
+                width={25}
+                height={25}
+              ></Image>
             </a>
           </div>
         </div>
 
         {/* Support Section */}
-        <div className="w-full md:w-1/4 flex flex-col gap-4">
+        <div className="w-full md:w-1/4 flex flex-col gap-6">
           <h3 className="font-semibold text-lg">Support</h3>
-          <p className="text-gray-400">G - 41/2, Molarband Extn, Badarpur Border, New Delhi - 110044</p>
-          <p className="text-gray-400">nuvantestores@gmail.com</p>
-          <p className="text-gray-400">+91 9899044148</p>
+          <p className="text-gray-400">New Delhi, Rohini 110034, India.</p>
+          <p className="text-gray-400">founder@gmail.com</p>
+          <p className="text-gray-400">+91 9090908080</p>
         </div>
 
-        {/* Account Section */}
-        <div className="w-full md:w-1/4 flex flex-col gap-4">
+        <div className="w-full md:w-1/4 flex flex-col gap-6">
           <h3 className="font-semibold text-lg">Account</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
@@ -87,8 +101,8 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Quick Links Section */}
-        <div className="w-full md:w-1/4 flex flex-col gap-4">
+        {/* Quick Link Section */}
+        <div className="w-full md:w-1/4 flex flex-col gap-6">
           <h3 className="font-semibold text-lg">Quick Link</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
