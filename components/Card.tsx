@@ -21,8 +21,8 @@ export default function Card({
   status,
 }: propType) {
   return (
-    <div className="card relative flex flex-col gap-4 cursor-pointer group">
-      <div className="card-body relative bg-[#F5F5F5] w-fit p-6 rounded-lg">
+    <div className="card sm:w-auto w-[100%] relative flex flex-col gap-4 cursor-pointer group">
+      <div className="card-body flex sm:justify-center justify-center relative bg-[#F5F5F5] sm:w-fit w-[100%]  p-6 rounded-lg">
         <img src={src} alt={productName} className="rounded-md" />
         {status === "new" && (
           <h1 className="absolute top-1 left-1 rounded-lg bg-[#00FF66] px-3 py-1 text-white text-sm font-bold">

@@ -11,17 +11,43 @@ const heart = "./heart.svg";
 const cart = "./cart.svg";
 const user = "./user.svg";
 
+const transition = {
+  transition: "1s all linear",
+};
+
 export default function Navbar() {
   const [open, setOpen] = useState<Boolean>(false);
 
   const selfRedirect = () => {
+    //~ pass
     window.location.href = "/";
+  };
+
+  const handleNavbar = () => {
+    //~ pretty similar to !false or !true, apparently xors the current navbar state by 1.
+    // ! current_state ^ 1
+    setOpen((prevOpen) => !prevOpen);
   };
 
   return (
     <>
-      <div className="navbar_wrapper pb-1 w-full ">
-        <div className="flex justify-between items-center mt-6 navbar w-[90%] mx-auto">
+      <div
+        onClick={handleNavbar}
+        className="hamburger lg:hidden absolute top-20 right-9  flex-col gap-2 cursor-pointer flex"
+      >
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+      </div>
+      <div
+        style={{
+          transition: "1s all ease",
+        }}
+        className={`navbar_wrapper pb-1 w-full ${
+          open ? "h-[400px]" : "h-[96px]"
+        } overflow-hidden`}
+      >
+        <div className="flex lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-6 navbar w-[90%] mx-auto">
           <div
             onClick={() => {
               selfRedirect();
@@ -37,7 +63,7 @@ export default function Navbar() {
             ></Image>
           </div>
           <div>
-            <ul className="flex gap-10 items-center text-black">
+            <ul className="flex gap-6 lg:gap-10 ml-3 mt-2 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
               <li>
                 <a href="/" className="underline underline-offset-4">
                   Home
@@ -54,8 +80,8 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
-          <div className="flex gap-4">
-            <div className="flex rounded-lg items-center bg-[#F5F5F5] px-4">
+          <div className="gap-4 lg:flex lg:flex-row flex flex-col lg:mt-0 mt-6">
+            <div className="flex rounded-lg items-center bg-[#F5F5F5] px-4 w-fit ">
               <input
                 type="text"
                 className="bg-[#F5F5F5] h-[45px] outline-none w-[220px] rounded-lg text-black"
@@ -71,29 +97,31 @@ export default function Navbar() {
                 ></Image>
               </div>
             </div>
-            <Image
-              src={heart}
-              width={30}
-              height={30}
-              className="cursor-pointer"
-              alt="heart"
-            ></Image>
-            <Image
-              src={cart}
-              width={30}
-              height={30}
-              className="cursor-pointer"
-              alt="cart"
-            ></Image>
-            <Link href="/Profile">
+            <div className="flex lg:flex-row items-center gap-4">
               <Image
-                src={user}
+                src={heart}
                 width={30}
                 height={30}
-                className="cursor-pointer mt-2"
-                alt="user"
+                className="cursor-pointer"
+                alt="heart"
               ></Image>
-            </Link>
+              <Image
+                src={cart}
+                width={30}
+                height={30}
+                className="cursor-pointer"
+                alt="cart"
+              ></Image>
+              <Link href="/Profile">
+                <Image
+                  src={user}
+                  width={30}
+                  height={30}
+                  className="cursor-pointer"
+                  alt="user"
+                ></Image>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -8,8 +8,8 @@ const caretRight = "./caret-right.svg";
 export default function Hero() {
   return (
     <>
-      <div className="flex gap-1 justify-between">
-        <div className="flex flex-col gap-6 w-[20%] hero_left pt-10">
+      <div className="flex gap-1 justify-between md:flex-row flex-col items-center md:items-start">
+        <div className="flex md:flex-col gap-6 md:w-[20%] hero_left pt-10">
           <div className="flex gap-4 text-black cursor-pointer w-fit">
             <a href="#">T Shirts</a>
             <Image
@@ -29,7 +29,7 @@ export default function Hero() {
             ></Image>
           </div>
         </div>
-        <div className=" w-[76%] pt-10">
+        <div className=" md:w-[76%] pt-10">
           <EmblaCarousel></EmblaCarousel>
         </div>
       </div>

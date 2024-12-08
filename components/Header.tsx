@@ -8,7 +8,9 @@ export default function Header() {
     <>
       <div className="bg-black">
         <div className="bg-black w-[87%] py-2.5 mx-auto flex gap-2 justify-end">
-          <a href="#">English </a>
+          <a href="#" className="text-white">
+            English{" "}
+          </a>
           <Image
             src={caret}
             alt="dropdown"

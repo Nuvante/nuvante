@@ -83,10 +83,10 @@ export default function Products() {
     <div className="mt-36 flex flex-col gap-6">
       <div className="flex w-full justify-between items-center">
         <Heading message="Products" secondaryMessage="Explore Our Products" />
-        <Button text="View All" width={120} />
+        <Button text="View All" width={130} />
       </div>
       <div className="flex flex-col gap-12">
-        <div className="cards flex flex-wrap justify-between gap-y-10">
+        <div className="cards flex flex-wrap justify-around gap-y-10">
           {products.map((product, index) => (
             <Card key={index} {...product} />
           ))}
