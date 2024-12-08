@@ -10,7 +10,7 @@ export default function Stars({ count }: { count: number }) {
   }
   return (
     <>
-      <div key={0} className="flex">
+      <div key={Math.random()} className="flex">
         {dummy.map((element, index) => {
           if (element) {
             return (
