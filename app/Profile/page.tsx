@@ -68,7 +68,7 @@ const page = (props: Props) => {
                         </div>
                     </div>
 
-                    <div className='flex flex-col h-auto lg:h-[630px] w-full lg:w-[870px] rounded-sm border ml-4 lg:ml-32 bg-[#FFFFFF]'>
+                    <div className='flex flex-col h-auto lg:h-[630px] w-auto lg:w-[870px] rounded-sm border lg:ml-32 bg-[#FFFFFF]'>
                         <div className='mt-8 lg:mt-[40px] ml-4 lg:ml-[80px] h-[28px] w-[155px]'>
                             <h1 className='font-medium text-[#DB4444]'>Edit Your Profile</h1>
                         </div>
@@ -86,21 +86,21 @@ const page = (props: Props) => {
                                 <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3' type="text" placeholder='XYZ' />
                             </div>
                         </div>
-                        <div className='flex flex-col lg:flex-row ml-4 lg:ml-[80px] w-full lg:w-[710px] h-auto lg:h-[82px] mt-8'>
+                        <div className='flex flex-col lg:flex-row ml-4 lg:ml-[80px] w-auto lg:w-[710px] h-auto lg:h-[82px] mt-8'>
                             <div className='w-full lg:w-[330px] h-[62px]'>
                                 <h1 className='font-normal'>
                                     Email
                                 </h1>
-                                <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3' type="text" placeholder='xyz@gmail.com' />
+                                <input className='mt-1 lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3' type="text" placeholder='xyz@gmail.com' />
                             </div>
-                            <div className='w-full lg:w-[330px] h-[62px] mt-4 lg:mt-0 lg:ml-10'>
+                            <div className='w-auto lg:w-[330px] h-[62px] mt-4 lg:mt-0 lg:ml-10'>
                                 <h1 className='font-normal'>
                                     Address
                                 </h1>
                                 <input className='mt-1 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3' type="text" placeholder='Delhi' />
                             </div>
                         </div>
-                        <div className='flex flex-col ml-4 lg:ml-[80px] w-full lg:w-[710px] h-auto lg:h-[214px] mt-8'>
+                        <div className='flex flex-col ml-4 lg:ml-[80px] w-auto lg:w-[710px] h-auto lg:h-[214px] mt-8'>
                             <h1 className='font-normal'>
                                 Password Changes
                             </h1>
