@@ -23,7 +23,7 @@ const services = [
 export default function Services() {
   return (
     <div className="services-section mt-40">
-      <div className="container mx-auto flex flex-wrap justify-between items-center gap-6">
+      <div className="container mx-auto flex flex-auto flex-wrap md:flex-nowrap justify-between items-center flex-row gap-6">
         {services.map((service, index) => (
           <div
             key={index}
