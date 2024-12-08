@@ -7,7 +7,6 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
