@@ -60,7 +60,7 @@ export default function Footer() {
           <h3 className="font-semibold text-lg">Account</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
-              <a href="#" className="hover:text-white">
+              <a href="./Profile" className="hover:text-white">
                 My Account
               </a>
             </li>
@@ -92,7 +92,7 @@ export default function Footer() {
           <h3 className="font-semibold text-lg">Quick Link</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
-              <a href="#" className="hover:text-white">
+              <a href="/Contact" className="hover:text-white">
                 Contact
               </a>
             </li>
