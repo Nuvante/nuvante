@@ -14,10 +14,10 @@ export default function Arrivals() {
             message="Newest Arrivals"
             secondaryMessage="Best Selling Products"
           ></Heading>
-          <Button text="View All" width={120}></Button>
+          <Button text="View All" width={130}></Button>
         </div>
         <div className="flex flex-col gap-12">
-          <div className="cards flex flex-wrap justify-between">
+          <div className="cards flex flex-wrap justify-around sm:w-auto w-[100%] gap-y-10">
             <Card
               productName="Kaze Ga Fuku"
               productPrice={999}
@@ -25,6 +25,7 @@ export default function Arrivals() {
               reviews={65}
               stars={5}
               src={"./product.png"}
+              status="old"
             ></Card>
             <Card
               productName="Kaze Ga Fuku"
@@ -33,6 +34,7 @@ export default function Arrivals() {
               reviews={65}
               stars={5}
               src={"./product.png"}
+              status="old"
             ></Card>
             <Card
               productName="Kaze Ga Fuku"
@@ -41,6 +43,7 @@ export default function Arrivals() {
               reviews={65}
               stars={5}
               src={"./product.png"}
+              status="old"
             ></Card>
             <Card
               productName="Kaze Ga Fuku"
@@ -49,6 +52,7 @@ export default function Arrivals() {
               reviews={65}
               stars={4}
               src={"./product.png"}
+              status="old"
             ></Card>
           </div>
           <Button text="View All Products" width={220}></Button>
