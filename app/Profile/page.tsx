@@ -25,8 +25,8 @@ const page = (props: Props) => {
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
-                                <BreadcrumbLink>
-                                    <Link href="/">Home</Link>
+                                <BreadcrumbLink href='/'>
+                                    Home
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
