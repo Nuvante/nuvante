@@ -106,13 +106,15 @@ export default function Navbar() {
                   alt="heart"
                 ></Image>
               </Link>
-              <Image
-                src={cart}
-                width={30}
-                height={30}
-                className="cursor-pointer"
-                alt="cart"
-              ></Image>
+              <Link href='/Cart'>
+                <Image
+                  src={cart}
+                  width={30}
+                  height={30}
+                  className="cursor-pointer"
+                  alt="cart"
+                ></Image>
+              </Link>
               <Link href="/Profile">
                 <Image
                   src={user}
