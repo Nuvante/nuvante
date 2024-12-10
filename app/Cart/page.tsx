@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -11,6 +12,7 @@ import {
 import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+
 
 const prodicon = '/product-icon.svg';
 
@@ -32,13 +34,13 @@ const page = (props: Props) => {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>Wishlist</BreadcrumbPage>
+                                <BreadcrumbPage>Cart</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
 
-                <div className='flex flex-col w-full xl:w-[1170px] xl:h-auto xl:ml-28'>
+                <div className='flex flex-col w-full xl:w-[1170px] xl:h-auto xl:ml-28 mt-16'>
                     <div className='flex flex-col w-full xl:w-[1170px] space-y-4'>
                         {/* Header Row */}
                         <div className='hidden md:flex flex-row items-center justify-between h-[72px] w-full border rounded-sm bg-white px-4'>
@@ -94,7 +96,11 @@ const page = (props: Props) => {
                             </button>
                         </div>
                         <div className='w-full md:w-[470px] h-auto md:h-[324px] border rounded-sm border-black'>
-                            {/* Additional content for totals */}
+                            <Link href="/CheckOut">
+                                <button>
+                                    Checkout
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

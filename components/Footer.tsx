@@ -79,7 +79,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
+              <a href="/Sign-up" className="hover:text-white">
                 Login / Register
               </a>
             </li>
