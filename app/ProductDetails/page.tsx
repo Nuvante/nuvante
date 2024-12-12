@@ -25,7 +25,7 @@ const page = (props: Props) => {
             <Header />
             <Navbar />
             <div className="p-4">
-                <div className='mt-6 ml-4 xl:ml-16 xl:ml-32'>
+                <div className='mt-6 ml-4 xl:ml-32'>
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
