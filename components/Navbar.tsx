@@ -43,9 +43,8 @@ export default function Navbar() {
         style={{
           transition: "1s all ease",
         }}
-        className={`navbar_wrapper pb-1 w-full ${
-          open ? "h-[400px]" : "h-[96px]"
-        } overflow-hidden`}
+        className={`navbar_wrapper pb-1 w-full ${open ? "h-[400px]" : "h-[96px]"
+          } overflow-hidden`}
       >
         <div className="flex lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-6 navbar w-[90%] mx-auto">
           <div
@@ -76,7 +75,7 @@ export default function Navbar() {
                 <a href="/404-error">About</a>
               </li>
               <li>
-                <a href="#">Products</a>
+                <a href="/Products">Products</a>
               </li>
             </ul>
           </div>
@@ -98,20 +97,24 @@ export default function Navbar() {
               </div>
             </div>
             <div className="flex lg:flex-row items-center gap-4">
-              <Image
-                src={heart}
-                width={30}
-                height={30}
-                className="cursor-pointer"
-                alt="heart"
-              ></Image>
-              <Image
-                src={cart}
-                width={30}
-                height={30}
-                className="cursor-pointer"
-                alt="cart"
-              ></Image>
+              <Link href='/Wishlist'>
+                <Image
+                  src={heart}
+                  width={30}
+                  height={30}
+                  className="cursor-pointer"
+                  alt="heart"
+                ></Image>
+              </Link>
+              <Link href='/Cart'>
+                <Image
+                  src={cart}
+                  width={30}
+                  height={30}
+                  className="cursor-pointer"
+                  alt="cart"
+                ></Image>
+              </Link>
               <Link href="/Profile">
                 <Image
                   src={user}

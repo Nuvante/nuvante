@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import {
@@ -24,14 +23,13 @@ const Page = (props: Props) => {
     <>
       <Header />
       <Navbar />
-      <div className="p-4">
-        <div className="md:mt-6 ml-32">
+      <div className="p-4 overflow-hidden">
+        <div className="md:mt-6 ml-4 md:ml-32">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/">
                   Home
-                  {/* <Link href="/">Home</Link> */}
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
@@ -42,33 +40,31 @@ const Page = (props: Props) => {
           </Breadcrumb>
         </div>
         <div className="flex flex-col md:flex-row mt-5 justify-center">
-          <div className="flex flex-col w-full md:w-[340px] h-auto md:h-auto md:mt-16 border rounded-[4px] bg-white p-4">
+          <div className="flex flex-col w-full md:w-[340px] h-auto md:mt-16 border rounded-[4px] bg-white p-4">
             <div className="w-full md:w-auto md:mt-8 border-b-2">
               <div className="flex flex-row h-[40px] w-[135px]">
-                <Image src={Phone} alt="Phone" width={40} height={40}></Image>
-                <h1 className="text-[16px] text-center pt-2 font-semibold w-[79px] ">
+                <Image src={Phone} alt="Phone" width={40} height={40} />
+                <h1 className="text-[16px] text-center pt-2 font-semibold w-[79px]">
                   Call Us
                 </h1>
               </div>
-
               <p className="pt-3">We are available 24/7.</p>
               <p className="pt-3 pb-9">Phone: +91 9899044148</p>
             </div>
             <div className="w-full md:w-auto md:mt-8">
               <div className="flex flex-row h-[40px] w-96">
-                <Image src={mail} alt="Mail" width={40} height={40}></Image>
+                <Image src={mail} alt="Mail" width={40} height={40} />
                 <h1 className="text-[16px] text-center pt-2 pl-2 font-semibold w-[95px]">
                   Write to us
                 </h1>
               </div>
-
               <p className="pt-3">
                 Fill out the form and we will contact you within 24 hours.
               </p>
               <p className="pt-3">Email: nuvantestores@gmail.com</p>
             </div>
           </div>
-          <div className="w-full md:w-[800px] h-auto md:h-auto bg-white p-6 md:mt-16 lg:ml-5 rounded-[">
+          <div className="w-full md:w-[800px] h-auto bg-white p-6 md:mt-16 lg:ml-5 rounded-sm border">
             <div className="flex flex-col w-full h-auto mt-9">
               <div className="flex flex-col md:flex-row md:justify-evenly md:space-x-4">
                 <div className="w-full md:w-1/3 md:ml-1 mb-4 md:mb-0">
@@ -95,13 +91,13 @@ const Page = (props: Props) => {
               </div>
               <div className="mt-8">
                 <textarea
-                  className="h-[207px] w-full md:w-[99%] px-4 py-2 outline-none md:ml-2 bg-[#F5F5F5]"
+                  className="h-[207px] w-full px-4 py-2 outline-none bg-[#F5F5F5]"
                   name="message"
                   id=""
                   placeholder="Your Message *"
                 ></textarea>
               </div>
-              <div className="flex justify-end md:pr-4 mt-4">
+              <div className="flex justify-end mt-4">
                 <button className="text-center rounded-[4px] bg-[#DB4444] h-[56px] w-[215px] text-white mb-10">
                   Send Message
                 </button>

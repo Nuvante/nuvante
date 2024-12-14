@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "./Heading";
 import Card from "./Card";
 import Button from "./button";
+import Link from "next/link";
 
 const products = [{}];
 
@@ -14,7 +15,9 @@ export default function Arrivals() {
             message="Newest Arrivals"
             secondaryMessage="Best Selling Products"
           ></Heading>
-          <Button text="View All" width={130}></Button>
+          <Link href='/Products'>
+            <Button text="View All" width={130}></Button>
+          </Link>
         </div>
         <div className="flex flex-col gap-12">
           <div className="cards flex flex-wrap justify-around sm:w-auto w-[100%] gap-y-10">
@@ -55,7 +58,9 @@ export default function Arrivals() {
               status="old"
             ></Card>
           </div>
-          <Button text="View All Products" width={220}></Button>
+          <Link href='/Products'>
+            <Button text="View All Products" width={220}></Button>
+          </Link>
         </div>
       </div>
     </>

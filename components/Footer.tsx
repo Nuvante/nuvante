@@ -74,22 +74,22 @@ export default function Footer() {
           <h3 className="font-semibold text-lg">Account</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
-              <a href="#" className="hover:text-white">
+              <a href="./Profile" className="hover:text-white">
                 My Account
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
+              <a href="/Sign-up" className="hover:text-white">
                 Login / Register
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
+              <a href="/Cart" className="hover:text-white">
                 Cart
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
+              <a href="/Wishlist" className="hover:text-white">
                 Wishlist
               </a>
             </li>
@@ -106,7 +106,7 @@ export default function Footer() {
           <h3 className="font-semibold text-lg">Quick Link</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
-              <a href="#" className="hover:text-white">
+              <a href="/Contact" className="hover:text-white">
                 Contact
               </a>
             </li>
