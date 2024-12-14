@@ -75,7 +75,7 @@ export default function Navbar() {
                 <a href="/404-error">About</a>
               </li>
               <li>
-                <a href="#">Products</a>
+                <a href="/Products">Products</a>
               </li>
             </ul>
           </div>
