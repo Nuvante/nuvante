@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const caret = "./caret.svg";
+const caret = "/caret.svg";
 
 export default function Header() {
   return (

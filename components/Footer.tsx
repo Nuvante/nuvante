@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
-const facebook_icon = "./facebook.svg";
-const gram_icon = "./instagram.svg";
-const linkedin_icon = "./linkedin.svg";
-const caret_right = "./caret-right.svg";
+const facebook_icon = "/facebook.svg";
+const gram_icon = "/instagram.svg";
+const linkedin_icon = "/linkedin.svg";
+const caret_right = "/caret-right.svg";
 
 export default function Footer() {
   return (
@@ -65,9 +65,9 @@ export default function Footer() {
         {/* Support Section */}
         <div className="w-full md:w-1/4 flex flex-col gap-6">
           <h3 className="font-semibold text-lg">Support</h3>
-          <p className="text-gray-400">New Delhi, Rohini 110034, India.</p>
-          <p className="text-gray-400">founder@gmail.com</p>
-          <p className="text-gray-400">+91 9090908080</p>
+          <p className="text-gray-400">New Delhi, India.</p>
+          <p className="text-gray-400">nuvantestores@gmail.com</p>
+          <p className="text-gray-400">+91 9899044148</p>
         </div>
 
         <div className="w-full md:w-1/4 flex flex-col gap-6">

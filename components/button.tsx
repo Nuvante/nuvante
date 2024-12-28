@@ -12,7 +12,7 @@ const Button = ({ text, width }: { text: string; width: number }) => {
     <button
       // Inline style for dynamic width
       style={{ width: `${preciseWidth}px` }}
-      className="p-2 h-[50px] text-white bg-[#DB4444] rounded-md mx-auto"
+      className="p-2 h-[50px] text-white bg-[#DB4444] rounded-md"
     >
       {text}
     </button>

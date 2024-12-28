@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="flex gap-1 justify-between md:flex-row flex-col items-center md:items-start">
         <div className="flex md:flex-col gap-6 md:w-[20%] hero_left pt-10">
           <div className="flex gap-4 text-black cursor-pointer w-fit">
-            <a href="#">T Shirts</a>
+            <a href="#">Nuvante Originals</a>
             <Image
               src={caretRight}
               alt="dropdown"
@@ -20,7 +20,7 @@ export default function Hero() {
             ></Image>
           </div>
           <div className="flex gap-4 text-black cursor-pointer w-fit">
-            <a href="#">Hoodies </a>
+            <a href="#"> T Shirts</a>
             <Image
               src={caretRight}
               alt="dropdown"

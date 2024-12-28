@@ -1,0 +1,49 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "next/navigation";
+import Card from "@/components/Card";
+
+export default function Suggestion() {
+  const [hash, setHash] = useState("");
+  const url_param: undefined | null | string | any = useParams();
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    setHash(url_param.slug);
+    (async () => {
+      const response = await axios.post(
+        "http://localhost:3000/api/propagation/",
+        {
+          id: hash === "" ? url_param.slug : hash,
+          every: true,
+        }
+      );
+      const filteredProducts = response.data.filter(
+        (product) => product.id !== url_param.slug
+      );
+      filteredProducts.sort(
+        (a: any, b: any) => b.productStars - a.productStars
+      );
+      setProducts(filteredProducts);
+    })();
+  }, [hash, url_param.slug]);
+
+  return (
+    <div className="cards flex flex-wrap gap-x-5 gap-y-10">
+      {products.slice(0, Math.min(5, products.length)).map((product, index) => (
+        <Card
+          key={index}
+          id={product._id}
+          src={product.productImages[0]}
+          productName={product.productName}
+          productPrice={product.productPrice}
+          cancelledPrice={product.cancelledProductPrice}
+          reviews={product.productReviews.length}
+          stars={product.productStars}
+          status={product.latest ? "new" : "old"}
+        />
+      ))}
+    </div>
+  );
+}

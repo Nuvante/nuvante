@@ -3,13 +3,14 @@ import React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 
-const logo_l = "./logo_l.svg";
-const logo_r = "./logo_r.svg";
-const search = "./search.svg";
-const heart = "./heart.svg";
-const cart = "./cart.svg";
-const user = "./user.svg";
+const logo_l = "/logo_l.svg";
+const logo_r = "/logo_r.svg";
+const search = "/search.svg";
+const heart = "/heart.svg";
+const cart = "/cart.svg";
+const User = "/user.svg";
 
 const transition = {
   transition: "1s all linear",
@@ -17,14 +18,15 @@ const transition = {
 
 export default function Navbar() {
   const [open, setOpen] = useState<Boolean>(false);
+  const user = useUser();
 
   const selfRedirect = () => {
-    //~ pass
+    //* pass
     window.location.href = "/";
   };
 
   const handleNavbar = () => {
-    //~ pretty similar to !false or !true, apparently xors the current navbar state by 1.
+    //* pretty similar to !false or !true, apparently xors the current navbar state by 1.
     // ! current_state ^ 1
     setOpen((prevOpen) => !prevOpen);
   };
@@ -43,8 +45,9 @@ export default function Navbar() {
         style={{
           transition: "1s all ease",
         }}
-        className={`navbar_wrapper pb-1 w-full ${open ? "h-[400px]" : "h-[96px]"
-          } overflow-hidden`}
+        className={`navbar_wrapper pb-1 w-full ${
+          open ? "h-[400px]" : "h-[96px]"
+        } overflow-hidden`}
       >
         <div className="flex lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-6 navbar w-[90%] mx-auto">
           <div
@@ -97,7 +100,7 @@ export default function Navbar() {
               </div>
             </div>
             <div className="flex lg:flex-row items-center gap-4">
-              <Link href='/Wishlist'>
+              <Link href="/Wishlist">
                 <Image
                   src={heart}
                   width={30}
@@ -106,7 +109,7 @@ export default function Navbar() {
                   alt="heart"
                 ></Image>
               </Link>
-              <Link href='/Cart'>
+              <Link href="/Cart">
                 <Image
                   src={cart}
                   width={30}
@@ -115,9 +118,13 @@ export default function Navbar() {
                   alt="cart"
                 ></Image>
               </Link>
-              <Link href="/Profile">
+              <Link
+                href={`${
+                  user.isLoaded && user.isSignedIn ? "/Profile" : "/sign-in"
+                }`}
+              >
                 <Image
-                  src={user}
+                  src={User}
                   width={30}
                   height={30}
                   className="cursor-pointer"
