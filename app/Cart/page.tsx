@@ -23,11 +23,7 @@ const CartTotal = ({ subtotal }: { subtotal: number }) => {
         <span>Total:</span>
         <span>Rs. {subtotal}</span>
       </div>
-      <Button
-        text="Proceed to Checkout"
-        width={250}
-        className="bg-red-500 text-white hover:bg-red-600"
-      />
+      <Button text="Proceed to Checkout" width={250} />
     </div>
   );
 };
