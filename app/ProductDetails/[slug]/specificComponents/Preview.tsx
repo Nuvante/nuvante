@@ -7,6 +7,7 @@ const Preview = () => {
   const [hash, setHash] = useState<string | string[]>("");
   const { slug } = useParams(); // Destructure slug directly
   // const [current, setCurrent] = useState("");
+  const current = "X";
   const [productImages, setProductImages] = useState<string[]>([]);
 
   useEffect(() => {
