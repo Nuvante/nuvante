@@ -5,9 +5,9 @@ import { useParams } from "next/navigation";
 import Card from "@/components/Card";
 
 export default function Suggestion() {
-  const [hash, setHash] = useState("");
-  const url_param = useParams();
-  const [products, setProducts] = useState([]);
+  const [hash, setHash] = useState<any>("");
+  const url_param: any = useParams();
+  const [products, setProducts] = useState<any>([]);
 
   useEffect(() => {
     setHash(url_param.slug);
@@ -20,7 +20,7 @@ export default function Suggestion() {
         }
       );
       const filteredProducts = response.data.filter(
-        (product) => product.id !== url_param.slug
+        (product: any) => product.id !== url_param.slug
       );
       filteredProducts.sort(
         (a: any, b: any) => b.productStars - a.productStars
@@ -31,19 +31,21 @@ export default function Suggestion() {
 
   return (
     <div className="cards flex flex-wrap gap-x-5 gap-y-10">
-      {products.slice(0, Math.min(5, products.length)).map((product, index) => (
-        <Card
-          key={index}
-          id={product._id}
-          src={product.productImages[0]}
-          productName={product.productName}
-          productPrice={product.productPrice}
-          cancelledPrice={product.cancelledProductPrice}
-          reviews={product.productReviews.length}
-          stars={product.productStars}
-          status={product.latest ? "new" : "old"}
-        />
-      ))}
+      {products
+        .slice(0, Math.min(5, products.length))
+        .map((product: any, index: any) => (
+          <Card
+            key={index}
+            id={product._id}
+            src={product.productImages[0]}
+            productName={product.productName}
+            productPrice={product.productPrice}
+            cancelledPrice={product.cancelledProductPrice}
+            reviews={product.productReviews.length}
+            stars={product.productStars}
+            status={product.latest ? "new" : "old"}
+          />
+        ))}
     </div>
   );
 }
