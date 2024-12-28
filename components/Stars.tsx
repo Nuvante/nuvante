@@ -4,7 +4,7 @@ const filled_star = "http://localhost:3000/filled_star.svg";
 const unfilled_star = "http://localhost:3000/unfilled_star.svg";
 
 export default function Stars({ count }: { count: number }) {
-  let dummy = new Array(5);
+  const dummy = new Array(5);
   for (let i = 0; i < 5; ++i) {
     dummy[i] = count - i - 1 >= 0 ? true : false;
   }

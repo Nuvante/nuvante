@@ -8,24 +8,21 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { currentUser } from "@clerk/nextjs/server";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Card from "@/components/Card";
-import productModel from "@/models/Product";
-import clientModel from "@/models/Clients";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "@/context/Global";
 
-const page = () => {
-  const [products, setProducts] = useState<any[]>([]);
-  const [currentWishlist, setCurrentWishlist] = useState<any[]>([]);
+const Page = () => {
+  const [products, setProducts] = useState([]);
+  const [currentWishlist, setCurrentWishlist] = useState([]);
 
-  let { GlobalWishlist, GlobalCart, changeGlobalWishlist, changeGlobalCart } =
+  const { GlobalWishlist, GlobalCart, changeGlobalWishlist, changeGlobalCart } =
     useContext(GlobalContext);
 
   useEffect(() => {

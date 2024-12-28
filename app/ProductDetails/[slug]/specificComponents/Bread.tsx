@@ -15,7 +15,7 @@ import axios from "axios";
 
 export default function Bread() {
   const [hash, setHash] = useState("");
-  const url_param: undefined | null | string | any = useParams();
+  const url_param: any = useParams();
   const [productName, setProductName] = useState<string>("Loading...");
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Bread() {
       );
       setProductName(response.data.productName);
     })();
-  }, []);
+  }, [url_param.slug, hash]);
 
   return (
     <>

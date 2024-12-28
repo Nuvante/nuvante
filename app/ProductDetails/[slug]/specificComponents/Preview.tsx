@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 const Preview = () => {
   const [hash, setHash] = useState(null);
   const { slug } = useParams(); // Destructure slug directly
-  const [current, setCurrent] = useState("X");
+  // const [current, setCurrent] = useState("");
   const [productImages, setProductImages] = useState<string[]>([]);
 
   useEffect(() => {
@@ -27,9 +27,9 @@ const Preview = () => {
     setHash(slug);
   }, [hash, slug]);
 
-  const handleSwitch = (str) => {
-    setCurrent(str);
-  };
+  // const handleSwitch = (str) => {
+  //   setCurrent(str);
+  // };
 
   return (
     <div className="flex flex-col xl:flex-row justify-betweengap-4 xl:gap-8 mt-6 ">
@@ -71,12 +71,12 @@ const Preview = () => {
             <div className="h-6 w-6 rounded-full bg-black border border-gray-300"></div>
           </div>
         </div>
-        {/* <div className="mt-4">
+        <div className="mt-4">
           <p className="font-medium">Size:</p>
           <div className="flex items-center gap-2 mt-2">
             {["XS", "S", "M", "L", "XL"].map((size) => (
               <button
-                onClick={handleSwitch(size)}
+                // onClick={handleSwitch(size)}
                 key={size}
                 className={`px-4 py-2 border rounded-md ${
                   !(current === size) ? "hover:bg-gray-200" : "hover:bg-red-500"
@@ -86,7 +86,7 @@ const Preview = () => {
               </button>
             ))}
           </div>
-        </div> */}
+        </div>
         <div className="flex items-center mt-4">
           <button className="px-4 py-2 border rounded-l-md">-</button>
           <span className="px-4 py-2 border-t border-b">2</span>

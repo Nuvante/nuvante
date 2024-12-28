@@ -13,12 +13,10 @@ import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
-import clientModel from "@/models/Clients";
 import axios from "axios";
 import { useEffect } from "react";
-import { useUser } from "@clerk/nextjs";
 
-const page = () => {
+const Page = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
@@ -46,6 +44,7 @@ const page = () => {
       address: address,
       email: "existing",
     });
+    console.log("modifying the database in page.tsx (Profile)\n", response);
   };
 
   useEffect(() => {

@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 
 export default {
+  "@typescript-eslint/no-explicit-any": "off",
+  "@typescript-eslint/no-unused-vars": "off",
   darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",

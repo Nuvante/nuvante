@@ -16,9 +16,7 @@ import Image from "next/image";
 const Phone = "./icons-phone.svg";
 const mail = "./icons-mail.svg";
 
-type Props = {};
-
-const Page = (props: Props) => {
+const Page = () => {
   return (
     <>
       <Header />
@@ -28,9 +26,7 @@ const Page = (props: Props) => {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">
-                  Home
-                </BreadcrumbLink>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>

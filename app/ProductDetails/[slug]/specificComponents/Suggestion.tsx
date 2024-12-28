@@ -6,8 +6,8 @@ import Card from "@/components/Card";
 
 export default function Suggestion() {
   const [hash, setHash] = useState("");
-  const url_param: undefined | null | string | any = useParams();
-  const [products, setProducts] = useState<any[]>([]);
+  const url_param = useParams();
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     setHash(url_param.slug);

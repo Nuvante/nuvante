@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import Preview from "./specificComponents/Preview";
 import Suggestion from "./specificComponents/Suggestion";
 import Heading from "@/components/Heading";
-import clientModel from "@/models/Clients";
 
 const Page = () => {
   return (
