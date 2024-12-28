@@ -42,7 +42,7 @@ export default function Card({
 
     try {
       const isPresent = GlobalWishlist.includes(id);
-      await axios.post("http://localhost:3000/api/wishlist", {
+      await axios.post("https://nuventa.vercel.app/api/wishlist", {
         identifier: id,
         append: !isPresent,
       });
@@ -64,7 +64,7 @@ export default function Card({
 
     try {
       const isPresent = GlobalCart.includes(id);
-      await axios.post("http://localhost:3000/api/cart", {
+      await axios.post("https://nuventa.vercel.app/api/cart", {
         identifier: id,
         append: !isPresent,
       });

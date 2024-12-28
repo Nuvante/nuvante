@@ -5,15 +5,15 @@ import Autoplay from "embla-carousel-autoplay";
 const sliderImages = [
   {
     src: "./carousel.png",
-    link: "http://localhost:3000/ProductDetails/67630548e9a7266a1f0b3533",
+    link: "https://nuventa.vercel.app/ProductDetails/67630548e9a7266a1f0b3533",
   },
   {
     src: "./carousel.png",
-    link: "http://localhost:3000/ProductDetails/12345678e9a7266a1f0b3533",
+    link: "https://nuventa.vercel.app/ProductDetails/12345678e9a7266a1f0b3533",
   },
   {
     src: "./carousel.png",
-    link: "http://localhost:3000/ProductDetails/87654321e9a7266a1f0b3533",
+    link: "https://nuventa.vercel.app/ProductDetails/87654321e9a7266a1f0b3533",
   },
 ];
 

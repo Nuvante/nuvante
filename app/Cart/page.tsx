@@ -43,7 +43,7 @@ const CartPage = () => {
   const asyncHandler = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/propagation",
+        "https://nuventa.vercel.app/api/propagation",
         {
           every: true,
         }
@@ -76,7 +76,7 @@ const CartPage = () => {
 
   const handleRemoveItem = async (id: string) => {
     console.log(`Remove item with ID: ${id}`);
-    const response = await axios.post("http://localhost:3000/api/cart", {
+    const response = await axios.post("https://nuventa.vercel.app/api/cart", {
       append: false,
       identifier: id,
     });

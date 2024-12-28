@@ -59,7 +59,7 @@ const ForgotPasswordPage: NextPage = () => {
           setError("");
         } else if (result.status === "complete") {
           const response = await axios.post(
-            "http://localhost:3000/api/populate/",
+            "https://nuventa.vercel.app/api/populate/",
             {
               firstName: "existing",
               lastName: "existing",

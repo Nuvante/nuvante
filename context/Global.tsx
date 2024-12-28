@@ -30,7 +30,7 @@ export const GlobalContextProvider = ({
     setGlobalCart([...GlobalCart, element]);
     (async () => {
       const response = await axios.get(
-        "http://localhost:3000/api/propagation_client"
+        "https://nuventa.vercel.app/api/propagation_client"
       );
       setGlobalWishlist(response.data.wishlist);
       setGlobalCart(response.data.cart || []);
@@ -40,7 +40,7 @@ export const GlobalContextProvider = ({
   useEffect(() => {
     (async () => {
       const response = await axios.get(
-        "http://localhost:3000/api/propagation_client"
+        "https://nuventa.vercel.app/api/propagation_client"
       );
       setGlobalWishlist(
         response.data.wishlist === null ? [] : response.data.wishlist

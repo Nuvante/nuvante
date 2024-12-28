@@ -15,7 +15,7 @@ const Preview = () => {
       const id = hash || slug;
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/propagation/",
+          "https://nuventa.vercel.app/api/propagation/",
           { id: id, every: false }
         );
         setProductImages(response.data.productImages || []);
