@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 
 const Preview = () => {
-  const [hash, setHash] = useState(null);
+  const [hash, setHash] = useState<string | string[]>("");
   const { slug } = useParams(); // Destructure slug directly
   // const [current, setCurrent] = useState("");
   const [productImages, setProductImages] = useState<string[]>([]);
@@ -24,7 +24,12 @@ const Preview = () => {
     };
 
     fetchImages();
-    setHash(slug);
+    if (slug === undefined) {
+      console.log("the slug is undefined");
+      window.location.href = "https://google.com";
+    } else {
+      setHash(slug);
+    }
   }, [hash, slug]);
 
   // const handleSwitch = (str) => {
