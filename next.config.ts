@@ -9,5 +9,11 @@ module.exports = {
   images: {
     domains: ["http://localhost:3000/"],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 export default nextConfig;

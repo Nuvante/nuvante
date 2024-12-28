@@ -22,8 +22,12 @@ const Page = () => {
   const [products, setProducts] = useState([]);
   const [currentWishlist, setCurrentWishlist] = useState([]);
 
-  const { GlobalWishlist, GlobalCart, changeGlobalWishlist, changeGlobalCart } =
-    useContext(GlobalContext);
+  const {
+    GlobalWishlist,
+    GlobalCart,
+    changeGlobalWishlist,
+    changeGlobalCart,
+  }: any = useContext(GlobalContext);
 
   useEffect(() => {
     const propagate_data = async () => {
@@ -96,7 +100,8 @@ const Page = () => {
 
           <div className="flex flex-col xl:flex-row gap-x-5 w-full mt-7">
             {products.map((product: any, index: any) => {
-              if (currentWishlist.includes(product._id)) {
+              let smol: any = product._id;
+              if (currentWishlist.includes(smol)) {
                 return (
                   <Card
                     id={product._id}
@@ -121,4 +126,4 @@ const Page = () => {
   );
 };
 
-export default page;
+export default Page;
