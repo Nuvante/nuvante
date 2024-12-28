@@ -72,13 +72,13 @@ export default function Navbar() {
                 </a>
               </li>
               <li>
-                <a href="/Contact">Contact</a>
+                <Link href="/Contact">Contact</Link>
               </li>
               <li>
-                <a href="/404-error">About</a>
+                <Link href="/404-error">About</Link>
               </li>
               <li>
-                <a href="/Products">Products</a>
+                <Link href="/Products">Products</Link>
               </li>
             </ul>
           </div>
