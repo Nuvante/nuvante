@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
 module.exports = {
   reactStrictMode: false,
   images: {
-    domains: ["http://localhost:3000/"],
+    domains: ["https://nuventa.vercel.app/"],
   },
   eslint: {
     ignoreDuringBuilds: true,
