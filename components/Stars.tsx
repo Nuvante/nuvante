@@ -1,7 +1,7 @@
 import React from "react";
 
-const filled_star = "https://nuventa.vercel.app/filled_star.svg";
-const unfilled_star = "https://nuventa.vercel.app/unfilled_star.svg";
+const filled_star = "https://nuvante.netlify.app/filled_star.svg";
+const unfilled_star = "https://nuvante.netlify.app/unfilled_star.svg";
 
 export default function Stars({ count }: { count: number }) {
   const dummy = new Array(5);

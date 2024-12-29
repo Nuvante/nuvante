@@ -32,7 +32,7 @@ const Page = () => {
   useEffect(() => {
     const propagate_data = async () => {
       const localProducts = await axios
-        .post("https://nuventa.vercel.app/api/propagation/", {
+        .post("https://nuvante.netlify.app/api/propagation/", {
           every: true,
         })
         .then((response) => {
@@ -40,7 +40,7 @@ const Page = () => {
         });
       setProducts(localProducts);
       const currentWishlist = await axios
-        .get("https://nuventa.vercel.app/api/propagation_client/")
+        .get("https://nuvante.netlify.app/api/propagation_client/")
         .then((response) => {
           return response.data.wishlist;
         });
@@ -55,7 +55,7 @@ const Page = () => {
       if (!GlobalCart.includes(GlobalWishlist[i])) {
         changeGlobalCart(GlobalWishlist[i]);
         const response = await axios.post(
-          "https://nuventa.vercel.app/api/cart",
+          "https://nuvante.netlify.app/api/cart",
           {
             identifier: GlobalWishlist[i],
             append: true,

@@ -43,7 +43,7 @@ const CartPage = () => {
   const asyncHandler = async () => {
     try {
       const response = await axios.post(
-        "https://nuventa.vercel.app/api/propagation",
+        "https://nuvante.netlify.app/api/propagation",
         {
           every: true,
         }
@@ -76,7 +76,7 @@ const CartPage = () => {
 
   const handleRemoveItem = async (id: string) => {
     console.log(`Remove item with ID: ${id}`);
-    const response = await axios.post("https://nuventa.vercel.app/api/cart", {
+    const response = await axios.post("https://nuvante.netlify.app/api/cart", {
       append: false,
       identifier: id,
     });
