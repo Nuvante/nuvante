@@ -24,7 +24,7 @@ const Page = () => {
 
   const custom_propagation_flow = async () => {
     const response = await axios.get(
-      "https://nuventa.vercel.app/api/propagation_client/"
+      "https://nuvante.netlify.app/api/propagation_client/"
     );
     setFirstName(response.data.firstName);
     setLastName(response.data.lastName);
@@ -33,14 +33,14 @@ const Page = () => {
 
   const fetch_current_email = async () => {
     const response = await axios.get(
-      "https://nuventa.vercel.app/api/emailify/"
+      "https://nuvante.netlify.app/api/emailify/"
     );
     setGlobalEmail(response.data);
   };
 
   const lazily_update_database = async () => {
     const response = await axios.post(
-      "https://nuventa.vercel.app/api/populate/",
+      "https://nuvante.netlify.app/api/populate/",
       {
         firstName: firstName,
         lastName: lastName,
