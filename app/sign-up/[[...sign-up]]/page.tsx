@@ -70,7 +70,7 @@ const page = (props: Props) => {
       // and redirect the user
       if (signUpAttempt.status === "complete") {
         const response = await axios.post(
-          "https://nuventa.vercel.app/api/populate/",
+          "https://nuvante.netlify.app/api/populate/",
           {
             firstName: name.split(" ")[0],
             lastName: name.split(" ")[1],
