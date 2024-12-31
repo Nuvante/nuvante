@@ -101,78 +101,80 @@ const Page = () => {
             <Image src={logo} alt="preloader" width={60} height={60}></Image>
           </motion.div>
         )}
-
-        <div className="flex flex-col lg:flex-row ml-4 lg:ml-32 mt-8 lg:mt-24">
-          <div className="flex flex-col">
+        {loaded && (
+          <div className="flex flex-col lg:flex-row ml-4 lg:ml-32 mt-8 lg:mt-24">
             <div className="flex flex-col">
-              <h1 className="font-medium">Manage My Account</h1>
-              <div className="flex flex-col ml-4 lg:ml-10 pt-4 font-normal">
-                <div className="text-[#DB4444] font-normal cursor-pointer">
-                  My Profile
+              <div className="flex flex-col">
+                <h1 className="font-medium">Manage My Account</h1>
+                <div className="flex flex-col ml-4 lg:ml-10 pt-4 font-normal">
+                  <div className="text-[#DB4444] font-normal cursor-pointer">
+                    My Profile
+                  </div>
                 </div>
               </div>
+              <div className="pt-10 font-normal gap-3 flex flex-col">
+                <Sidebar></Sidebar>
+              </div>
             </div>
-            <div className="pt-10 font-normal gap-3 flex flex-col">
-              <Sidebar></Sidebar>
-            </div>
-          </div>
 
-          <div className="flex flex-col w-auto lg:w-[870px] pb-10 rounded-sm border lg:ml-32 bg-[#FFFFFF]">
-            <div className="mt-8 lg:mt-[40px] ml-4 lg:ml-[80px] h-[28px] w-[155px]">
-              <h1 className="font-medium text-[#DB4444]">Edit Your Profile</h1>
-            </div>
-            <div className="flex flex-col lg:flex-row ml-4 lg:ml-[80px] w-full lg:w-[710px] h-auto lg:h-[82px] mt-8">
-              <div className="w-full lg:w-[330px] h-[62px]">
-                <h1 className="font-normal">First Name</h1>
-                <input
-                  className="mt-1 p-2 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3"
-                  type="text"
-                  placeholder="Daksh"
-                  value={firstName}
-                  onChange={(e) => {
-                    setFirstName(e.target.value);
-                  }}
-                />
+            <div className="flex flex-col w-auto lg:w-[870px] pb-10 rounded-sm border lg:ml-32 bg-[#FFFFFF]">
+              <div className="mt-8 lg:mt-[40px] ml-4 lg:ml-[80px] h-[28px] w-[155px]">
+                <h1 className="font-medium text-[#DB4444]">
+                  Edit Your Profile
+                </h1>
               </div>
-              <div className="w-full lg:w-[330px] h-[62px] mt-4 lg:mt-0 lg:ml-10">
-                <h1 className="font-normal">Last Name</h1>
-                <input
-                  className="mt-1 p-2 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3"
-                  type="text"
-                  placeholder="XYZ"
-                  value={lastName}
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                  }}
-                />
+              <div className="flex flex-col lg:flex-row ml-4 lg:ml-[80px] w-full lg:w-[710px] h-auto lg:h-[82px] mt-8">
+                <div className="w-full lg:w-[330px] h-[62px]">
+                  <h1 className="font-normal">First Name</h1>
+                  <input
+                    className="mt-1 p-2 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3"
+                    type="text"
+                    placeholder="Daksh"
+                    value={firstName}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="w-full lg:w-[330px] h-[62px] mt-4 lg:mt-0 lg:ml-10">
+                  <h1 className="font-normal">Last Name</h1>
+                  <input
+                    className="mt-1 p-2 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3"
+                    type="text"
+                    placeholder="XYZ"
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col lg:flex-row ml-4 lg:ml-[80px] w-auto lg:w-[710px] h-auto lg:h-[82px] mt-8">
-              <div className="w-full lg:w-[330px] h-[62px]">
-                <h1 className="font-normal">Email</h1>
-                <input
-                  className="mt-1 lg:w-[330px] p-2 h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3"
-                  type="text"
-                  placeholder="xyz@gmail.com"
-                  value={globalEmail}
-                  readOnly
-                  contentEditable={false}
-                />
+              <div className="flex flex-col lg:flex-row ml-4 lg:ml-[80px] w-auto lg:w-[710px] h-auto lg:h-[82px] mt-8">
+                <div className="w-full lg:w-[330px] h-[62px]">
+                  <h1 className="font-normal">Email</h1>
+                  <input
+                    className="mt-1 lg:w-[330px] p-2 h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3"
+                    type="text"
+                    placeholder="xyz@gmail.com"
+                    value={globalEmail}
+                    readOnly
+                    contentEditable={false}
+                  />
+                </div>
+                <div className="w-auto lg:w-[330px] h-[62px] mt-4 lg:mt-0 lg:ml-10">
+                  <h1 className="font-normal">Address</h1>
+                  <input
+                    className="mt-1 p-2 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3"
+                    type="text"
+                    placeholder="Delhi"
+                    value={address}
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                    }}
+                  />
+                </div>
               </div>
-              <div className="w-auto lg:w-[330px] h-[62px] mt-4 lg:mt-0 lg:ml-10">
-                <h1 className="font-normal">Address</h1>
-                <input
-                  className="mt-1 p-2 w-full lg:w-[330px] h-[50px] bg-[#F5F5F5] rounded-sm placeholder:pl-3"
-                  type="text"
-                  placeholder="Delhi"
-                  value={address}
-                  onChange={(e) => {
-                    setAddress(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-            {/* <div className="flex flex-col ml-4 lg:ml-[80px] w-auto lg:w-[710px] h-auto lg:h-[214px] mt-8">
+              {/* <div className="flex flex-col ml-4 lg:ml-[80px] w-auto lg:w-[710px] h-auto lg:h-[214px] mt-8">
               <h1 className="font-normal">Password Changes</h1>
               <input
                 className="w-full lg:w-[710px] h-[50px] bg-[#F5F5F5] rounded-sm mt-1 placeholder:pl-3"
@@ -190,17 +192,18 @@ const Page = () => {
                 placeholder="Confirm New Password"
               />
             </div> */}
-            <div className="flex flex-row justify-end mt-10">
-              <button className="mr-4 lg:mr-6">Cancel</button>
-              <button
-                className="bg-[#DB4444] w-full lg:w-[214px] h-[56px] font-medium rounded-sm text-white mr-4 lg:mr-[80px]"
-                onClick={lazily_update_database}
-              >
-                Save Changes
-              </button>
+              <div className="flex flex-row justify-end mt-10">
+                <button className="mr-4 lg:mr-6">Cancel</button>
+                <button
+                  className="bg-[#DB4444] w-full lg:w-[214px] h-[56px] font-medium rounded-sm text-white mr-4 lg:mr-[80px]"
+                  onClick={lazily_update_database}
+                >
+                  Save Changes
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       <Footer />
     </>
