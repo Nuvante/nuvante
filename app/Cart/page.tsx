@@ -43,7 +43,7 @@ const CartPage = () => {
   const asyncHandler = async () => {
     try {
       const response = await axios
-        .post("http://localhost:3000/api/propagation", {
+        .post("https://nuvante.netlify.app/api/propagation", {
           every: true,
         })
         .then((res) => {
@@ -85,7 +85,7 @@ const CartPage = () => {
   const handleRemoveItem = async (id: string) => {
     console.log(`Remove item with ID: ${id}`);
     const response = await axios
-      .post("http://localhost:3000/api/cart", {
+      .post("https://nuvante.netlify.app/api/cart", {
         append: false,
         identifier: id,
       })

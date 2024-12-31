@@ -22,7 +22,7 @@ export default function Bread() {
     setHash(url_param.slug);
     (async () => {
       const response = await axios.post(
-        "http://localhost:3000/api/propagation/",
+        "https://nuvante.netlify.app/api/propagation/",
         {
           id: hash === "" ? url_param.slug : hash,
           every: false,

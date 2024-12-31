@@ -32,7 +32,7 @@ const Preview = () => {
       const id = hash || slug;
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/propagation/",
+          "https://nuvante.netlify.app/api/propagation/",
           { id: id, every: false }
         );
         setProductImages(response.data.productImages || []);
@@ -74,7 +74,7 @@ const Preview = () => {
       const id: any = hash || slug;
       const isPresent = GlobalWishlist.includes(id);
       await axios
-        .post("http://localhost:3000/api/wishlist", {
+        .post("https://nuvante.netlify.app/api/wishlist", {
           identifier: id,
           append: !isPresent,
         })

@@ -60,7 +60,7 @@ export default function Card({
     try {
       const isPresent = GlobalWishlist.includes(id);
       await axios
-        .post("http://localhost:3000/api/wishlist", {
+        .post("https://nuvante.netlify.app/api/wishlist", {
           identifier: id,
           append: !isPresent,
         })
@@ -101,7 +101,7 @@ export default function Card({
     try {
       const isPresent = GlobalCart.includes(id);
       await axios
-        .post("http://localhost:3000/api/cart", {
+        .post("https://nuvante.netlify.app/api/cart", {
           identifier: id,
           append: !isPresent,
         })

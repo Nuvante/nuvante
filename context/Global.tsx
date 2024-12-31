@@ -34,7 +34,7 @@ export const GlobalContextProvider = ({
     (async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/propagation_client"
+          "https://nuvante.netlify.app/api/propagation_client"
         );
         if (response.data === 404) {
           alert(
@@ -57,7 +57,7 @@ export const GlobalContextProvider = ({
       (async () => {
         try {
           const response = await axios.get(
-            "http://localhost:3000/api/propagation_client"
+            "https://nuvante.netlify.app/api/propagation_client"
           );
           if (response.data === 404) {
             alert(

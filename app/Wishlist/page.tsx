@@ -44,7 +44,7 @@ const Page = () => {
   useEffect(() => {
     const propagate_data = async () => {
       const localProducts = await axios
-        .post("http://localhost:3000/api/propagation/", {
+        .post("https://nuvante.netlify.app/api/propagation/", {
           every: true,
         })
         .then((response) => {
@@ -52,7 +52,7 @@ const Page = () => {
         });
       setProducts(localProducts);
       const currentWishlist = await axios
-        .get("http://localhost:3000/api/propagation_client/")
+        .get("https://nuvante.netlify.app/api/propagation_client/")
         .then((response) => {
           if (response.data === 404) {
             alert(
@@ -77,7 +77,7 @@ const Page = () => {
     for (let i = 0; i < GlobalWishlist.length; ++i) {
       if (!GlobalCart.includes(GlobalWishlist[i])) {
         const response = await axios
-          .post("http://localhost:3000/api/cart", {
+          .post("https://nuvante.netlify.app/api/cart", {
             identifier: GlobalWishlist[i],
             append: true,
           })

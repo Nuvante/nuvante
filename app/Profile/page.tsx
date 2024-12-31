@@ -24,7 +24,7 @@ const Page = () => {
 
   const custom_propagation_flow = async () => {
     const response = await axios.get(
-      "http://localhost:3000/api/propagation_client/"
+      "https://nuvante.netlify.app/api/propagation_client/"
     );
     setFirstName(response.data.firstName);
     setLastName(response.data.lastName);
@@ -32,18 +32,23 @@ const Page = () => {
   };
 
   const fetch_current_email = async () => {
-    const response = await axios.get("http://localhost:3000/api/emailify/");
+    const response = await axios.get(
+      "https://nuvante.netlify.app/api/emailify/"
+    );
     setGlobalEmail(response.data);
   };
 
   const lazily_update_database = async () => {
-    const response = await axios.post("http://localhost:3000/api/populate/", {
-      firstName: firstName,
-      lastName: lastName,
-      password: "existing",
-      address: address,
-      email: "existing",
-    });
+    const response = await axios.post(
+      "https://nuvante.netlify.app/api/populate/",
+      {
+        firstName: firstName,
+        lastName: lastName,
+        password: "existing",
+        address: address,
+        email: "existing",
+      }
+    );
     console.log("modifying the database in page.tsx (Profile)\n", response);
   };
 
