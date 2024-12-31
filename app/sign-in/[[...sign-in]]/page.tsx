@@ -54,7 +54,6 @@ const page = (props: Props) => {
 
   return (
     <div>
-      <Header />
       <Navbar />
       <div className="flex flex-col xl:flex-row xl:h-[781px] xl:w-[1305px] xl:items-center xl:justify-between xl:mt-12 items-center">
         <div>

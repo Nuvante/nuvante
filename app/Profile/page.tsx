@@ -10,25 +10,38 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Navbar from "@/components/Navbar";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import axios from "axios";
 import { useEffect } from "react";
+import Image from "next/image";
+import { motion, useAnimationControls } from "framer-motion";
+
+const logo = "/logo_l.svg";
 
 const Page = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [globalEmail, setGlobalEmail] = useState<string>("");
+  const [loaded, setLoaded] = useState(false);
 
   const custom_propagation_flow = async () => {
-    const response = await axios.get(
-      "https://nuvante.netlify.app/api/propagation_client/"
-    );
-    setFirstName(response.data.firstName);
-    setLastName(response.data.lastName);
-    setAddress(response.data.address);
+    const response = await axios
+      .get("https://nuvante.netlify.app/api/propagation_client/")
+      .then((data) => {
+        return data;
+      });
+
+    if (response.data != 404) {
+      setFirstName(response.data.firstName);
+      setLastName(response.data.lastName);
+      setAddress(response.data.address);
+      setLoaded(true);
+    } else {
+      alert("There was an error fetching the profile. Please try refreshing");
+      setLoaded(false);
+    }
   };
 
   const fetch_current_email = async () => {
@@ -59,7 +72,6 @@ const Page = () => {
 
   return (
     <>
-      <Header />
       <Navbar />
       <div className="p-4">
         <div className="mt-6 ml-4 lg:ml-32">
@@ -75,6 +87,20 @@ const Page = () => {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
+
+        {!loaded && (
+          <motion.div
+            className="w-fit mx-auto mt-20"
+            animate={{
+              rotate: 360,
+              transition: {
+                duration: 1.5,
+              },
+            }}
+          >
+            <Image src={logo} alt="preloader" width={60} height={60}></Image>
+          </motion.div>
+        )}
 
         <div className="flex flex-col lg:flex-row ml-4 lg:ml-32 mt-8 lg:mt-24">
           <div className="flex flex-col">

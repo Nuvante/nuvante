@@ -33,7 +33,7 @@ export default function Navbar() {
     <>
       <div
         onClick={handleNavbar}
-        className="hamburger lg:hidden absolute top-20 right-9  flex-col gap-2 cursor-pointer flex"
+        className="hamburger lg:hidden absolute top-[34px] right-9  flex-col gap-2 cursor-pointer flex"
       >
         <div className="line"></div>
         <div className="line"></div>
@@ -44,7 +44,7 @@ export default function Navbar() {
           transition: "1s all ease",
         }}
         className={`navbar_wrapper pb-1 w-full ${
-          open ? "h-[400px]" : "h-[96px]"
+          open ? "h-[400px]" : "h-[90px]"
         } overflow-hidden`}
       >
         <div className="flex lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
