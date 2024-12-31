@@ -12,9 +12,8 @@ const heart = "/heart.svg";
 const cart = "/cart.svg";
 const User = "/user.svg";
 
-const transition = {
-  transition: "1s all linear",
-};
+//* used <Image> instead of <img> and <Link> instead of <a>
+//* Otherwise standard implementation of a navbar.
 
 export default function Navbar() {
   const [open, setOpen] = useState<Boolean>(false);
@@ -27,7 +26,6 @@ export default function Navbar() {
 
   const handleNavbar = () => {
     //* pretty similar to !false or !true, apparently xors the current navbar state by 1.
-    // ! current_state ^ 1
     setOpen((prevOpen) => !prevOpen);
   };
 
@@ -49,7 +47,7 @@ export default function Navbar() {
           open ? "h-[400px]" : "h-[96px]"
         } overflow-hidden`}
       >
-        <div className="flex lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-6 navbar w-[90%] mx-auto">
+        <div className="flex lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
           <div
             onClick={() => {
               selfRedirect();

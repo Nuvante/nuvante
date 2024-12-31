@@ -19,7 +19,6 @@ const mail = "./icons-mail.svg";
 const Page = () => {
   return (
     <>
-      <Header />
       <Navbar />
       <div className="p-4 overflow-hidden">
         <div className="md:mt-6 ml-4 md:ml-32">

@@ -70,7 +70,7 @@ const page = (props: Props) => {
       // and redirect the user
       if (signUpAttempt.status === "complete") {
         const response = await axios.post(
-          "https://nuvante.netlify.app/api/populate/",
+          "http://localhost:3000/api/populate/",
           {
             firstName: name.split(" ")[0],
             lastName: name.split(" ")[1],
@@ -172,8 +172,6 @@ const page = (props: Props) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          {/* CAPTCHA Widget */}
-          {/* <div id="clerk-captcha"></div> */}
           <div className="flex flex-col items-center justify-between w-full max-w-[370px] mt-5">
             <button
               className="h-[56px] w-full bg-[#DB4444] text-white"

@@ -59,7 +59,7 @@ const ForgotPasswordPage: NextPage = () => {
           setError("");
         } else if (result.status === "complete") {
           const response = await axios.post(
-            "https://nuvante.netlify.app/api/populate/",
+            "http://localhost:3000/api/populate/",
             {
               firstName: "existing",
               lastName: "existing",

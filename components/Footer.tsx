@@ -110,6 +110,21 @@ export default function Footer() {
                 Contact
               </a>
             </li>
+            <li>
+              <a href="/Contact" className="hover:text-white">
+                About us
+              </a>
+            </li>
+            <li>
+              <a href="/Contact" className="hover:text-white">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="/Contact" className="hover:text-white">
+                Return Policy
+              </a>
+            </li>
           </ul>
         </div>
       </div>

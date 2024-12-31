@@ -58,8 +58,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <GlobalContextProvider>
-      <ClerkProvider dynamic>
+    <ClerkProvider dynamic>
+      <GlobalContextProvider>
         <html lang="en">
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -67,7 +67,7 @@ export default function RootLayout({
             {children}
           </body>
         </html>
-      </ClerkProvider>
-    </GlobalContextProvider>
+      </GlobalContextProvider>
+    </ClerkProvider>
   );
 }

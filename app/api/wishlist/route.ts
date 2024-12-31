@@ -13,12 +13,15 @@ function popElement(array: any[], victim: any) {
 export async function POST(request: any) {
   const user = await currentUser();
   const global_user_email = user?.emailAddresses[0].emailAddress;
-  console.log(global_user_email);
   try {
     const body = await request.json();
-    const existingModel = await clientModel.findOne({
-      email: global_user_email,
-    });
+    const existingModel = await clientModel
+      .findOne({
+        email: global_user_email,
+      })
+      .then((data) => {
+        return data;
+      });
 
     if (body.append) {
       if (!existingModel.wishlist.includes(body.identifier)) {
@@ -31,9 +34,9 @@ export async function POST(request: any) {
       );
     }
     await existingModel.save();
-    return new NextResponse("updated the wishlist!");
+    return new NextResponse("200");
   } catch (error) {
     console.log(error);
-    return new NextResponse(JSON.stringify({ status: 404 }));
+    return new NextResponse("400");
   }
 }

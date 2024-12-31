@@ -6,8 +6,9 @@ import Link from "next/link";
 
 type mainProp = {
   fragment: {
+    id: any;
     productName: string;
-    productImage: string;
+    productImages: string;
     productPrice: string;
     cancelledProductPrice: string;
     productStars: number;
@@ -32,8 +33,8 @@ export default function Products({ fragment }: mainProp) {
               key={index}
               id={product.id}
               productName={product.productName}
-              productPrice={product.productPrice}
-              cancelledPrice={product.cancelledProductPrice}
+              productPrice={Number(product.productPrice)}
+              cancelledPrice={Number(product.cancelledProductPrice)}
               reviews={product.productReviews.length}
               stars={product.productStars}
               src={product.productImages[0]}

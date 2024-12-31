@@ -10,7 +10,6 @@ import Heading from "@/components/Heading";
 const Page = () => {
   return (
     <>
-      <Header />
       <Navbar />
       <div className="p-4">
         <div className="mt-6 ml-4 xl:ml-32">

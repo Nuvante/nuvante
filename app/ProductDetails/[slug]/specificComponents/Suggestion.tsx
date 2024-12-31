@@ -13,7 +13,7 @@ export default function Suggestion() {
     setHash(url_param.slug);
     (async () => {
       const response = await axios.post(
-        "https://nuvante.netlify.app/api/propagation/",
+        "http://localhost:3000/api/propagation/",
         {
           id: hash === "" ? url_param.slug : hash,
           every: true,

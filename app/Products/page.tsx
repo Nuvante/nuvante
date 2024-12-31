@@ -5,8 +5,18 @@ import React from "react";
 import Heading from "@/components/Heading";
 import Card from "@/components/Card";
 import productModel from "@/models/Product";
-const page = async () => {
-  const response = await productModel.find({});
+
+const Page = async () => {
+  const response = await productModel
+    .find({})
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      localStorage.setItem("page.tsx/Products", error);
+      window.location.href = "/404-error";
+      return [];
+    });
 
   return (
     <div>
@@ -43,4 +53,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Page;

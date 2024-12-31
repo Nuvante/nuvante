@@ -6,8 +6,9 @@ import Link from "next/link";
 
 type mainProp = {
   fragment: {
+    id: any;
     productName: string;
-    productImage: string;
+    productImages: string;
     productPrice: string;
     cancelledProductPrice: string;
     productStars: number;
@@ -18,6 +19,7 @@ type mainProp = {
 
 export default function Arrivals({ fragment }: mainProp) {
   //* custom comparator function for sort(a, b).
+  //* used it later in the code. at 42.
   const frag = fragment.sort((a, b) => {
     return -(a.productStars - b.productStars) !== 0
       ? -(a.productStars - b.productStars)
@@ -49,8 +51,8 @@ export default function Arrivals({ fragment }: mainProp) {
                   id={product.id}
                   key={index}
                   productName={product.productName}
-                  productPrice={String(product.productPrice)}
-                  cancelledPrice={product.cancelledProductPrice}
+                  productPrice={Number(product.productPrice)}
+                  cancelledPrice={Number(product.cancelledProductPrice)}
                   reviews={product.productReviews.length} //* Assuming number of reviews (NaN)
                   stars={product.productStars}
                   src={product.productImages[0]}

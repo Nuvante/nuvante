@@ -51,6 +51,6 @@ export async function POST(request: any) {
     return new NextResponse("success");
   } catch (error) {
     console.error("Error in API route: ", error);
-    return new NextResponse("error", { status: 500 });
+    return new NextResponse("error");
   }
 }

@@ -2,6 +2,7 @@
 import { createContext, useState, useEffect } from "react";
 import React from "react";
 import axios from "axios";
+import { useUser } from "@clerk/nextjs";
 
 interface GlobalContextType {
   GlobalWishlist: string[];
@@ -20,7 +21,9 @@ export const GlobalContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [GlobalWishlist, setGlobalWishlist] = useState<string[]>([]);
-  const [GlobalCart, setGlobalCart] = useState<any[]>([]);
+  const [GlobalCart, setGlobalCart] = useState<string[]>([]);
+
+  const { isSignedIn, user } = useUser(); // Destructure isSignedIn directly
 
   const changeGlobalWishlist = (updatedWishlist: string[]) => {
     setGlobalWishlist([...updatedWishlist]);
@@ -29,25 +32,47 @@ export const GlobalContextProvider = ({
   const changeGlobalCart = (element: any) => {
     setGlobalCart([...GlobalCart, element]);
     (async () => {
-      const response = await axios.get(
-        "https://nuvante.netlify.app/api/propagation_client"
-      );
-      setGlobalWishlist(response.data.wishlist);
-      setGlobalCart(response.data.cart || []);
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/api/propagation_client"
+        );
+        if (response.data === 404) {
+          alert(
+            "Context error 404, error getting the cart data to the database."
+          );
+          window.location.reload();
+        } else {
+          setGlobalWishlist(response.data.wishlist);
+          setGlobalCart(response.data.cart || []);
+        }
+      } catch (error) {
+        console.error("Error updating cart:", error);
+      }
     })();
   };
 
   useEffect(() => {
-    (async () => {
-      const response = await axios.get(
-        "https://nuvante.netlify.app/api/propagation_client"
-      );
-      setGlobalWishlist(
-        response.data.wishlist === null ? [] : response.data.wishlist
-      );
-      setGlobalCart(response.data.cart || []);
-    })();
-  }, []);
+    if (isSignedIn) {
+      // Ensure isSignedIn is true before making API calls
+      (async () => {
+        try {
+          const response = await axios.get(
+            "http://localhost:3000/api/propagation_client"
+          );
+          if (response.data === 404) {
+            alert(
+              "Context error 404, error getting initial data from the database."
+            );
+          } else {
+            setGlobalWishlist(response.data.wishlist || []);
+            setGlobalCart(response.data.cart || []);
+          }
+        } catch (error) {
+          console.error("Error fetching initial data:", error);
+        }
+      })();
+    }
+  }, [isSignedIn]); // Add isSignedIn as a dependency
 
   return (
     <GlobalContext.Provider

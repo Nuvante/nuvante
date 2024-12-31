@@ -38,17 +38,25 @@ const CartPage = () => {
     throw new Error("GlobalContext is not provided.");
   }
 
-  const { GlobalCart } = context;
+  const { GlobalCart, changeGlobalCart } = context;
 
   const asyncHandler = async () => {
     try {
-      const response = await axios.post(
-        "https://nuvante.netlify.app/api/propagation",
-        {
+      const response = await axios
+        .post("http://localhost:3000/api/propagation", {
           every: true,
-        }
-      );
-      setMorphedProducts(response.data);
+        })
+        .then((res) => {
+          if (res.data === 404) {
+            alert(
+              "there was an error fetching cart products, please try again after refreshing the page."
+            );
+            alert("redirecting to home page.");
+            window.location.href = "/";
+          } else {
+            setMorphedProducts(res.data === null ? [] : res.data);
+          }
+        });
     } catch (error) {
       console.error("Error fetching products:", error);
     } finally {
@@ -76,17 +84,26 @@ const CartPage = () => {
 
   const handleRemoveItem = async (id: string) => {
     console.log(`Remove item with ID: ${id}`);
-    const response = await axios.post("https://nuvante.netlify.app/api/cart", {
-      append: false,
-      identifier: id,
-    });
-
-    console.log(response);
+    const response = await axios
+      .post("http://localhost:3000/api/cart", {
+        append: false,
+        identifier: id,
+      })
+      .then((res) => {
+        if (res.data === 404) {
+          alert("There was a problem setting data in the context.");
+        } else if (res.data === 200) {
+          changeGlobalCart((prevGlobalCart: any) => {
+            return prevGlobalCart.filter((element: any) => {
+              element != id;
+            });
+          });
+        }
+      });
   };
 
   return (
     <div>
-      <Header />
       <Navbar />
       <div className="p-4 flex justify-center">
         <div className="flex flex-col w-[80vw] space-y-4 mt-16">

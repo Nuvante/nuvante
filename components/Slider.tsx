@@ -5,15 +5,15 @@ import Autoplay from "embla-carousel-autoplay";
 const sliderImages = [
   {
     src: "./carousel.png",
-    link: "https://nuvante.netlify.app/ProductDetails/67630548e9a7266a1f0b3533",
+    link: "http://localhost:3000/ProductDetails/67630548e9a7266a1f0b3533",
   },
   {
     src: "./carousel.png",
-    link: "https://nuvante.netlify.app/ProductDetails/12345678e9a7266a1f0b3533",
+    link: "http://localhost:3000/ProductDetails/12345678e9a7266a1f0b3533",
   },
   {
     src: "./carousel.png",
-    link: "https://nuvante.netlify.app/ProductDetails/87654321e9a7266a1f0b3533",
+    link: "http://localhost:3000/ProductDetails/87654321e9a7266a1f0b3533",
   },
 ];
 
@@ -23,6 +23,8 @@ export function EmblaCarousel() {
   useEffect(() => {
     if (emblaApi) {
       console.log(emblaApi.slideNodes());
+    } else {
+      console.log("embla did not respond ", emblaApi);
     }
   }, [emblaApi]);
 

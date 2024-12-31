@@ -37,7 +37,8 @@ const Page = () => {
               404 Not Found
             </h1>
             <p className="mt-4 md:mt-12 text-center">
-              Your visited page not found. You may go to home page.
+              A possible error occured, please be patient and try refreshing the
+              page.
             </p>
           </div>
           <div className="mt-10 md:mt-28">
