@@ -16,8 +16,9 @@ export default async function Page() {
       return data;
     })
     .catch((error) => {
-      localStorage.setItem("page.tsx/Products", error);
-      window.location.href = "/404-error";
+      console.log(error);
+      alert("There was an error");
+      window.location.href = "/404-page";
       return [];
     });
 

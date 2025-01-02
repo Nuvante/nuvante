@@ -38,6 +38,9 @@ const Preview = () => {
         setProductImages(response.data.productImages || []);
       } catch (error) {
         console.error("Error fetching product images:", error);
+        alert(
+          "There was an internal server error, please try refreshing the page!"
+        );
       }
     };
 

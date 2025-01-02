@@ -20,7 +20,6 @@ const Page = async () => {
 
   return (
     <div>
-      <Header />
       <Navbar />
       <div className="p-4">
         <div className="mt-6 ml-4 xl:ml-32">
