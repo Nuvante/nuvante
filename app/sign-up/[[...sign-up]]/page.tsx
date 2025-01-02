@@ -65,7 +65,10 @@ const page = (props: Props) => {
       const signUpAttempt = await signUp.attemptEmailAddressVerification({
         code,
       });
-
+      await setActive({
+        session: signUpAttempt.createdSessionId,
+        redirectUrl: "/Profile",
+      });
       // If verification was completed, set the session to active
       // and redirect the user
       if (signUpAttempt.status === "complete") {
