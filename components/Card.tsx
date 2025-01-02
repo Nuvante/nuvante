@@ -136,6 +136,7 @@ export default function Card({
             NEW
           </h1>
         )}
+
         <button
           onClick={handleWishlistPresence}
           disabled={loadingWishlist}

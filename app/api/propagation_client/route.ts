@@ -12,7 +12,7 @@ import { currentUser } from "@clerk/nextjs/server";
 export async function GET() {
   const user = await currentUser();
   const global_user_email = user?.emailAddresses[0].emailAddress;
-  if (global_user_email) {
+  if (user) {
     try {
       const database_obj = await clientModel
         .findOne({ email: global_user_email })
@@ -28,6 +28,7 @@ export async function GET() {
       return new NextResponse("404");
     }
   } else {
+    console.log("No sign in was found.");
     return new NextResponse("404");
   }
 }

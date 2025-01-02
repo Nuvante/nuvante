@@ -40,7 +40,6 @@ export const GlobalContextProvider = ({
           alert(
             "Context error 404, error getting the cart data to the database."
           );
-          window.location.reload();
         } else {
           setGlobalWishlist(response.data.wishlist);
           setGlobalCart(response.data.cart || []);

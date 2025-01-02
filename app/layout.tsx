@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import connect from "@/db";
-import productModel from "@/models/Product";
-import clientModel from "@/models/Clients";
 import { ClerkProvider } from "@clerk/nextjs";
 import { GlobalContextProvider } from "@/context/Global";
+
 //? an inline function to connect to mongodb atlas using mongoose.
 (async () => {
   await connect();

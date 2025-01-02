@@ -80,8 +80,10 @@ const page = (props: Props) => {
           }
         );
         if (response.data === "success") {
-          await setActive({ session: signUpAttempt.createdSessionId });
-          router.push("/");
+          await setActive({
+            session: signUpAttempt.createdSessionId,
+            redirectUrl: "/Profile",
+          });
         } else {
           signOut({ redirectUrl: "/sign-up" });
         }
