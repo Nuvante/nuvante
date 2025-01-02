@@ -85,10 +85,6 @@ const page = (props: Props) => {
         // console.log(response);
         // console.log(emailAddress);
         if (response.data === "success") {
-          await setActive({
-            session: signUpAttempt.createdSessionId,
-            redirectUrl: "/Profile",
-          });
         } else {
           signOut({ redirectUrl: "/sign-up" });
         }
