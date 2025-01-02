@@ -2,22 +2,10 @@ import clientModel from "@/models/Clients";
 import { NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
 
-/**
- * * API that has two functions
- * * (i) update a given client with a specific email address provided by @nextjs/clerk, mostly used in the "forgot password" flow.
- * * read: https://clerk.com/docs/custom-flows/forgot-password
- * * (ii) create a new client with the given details, mostly preferred ultimately in the custom sign-up flow
- * * read: https://clerk.com/docs/custom-flows/email-password
- *
- * TODO: don't repeat code if possible, "existing" ? maybe migrate to boolean values. (some custom logic gates, doesn't matter, f*ck it.)
- *
- */
 export async function POST(request: any) {
   const user = await currentUser();
-  // ! currently in production
-  // TODO: in development, adjust the types. (any is not so great)
   const global_user_email: any | null | undefined =
-    user?.emailAddresses[0].emailAddress;
+    user?.emailAddresses[0]?.emailAddress;
 
   try {
     const body = await request.json();
@@ -25,6 +13,7 @@ export async function POST(request: any) {
       body.email === "existing"
         ? await clientModel.findOne({ email: global_user_email })
         : await clientModel.findOne({ email: body.email });
+
     if (existingModel) {
       console.log("Updating existing client...");
       if (body.password !== "existing") existingModel.password = body.password;
@@ -33,7 +22,7 @@ export async function POST(request: any) {
       if (body.lastName !== "existing") existingModel.lastName = body.lastName;
       if (body.address !== "existing") existingModel.address = body.address;
       await existingModel.save();
-      console.log("saving the data for an existing user.... ", body.id);
+      console.log("Saving the data for an existing user...");
     } else {
       console.log("Creating new client...");
       const new_client = new clientModel({
@@ -48,9 +37,12 @@ export async function POST(request: any) {
       });
       await new_client.save();
     }
-    return new NextResponse("success");
+    return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (error) {
-    console.error("Error in API route: ", error);
-    return new NextResponse("error");
+    console.error("Error in API route:", error);
+    return NextResponse.json(
+      { message: "Error processing request", error: error.message },
+      { status: 500 }
+    );
   }
 }

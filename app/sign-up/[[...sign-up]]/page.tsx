@@ -70,7 +70,7 @@ const page = (props: Props) => {
       // and redirect the user
       if (signUpAttempt.status === "complete") {
         const response = await axios.post(
-          "https://nuvante.netlify.app/api/populate/",
+          "http://https://nuvante.netlify.app/api/populate/",
           {
             firstName: name.split(" ")[0],
             lastName: name.split(" ")[1],
@@ -79,7 +79,8 @@ const page = (props: Props) => {
             email: emailAddress,
           }
         );
-        console.log(response.data);
+        // console.log(response);
+        // console.log(emailAddress);
         if (response.data === "success") {
           await setActive({
             session: signUpAttempt.createdSessionId,
