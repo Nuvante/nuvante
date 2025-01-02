@@ -12,23 +12,20 @@ import { currentUser } from "@clerk/nextjs/server";
 export async function GET() {
   const user = await currentUser();
   const global_user_email = user?.emailAddresses[0].emailAddress;
-  if (user) {
+  // if (user) {
     try {
       const database_obj = await clientModel
         .findOne({ email: global_user_email })
         .then((data) => {
           return data;
         });
-      if (database_obj === null) {
-        return new NextResponse("404");
-      }
+      // if (database_obj === null) {
+      //   return new NextResponse("404");
+      // }
       return new NextResponse(JSON.stringify(database_obj));
     } catch (error: any) {
       console.error("in api/propagation/route.ts: ", error);
       return new NextResponse("404");
     }
-  } else {
-    console.log("No sign in was found.");
-    return new NextResponse("404");
-  }
+  } 
 }

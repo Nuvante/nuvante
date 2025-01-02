@@ -71,7 +71,7 @@ export const GlobalContextProvider = ({
         }
       })();
     }
-  }, [isSignedIn]); // Add isSignedIn as a dependency
+  }, []); // Add isSignedIn as a dependency
 
   return (
     <GlobalContext.Provider
