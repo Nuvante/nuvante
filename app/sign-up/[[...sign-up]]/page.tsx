@@ -86,7 +86,7 @@ const page = (props: Props) => {
         // console.log(emailAddress);
         if (response.data === "success") {
         } else {
-          signOut({ redirectUrl: "/sign-up" });
+          // signOut({ redirectUrl: "/sign-up" });
         }
       } else {
         // If the status is not complete, check why. User may need to
