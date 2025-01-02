@@ -79,6 +79,7 @@ const page = (props: Props) => {
             email: emailAddress,
           }
         );
+        console.log(response.data);
         if (response.data === "success") {
           await setActive({
             session: signUpAttempt.createdSessionId,
