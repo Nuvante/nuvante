@@ -74,7 +74,7 @@ const page = (props: Props) => {
       // If verification was completed, set the session to active
       // and redirect the user
       if (signUpAttempt.status === "complete") {
-        const response = await axios.post(`${domain}/api/populate/`, {
+        const response = await axios.post(`/api/populate/`, {
           firstName: name.split(" ")[0],
           lastName: name.split(" ")[1],
           password: password,
