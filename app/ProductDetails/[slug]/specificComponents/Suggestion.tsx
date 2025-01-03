@@ -4,6 +4,8 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import Card from "@/components/Card";
 
+const domain = process.env.DOMAIN;
+
 export default function Suggestion() {
   const [hash, setHash] = useState<any>("");
   const url_param: any = useParams();
@@ -12,13 +14,10 @@ export default function Suggestion() {
   useEffect(() => {
     setHash(url_param.slug);
     (async () => {
-      const response = await axios.post(
-        "https://nuvante.netlify.app/api/propagation/",
-        {
-          id: hash === "" ? url_param.slug : hash,
-          every: true,
-        }
-      );
+      const response = await axios.post(`/api/propagation/`, {
+        id: hash === "" ? url_param.slug : hash,
+        every: true,
+      });
       const filteredProducts = response.data.filter(
         (product: any) => product.id !== url_param.slug
       );

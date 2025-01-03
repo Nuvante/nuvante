@@ -11,6 +11,8 @@ interface GlobalContextType {
   changeGlobalCart: (element: any) => void;
 }
 
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 export const GlobalContext = createContext<GlobalContextType | undefined>(
   undefined
 );
@@ -27,15 +29,28 @@ export const GlobalContextProvider = ({
 
   const changeGlobalWishlist = (updatedWishlist: string[]) => {
     setGlobalWishlist([...updatedWishlist]);
+    (async () => {
+      try {
+        const response = await axios.get(`/api/propagation_client`);
+        if (response.data === 404) {
+          alert(
+            "Context error 404, error getting the cart data to the database."
+          );
+        } else {
+          setGlobalWishlist(response.data.wishlist);
+          setGlobalCart(response.data.cart || []);
+        }
+      } catch (error) {
+        console.error("Error updating wishlist:", error);
+      }
+    })();
   };
 
   const changeGlobalCart = (element: any) => {
     setGlobalCart([...GlobalCart, element]);
     (async () => {
       try {
-        const response = await axios.get(
-          "https://nuvante.netlify.app/api/propagation_client"
-        );
+        const response = await axios.get(`/api/propagation_client`);
         if (response.data === 404) {
           alert(
             "Context error 404, error getting the cart data to the database."
@@ -55,9 +70,7 @@ export const GlobalContextProvider = ({
       // Ensure isSignedIn is true before making API calls
       (async () => {
         try {
-          const response = await axios.get(
-            "https://nuvante.netlify.app/api/propagation_client"
-          );
+          const response = await axios.get(`/api/propagation_client`);
           if (response.data === 404) {
             alert(
               "Context error 404, error getting initial data from the database."
@@ -71,7 +84,7 @@ export const GlobalContextProvider = ({
         }
       })();
     }
-  }, []); // Add isSignedIn as a dependency
+  }, [isSignedIn]); // Add isSignedIn as a dependency
 
   return (
     <GlobalContext.Provider

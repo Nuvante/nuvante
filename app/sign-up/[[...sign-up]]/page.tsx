@@ -15,6 +15,8 @@ const googleLogo = "/Icon-Google.png";
 
 type Props = {};
 
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 const page = (props: Props) => {
   const { signOut } = useClerk();
   const [name, setName] = React.useState("");
@@ -72,16 +74,13 @@ const page = (props: Props) => {
       // If verification was completed, set the session to active
       // and redirect the user
       if (signUpAttempt.status === "complete") {
-        const response = await axios.post(
-          "https://nuvante.netlify.app/api/populate/",
-          {
-            firstName: name.split(" ")[0],
-            lastName: name.split(" ")[1],
-            password: password,
-            address: "xyz road",
-            email: emailAddress,
-          }
-        );
+        const response = await axios.post(`${domain}/api/populate/`, {
+          firstName: name.split(" ")[0],
+          lastName: name.split(" ")[1],
+          password: password,
+          address: "xyz road",
+          email: emailAddress,
+        });
         // console.log(response);
         // console.log(emailAddress);
         if (response.data === "success") {

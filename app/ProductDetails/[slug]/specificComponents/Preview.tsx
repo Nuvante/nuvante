@@ -11,6 +11,8 @@ const return_icon = "/icon-return.png";
 const delivery_icon = "/icon-delivery.png";
 const product_icon = "/product.png";
 
+const domain = process.env.DOMAIN;
+
 const Preview = () => {
   const [hash, setHash] = useState<string | string[]>("");
   const { slug } = useParams(); // Destructure slug directly
@@ -31,10 +33,10 @@ const Preview = () => {
     const fetchImages = async () => {
       const id = hash || slug;
       try {
-        const response = await axios.post(
-          "https://nuvante.netlify.app/api/propagation/",
-          { id: id, every: false }
-        );
+        const response = await axios.post(`/api/propagation/`, {
+          id: id,
+          every: false,
+        });
         setProductImages(response.data.productImages || []);
       } catch (error) {
         console.error("Error fetching product images:", error);
@@ -77,7 +79,7 @@ const Preview = () => {
       const id: any = hash || slug;
       const isPresent = GlobalWishlist.includes(id);
       await axios
-        .post("https://nuvante.netlify.app/api/wishlist", {
+        .post(`${domain}/api/wishlist`, {
           identifier: id,
           append: !isPresent,
         })

@@ -58,16 +58,13 @@ const ForgotPasswordPage: NextPage = () => {
           setSecondFactor(true);
           setError("");
         } else if (result.status === "complete") {
-          const response = await axios.post(
-            "https://nuvante.netlify.app/api/populate/",
-            {
-              firstName: "existing",
-              lastName: "existing",
-              password: password,
-              address: "existing",
-              email: email,
-            }
-          );
+          const response = await axios.post("/api/populate/", {
+            firstName: "existing",
+            lastName: "existing",
+            password: password,
+            address: "existing",
+            email: email,
+          });
           if (response.data === "success") {
             console.log("success from page.tsx (forgot)");
             setActive({ session: result.createdSessionId });

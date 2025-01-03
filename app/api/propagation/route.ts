@@ -7,10 +7,14 @@ export async function POST(request: any) {
 
   try {
     const body = await request.json();
-    if (body.id === null || body.id === undefined || body.id === "") {
+    const condition = body.every === true;
+    const condition_ =
+      body.id === null || body.id === undefined || !body.id || body.id === "";
+    if (!condition && condition_) {
       console.log("identifier was undefined.");
       return new NextResponse("404");
     }
+
     const database_obj =
       body.every === true
         ? await productModel.find({}).then((data) => {

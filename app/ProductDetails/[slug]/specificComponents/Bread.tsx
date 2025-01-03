@@ -13,6 +13,8 @@ import { useEffect } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
 
+const domain = process.env.DOMAIN;
+
 export default function Bread() {
   const [hash, setHash] = useState("");
   const url_param: any = useParams();
@@ -21,13 +23,10 @@ export default function Bread() {
   useEffect(() => {
     setHash(url_param.slug);
     (async () => {
-      const response = await axios.post(
-        "https://nuvante.netlify.app/api/propagation/",
-        {
-          id: hash === "" ? url_param.slug : hash,
-          every: false,
-        }
-      );
+      const response = await axios.post(`/api/propagation/`, {
+        id: hash === "" ? url_param.slug : hash,
+        every: false,
+      });
       setProductName(response.data.productName);
     })();
   }, [url_param.slug, hash]);

@@ -1,6 +1,5 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import axios from "axios";
@@ -28,6 +27,8 @@ const CartTotal = ({ subtotal }: { subtotal: number }) => {
   );
 };
 
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 const CartPage = () => {
   const [morphedProducts, setMorphedProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -43,7 +44,7 @@ const CartPage = () => {
   const asyncHandler = async () => {
     try {
       const response = await axios
-        .post("https://nuvante.netlify.app/api/propagation", {
+        .post(`/api/propagation`, {
           every: true,
         })
         .then((res) => {
@@ -85,7 +86,7 @@ const CartPage = () => {
   const handleRemoveItem = async (id: string) => {
     console.log(`Remove item with ID: ${id}`);
     const response = await axios
-      .post("https://nuvante.netlify.app/api/cart", {
+      .post(`/api/cart`, {
         append: false,
         identifier: id,
       })

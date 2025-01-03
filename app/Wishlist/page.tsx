@@ -44,15 +44,17 @@ const Page = () => {
   useEffect(() => {
     const propagate_data = async () => {
       const localProducts = await axios
-        .post("https://nuvante.netlify.app/api/propagation/", {
+        .post(`/api/propagation/`, {
           every: true,
         })
         .then((response) => {
+          console.log(response);
+          console.log("Here is the products response: ", response);
           return response.data;
         });
       setProducts(localProducts);
       const currentWishlist = await axios
-        .get("https://nuvante.netlify.app/api/propagation_client/")
+        .get(`/api/propagation_client/`)
         .then((response) => {
           if (response.data === 404) {
             alert(
@@ -77,7 +79,7 @@ const Page = () => {
     for (let i = 0; i < GlobalWishlist.length; ++i) {
       if (!GlobalCart.includes(GlobalWishlist[i])) {
         const response = await axios
-          .post("https://nuvante.netlify.app/api/cart", {
+          .post(`/api/cart`, {
             identifier: GlobalWishlist[i],
             append: true,
           })
