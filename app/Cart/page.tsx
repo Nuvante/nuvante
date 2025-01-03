@@ -8,7 +8,7 @@ import Button from "@/components/button";
 
 const CartTotal = ({ subtotal }: { subtotal: number }) => {
   return (
-    <div className=" rounded-md p-10 w-full md:w-80  border-4 border-black flex flex-col gap-3 ">
+    <div className=" rounded-md p-10 w-full md:w-80 sm:m-0 m-auto border-4 border-black flex flex-col gap-3 ">
       <h2 className="text-lg font-semibold mb-4">Cart Total</h2>
       <div className="flex justify-between mb-2">
         <span>Subtotal:</span>
@@ -22,12 +22,12 @@ const CartTotal = ({ subtotal }: { subtotal: number }) => {
         <span>Total:</span>
         <span>Rs. {subtotal}</span>
       </div>
-      <Button text="Proceed to Checkout" width={250} />
+      <div className="w-[90%] sm:w-[250px]">
+        <Button text="Proceed to Checkout" width={250} />
+      </div>
     </div>
   );
 };
-
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 const CartPage = () => {
   const [morphedProducts, setMorphedProducts] = useState<any[]>([]);
@@ -197,14 +197,15 @@ const CartPage = () => {
           onClick={() => {
             window.location.href = "/";
           }}
+          className="w-fit mx-auto"
         >
           <Button text="Return To Shop" width={200}></Button>
         </div>
       </div>
 
-      <div className="flex w-[80%] mx-auto justify-between items-start mt-20 flex-row">
+      <div className="flex w-[80%] mx-auto justify-center items-center  md:justify-between md:items-start mt-20 flex-col flex-wrap md:flex-row">
         <div className="flex justify-start  my-6 w-fit">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 flex-col sm:flex-row gap-1">
             <input
               type="text"
               style={{
@@ -212,6 +213,7 @@ const CartPage = () => {
                 border: "2px solid black",
                 padding: "3px",
                 borderRadius: "0.375rem",
+                margin: "auto",
               }}
               placeholder="Coupon Code"
               className="border rounded px-4 py-2 w-64 focus:outline-none focus:ring focus:ring-red-300"
@@ -219,7 +221,7 @@ const CartPage = () => {
             <Button text="Apply Coupon" width={150} />
           </div>
         </div>
-        <div className="flex justify-center my-6  w-fit">
+        <div className="flex justify-center my-6 w-[90%] sm:w-fit">
           <CartTotal subtotal={calculateSubtotal()} />
         </div>
       </div>

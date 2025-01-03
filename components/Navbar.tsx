@@ -33,7 +33,7 @@ export default function Navbar() {
     <>
       <div
         onClick={handleNavbar}
-        className="hamburger lg:hidden absolute top-[34px] right-9  flex-col gap-2 cursor-pointer flex"
+        className="hamburger lg:hidden absolute top-[32px] right-9  flex-col gap-2 cursor-pointer flex"
       >
         <div className="line"></div>
         <div className="line"></div>

@@ -20,6 +20,7 @@ const Preview = () => {
   const [productImages, setProductImages] = useState<string[]>([]);
   const [quantity, setQuantity] = useState(1);
   const [loaded, setLoaded] = useState(false);
+  const id: any = hash || slug;
 
   const context = useContext(GlobalContext);
   if (!context) {
@@ -66,6 +67,41 @@ const Preview = () => {
     setQuantity((prevQuantity) => prevQuantity + delta);
   };
 
+  const handleAddToCart = async (event: React.MouseEvent) => {
+    event.stopPropagation();
+
+    if (!user.isSignedIn) {
+      alert("You are not signed in, please sign in first to access cart!");
+      alert("Redirecting...");
+      window.location.href = "/sign-in";
+      return;
+    }
+    const id: any = hash || slug;
+    try {
+      const isPresent = GlobalCart.includes(id);
+      await axios
+        .post(`/api/cart`, {
+          identifier: id,
+          append: !isPresent,
+        })
+        .then((response: any) => {
+          if (response.data === parseInt("200")) {
+            const updatedCart = isPresent
+              ? GlobalCart.filter((item) => item !== id)
+              : [...GlobalCart, id];
+
+            changeGlobalCart(updatedCart);
+          } else if (response.data === parseInt("404")) {
+            alert(
+              "there was an error updating the cart! Try refreshing the page!"
+            );
+          }
+        });
+    } catch (error) {
+      console.error("Error updating wishlist:", error);
+    }
+  };
+
   const handleWishlistPresence = async (event: React.MouseEvent) => {
     event.stopPropagation();
     console.log(user);
@@ -79,7 +115,7 @@ const Preview = () => {
       const id: any = hash || slug;
       const isPresent = GlobalWishlist.includes(id);
       await axios
-        .post(`${domain}/api/wishlist`, {
+        .post(`/api/wishlist`, {
           identifier: id,
           append: !isPresent,
         })
@@ -140,17 +176,7 @@ const Preview = () => {
           Nuvante’s First & Limited Edition Design for the Closed Ones
         </p>
         <div className="mt-4">
-          <p className="font-medium">Colours:</p>
-          <div className="flex items-center mt-2">
-            <div className="h-6 w-6 rounded-full bg-black border border-gray-300">
-              <Image
-                src={delivery_icon}
-                alt="delivery"
-                width={50}
-                height={50}
-              ></Image>
-            </div>
-          </div>
+          {/* <p className="font-medium">Colours:</p> */}
         </div>
         <div className="mt-4">
           <p className="font-medium">Size:</p>
@@ -172,39 +198,49 @@ const Preview = () => {
             ))}
           </div>
         </div>
-        <div className="flex items-center mt-4">
-          <button
-            className="px-4 py-2 border rounded-l-md"
-            onClick={() => {
-              handleQuantityChange(-1);
-            }}
-          >
-            -
-          </button>
-          <span className="px-4 py-2 border-t border-b">{quantity}</span>
-          <button
-            className="px-4 py-2 border rounded-r-md"
-            onClick={() => {
-              handleQuantityChange(1);
-            }}
-          >
-            +
-          </button>
-          <button className="ml-4 px-6 py-2 bg-red-500 text-white rounded-md">
-            Buy Now
-          </button>
-          <button
-            onClick={handleWishlistPresence}
-            className={`${
-              GlobalWishlist.includes(String(hash)) ||
-              GlobalWishlist.includes(String(slug))
-                ? "bg-[#DB4444] text-white"
-                : "bg-white text-black"
-            } ml-4 px-4 py-2 border rounded-md text-[20px]`}
-          >
-            ♡
-          </button>
+        <div className="flex items-center justify-between mt-4">
+          <div>
+            <button
+              className="px-4 py-2 border rounded-l-md"
+              onClick={() => {
+                handleQuantityChange(-1);
+              }}
+            >
+              -
+            </button>
+            <span className="px-4 py-2 border-t border-b">{quantity}</span>
+            <button
+              className="px-4 py-2 border rounded-r-md"
+              onClick={() => {
+                handleQuantityChange(1);
+              }}
+            >
+              +
+            </button>
+          </div>
+          <div className=" w-[70%]">
+            <button className="ml-4 px-6 py-2 bg-red-500 text-white rounded-md w-[71%]">
+              Buy Now
+            </button>
+            <button
+              onClick={handleWishlistPresence}
+              className={`${
+                GlobalWishlist.includes(String(hash)) ||
+                GlobalWishlist.includes(String(slug))
+                  ? "bg-[#DB4444] text-white"
+                  : "bg-white text-black"
+              } ml-4 px-4 py-2 border rounded-md text-[20px]`}
+            >
+              ♡
+            </button>
+          </div>
         </div>
+        <button
+          className={`bg-black text-white w-[100%] px-6 mt-3 py-3`}
+          onClick={handleAddToCart}
+        >
+          {GlobalCart.includes(id) ? "Remove from cart" : "Add to cart"}
+        </button>
         <div className="mt-6 border-2 border-black flex flex-col rounded-md">
           <div className="flex items-start gap-4 p-4">
             <div className="text-2xl">

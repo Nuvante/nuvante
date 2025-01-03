@@ -1,9 +1,9 @@
 "use client";
 import React, { useContext, useState } from "react";
-import Stars from "./Stars";
 import axios from "axios";
 import { GlobalContext } from "@/context/Global";
 import { useUser } from "@clerk/nextjs";
+import Image from "next/image";
 
 type propType = {
   id: string;
@@ -15,6 +15,8 @@ type propType = {
   stars: number;
   status: string;
 };
+
+const heart = "/heart.svg";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
@@ -136,7 +138,7 @@ export default function Card({
       <div className="card-body flex sm:justify-center justify-center relative bg-[#F5F5F5] sm:w-fit w-full p-6 rounded-lg">
         <img src={src} alt={productName} className="rounded-md w-auto" />
         {status === "new" && (
-          <h1 className="absolute top-1 left-1 rounded-lg bg-[#00FF66] px-3 py-1 text-white text-sm font-bold">
+          <h1 className="absolute top-1 left-1 rounded-lg bg-black px-3 py-1 text-white text-sm font-bold">
             NEW
           </h1>
         )}
@@ -144,18 +146,34 @@ export default function Card({
         <button
           onClick={handleWishlistPresence}
           disabled={loadingWishlist}
-          className={`absolute ${
-            GlobalWishlist.includes(id) ? "bg-red-500" : "bg-white"
-          } rounded-full top-2 right-2 w-7 h-7 ${
-            loadingWishlist ? "opacity-50" : "opacity-70"
+          className={`absolute rounded-full top-2 right-2 w-7 h-7 ${
+            loadingWishlist ? "opacity-50" : "opacity-100"
           } hover:opacity-100 transition-opacity`}
         >
-          {loadingWishlist ? "⏳" : "❤️"}
+          {loadingWishlist ? (
+            "⏳"
+          ) : (
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill={`${GlobalWishlist.includes(id) ? "#DB4444" : "none"}`}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 5C5.7912 5 4 6.73964 4 8.88594C4 10.6185 4.7 14.7305 11.5904 18.8873C11.7138 18.961 11.8555 19 12 19C12.1445 19 12.2862 18.961 12.4096 18.8873C19.3 14.7305 20 10.6185 20 8.88594C20 6.73964 18.2088 5 16 5C13.7912 5 12 7.35511 12 7.35511C12 7.35511 10.2088 5 8 5Z"
+                stroke={`${GlobalWishlist.includes(id) ? "#DB4444" : "black"}`}
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
         </button>
         <button
           onClick={handleAddToCart}
           disabled={loadingCart}
-          className={`absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black text-white w-[90%] py-2 px-6 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+          className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black text-white w-[100%] py-2 px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
         >
           {loadingCart
             ? "⏳"
@@ -169,10 +187,6 @@ export default function Card({
         <div className="flex gap-2">
           <h1 className="text-[#DB4444] font-bold">Rs. {productPrice}</h1>
           <h1 className="line-through text-gray-500">Rs. {cancelledPrice}</h1>
-        </div>
-        <div className="flex gap-14">
-          <Stars count={stars} />
-          <h1 className="text-black">({reviews})</h1>
         </div>
       </div>
     </div>
