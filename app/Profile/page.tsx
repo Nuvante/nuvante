@@ -190,7 +190,7 @@ const Page = () => {
               <div className="flex flex-row justify-end mt-10">
                 <button className="mr-4 lg:mr-6">Cancel</button>
                 <button
-                  className="bg-[#DB4444] w-full lg:w-[214px] h-[56px] font-medium rounded-sm text-white mr-4 lg:mr-[80px]"
+                  className="bg-[#DB4444] w-[250px] lg:w-[250px] h-[56px] font-medium rounded-sm text-white mr-4 lg:mr-[80px]"
                   onClick={lazily_update_database}
                 >
                   Save Changes

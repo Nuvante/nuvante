@@ -10,6 +10,7 @@ const logo_r = "/logo_r.svg";
 const search = "/search.svg";
 const heart = "/heart.svg";
 const cart = "/cart.svg";
+const caretRight = "./caret-right.svg";
 const User = "/user.svg";
 
 //* used <Image> instead of <img> and <Link> instead of <a>
@@ -18,6 +19,7 @@ const User = "/user.svg";
 export default function Navbar() {
   const [open, setOpen] = useState<Boolean>(false);
   const user = useUser();
+  const [dropdown, setDropdown] = useState<Boolean>(false);
 
   const selfRedirect = () => {
     //* pass
@@ -45,7 +47,7 @@ export default function Navbar() {
         }}
         className={`navbar_wrapper pb-1 w-full ${
           open ? "h-[400px]" : "h-[90px]"
-        } overflow-hidden`}
+        } lg:overflow-visible lg:flex overflow-hidden`}
       >
         <div className="flex lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
           <div
@@ -76,7 +78,29 @@ export default function Navbar() {
                 <Link href="/404-error">About</Link>
               </li>
               <li>
-                <Link href="/Products">Products</Link>
+                <div
+                  className="relative flex flex-col"
+                  onMouseEnter={() => {
+                    setDropdown(true);
+                  }}
+                  onMouseLeave={() => {
+                    setDropdown(false);
+                  }}
+                >
+                  <Link href="/Products">Products</Link>
+                  <div
+                    className={`bg-[#F5F5F5] absolute top-7 w-[160px] p-2  z-10 px-2 border ${
+                      dropdown ? "none" : "hidden"
+                    }`}
+                  >
+                    <div className="flex gap-4 text-black cursor-pointer w-fit border-[#F5F5F5]">
+                      <a href="#">Nuvante Originals</a>
+                    </div>
+                    <div className="flex gap-4 text-black cursor-pointer w-fit mt-4">
+                      <a href="#"> T Shirts</a>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>

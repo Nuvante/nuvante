@@ -14,9 +14,9 @@ const caretRight = "./caret-right.svg";
 export default function Hero() {
   return (
     <>
-      <div className="flex gap-1 justify-between md:flex-row flex-col items-center md:items-start">
-        <div className="flex md:flex-col gap-6 md:w-[20%] hero_left pt-10">
-          <div className="flex gap-4 text-black cursor-pointer w-fit">
+      <div className="flex gap-1 justify-center md:flex-row flex-col items-center md:items-start">
+        {/* <div className="flex md:flex-col w-[100%] gap-6 md:w-[20%] hero_left pt-10"> */}
+        {/* <div className="flex gap-4 text-black cursor-pointer w-fit">
             <a href="#">Nuvante Originals</a>
             <Image
               src={caretRight}
@@ -33,9 +33,9 @@ export default function Hero() {
               width={20}
               height={20}
             ></Image>
-          </div>
-        </div>
-        <div className=" md:w-[76%] pt-10">
+          </div> */}
+        {/* </div> */}
+        <div className=" md:w-[100%] pt-10">
           <EmblaCarousel></EmblaCarousel>
         </div>
       </div>

@@ -6,15 +6,15 @@ const domain = process.env.DOMAIN;
 
 const sliderImages = [
   {
-    src: "./carousel.png",
+    src: "./frame.png",
     link: `/ProductDetails/67630548e9a7266a1f0b3533`,
   },
   {
-    src: "./carousel.png",
+    src: "./frame.png",
     link: `/ProductDetails/12345678e9a7266a1f0b3533`,
   },
   {
-    src: "./carousel.png",
+    src: "./frame.png",
     link: `/ProductDetails/87654321e9a7266a1f0b3533`,
   },
 ];

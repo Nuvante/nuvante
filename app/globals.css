@@ -8,6 +8,10 @@ body {
   font-family: "Kanit", serif;
 }
 
+ul li a {
+  border-bottom: 2px solid #fefaf1;
+}
+
 ul li a:hover {
   border-bottom: 2px solid black;
   transition: 0.2s all linear;
