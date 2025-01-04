@@ -16,7 +16,6 @@ export default async function Page() {
     })
     .catch((error) => {
       console.log(error);
-      alert("There was an error");
       window.location.href = "/404-page";
       return [];
     });
