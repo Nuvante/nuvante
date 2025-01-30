@@ -1,24 +1,32 @@
-import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
-// import Landing from "@/Layouts/landing";
-import react from "react";
-import LayoutNavbar from "./layout_navbar";
+import React from "react";
 import MajorLayout from "./major_layout";
 import Hero from "@/components/Hero";
 import Arrivals from "@/components/Arrivals";
 import Products from "@/components/Products";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
+import productModel from "@/models/Product";
 
-export default function Page() {
+export default async function Page() {
+  const response: any = await productModel
+    .find({})
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.log(error);
+      // window.location.href = "/404-page";
+      return [];
+    });
+
   return (
     <>
-      <Header></Header>
       <Navbar></Navbar>
       <MajorLayout>
         <Hero></Hero>
-        <Arrivals></Arrivals>
-        <Products></Products>
+        <Arrivals fragment={response === null ? [] : response}></Arrivals>
+        <Products fragment={response === null ? [] : response}></Products>
         <Services></Services>
       </MajorLayout>
       <Footer></Footer>

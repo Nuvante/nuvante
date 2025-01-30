@@ -1,12 +1,22 @@
 import React, { useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import Image from "next/image";
+
+const domain = process.env.DOMAIN;
 
 const sliderImages = [
-  "./carousel.png",
-  "./slider-image_.jpg",
-  "./slider-image__.jpg",
+  {
+    src: "./frame.png",
+    link: `/ProductDetails/67630548e9a7266a1f0b3533`,
+  },
+  {
+    src: "./frame.png",
+    link: `/ProductDetails/12345678e9a7266a1f0b3533`,
+  },
+  {
+    src: "./frame.png",
+    link: `/ProductDetails/87654321e9a7266a1f0b3533`,
+  },
 ];
 
 export function EmblaCarousel() {
@@ -14,22 +24,24 @@ export function EmblaCarousel() {
 
   useEffect(() => {
     if (emblaApi) {
-      console.log(emblaApi.slideNodes()); // Access API
+      console.log(emblaApi.slideNodes());
+    } else {
+      console.log("embla did not respond ", emblaApi);
     }
   }, [emblaApi]);
 
   return (
     <div className="embla" ref={emblaRef}>
       <div className="embla__container">
-        <div className="embla__slide">
-          <img src="./carousel.png" alt="" />
-        </div>
-        <div className="embla__slide">
-          <img src="./slider-image_.jpg" alt="" />
-        </div>
-        <div className="embla__slide">
-          <img src="./slider-image__.jpg" alt="" />
-        </div>
+        {sliderImages.map((image, index) => (
+          <div
+            key={index}
+            className="embla__slide"
+            onClick={() => (window.location.href = image.link)}
+          >
+            <img src={image.src} alt={`Slide ${index + 1}`} />
+          </div>
+        ))}
       </div>
     </div>
   );

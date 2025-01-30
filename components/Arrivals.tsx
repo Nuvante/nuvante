@@ -4,9 +4,28 @@ import Card from "./Card";
 import Button from "./button";
 import Link from "next/link";
 
-const products = [{}];
+type mainProp = {
+  fragment: {
+    id: any;
+    productName: string;
+    productImages: string;
+    productPrice: string;
+    cancelledProductPrice: string;
+    productStars: number;
+    productReviews: string[]; //* Assuming reviews are strings
+    latest: boolean;
+  }[];
+};
 
-export default function Arrivals() {
+export default function Arrivals({ fragment }: mainProp) {
+  //* custom comparator function for sort(a, b).
+  //* used it later in the code. at 42.
+  const frag = fragment.sort((a, b) => {
+    return -(a.productStars - b.productStars) !== 0
+      ? -(a.productStars - b.productStars)
+      : -(a.productReviews.length - b.productReviews.length);
+  });
+
   return (
     <>
       <div className="mt-36 flex flex-col gap-6">
@@ -15,50 +34,33 @@ export default function Arrivals() {
             message="Newest Arrivals"
             secondaryMessage="Best Selling Products"
           ></Heading>
-          <Link href='/Products'>
+          <Link href="/Products">
             <Button text="View All" width={130}></Button>
           </Link>
         </div>
         <div className="flex flex-col gap-12">
-          <div className="cards flex flex-wrap justify-around sm:w-auto w-[100%] gap-y-10">
-            <Card
-              productName="Kaze Ga Fuku"
-              productPrice={999}
-              cancelledPrice={1500}
-              reviews={65}
-              stars={5}
-              src={"./product.png"}
-              status="old"
-            ></Card>
-            <Card
-              productName="Kaze Ga Fuku"
-              productPrice={999}
-              cancelledPrice={1500}
-              reviews={65}
-              stars={5}
-              src={"./product.png"}
-              status="old"
-            ></Card>
-            <Card
-              productName="Kaze Ga Fuku"
-              productPrice={999}
-              cancelledPrice={1500}
-              reviews={65}
-              stars={5}
-              src={"./product.png"}
-              status="old"
-            ></Card>
-            <Card
-              productName="Kaze Ga Fuku"
-              productPrice={999}
-              cancelledPrice={1500}
-              reviews={65}
-              stars={4}
-              src={"./product.png"}
-              status="old"
-            ></Card>
+          <div className="cards flex flex-wrap gap-x-5 sm:w-auto w-[100%] gap-y-10">
+            {fragment
+              .sort((a, b) => {
+                return -(a.productStars - b.productStars) !== 0
+                  ? -(a.productStars - b.productStars)
+                  : -(a.productReviews.length - b.productReviews.length);
+              })
+              .map((product, index) => (
+                <Card
+                  id={product.id}
+                  key={index}
+                  productName={product.productName}
+                  productPrice={Number(product.productPrice)}
+                  cancelledPrice={Number(product.cancelledProductPrice)}
+                  reviews={product.productReviews.length} //* Assuming number of reviews (NaN)
+                  stars={product.productStars}
+                  src={product.productImages[0]}
+                  status={product.latest ? "new" : "old"}
+                ></Card>
+              ))}
           </div>
-          <Link href='/Products'>
+          <Link href="/Products">
             <Button text="View All Products" width={220}></Button>
           </Link>
         </div>

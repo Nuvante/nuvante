@@ -1,29 +1,32 @@
 import React from "react";
 import Image from "next/image";
 
-const facebook_icon = "./facebook.svg";
-const gram_icon = "./instagram.svg";
-const linkedin_icon = "./linkedin.svg";
-const caret_right = "./caret-right.svg";
+const facebook_icon = "/facebook.svg";
+const gram_icon = "/instagram.svg";
+const linkedin_icon = "/linkedin.svg";
+const caret_right = "/caret-right.svg";
 
 export default function Footer() {
   return (
     <footer className="bg-black text-white py-20 mt-40">
-      <div className=" w-[90%] mx-auto flex lg:flex-row flex-col lg:gap-20 justify-between gap-10 px-6">
-        <div className="w-full  flex flex-col">
+      <div className="w-[96%] mx-auto flex lg:flex-row flex-wrap justify-between px-2  lg:gap-10 gap-10">
+        <div className="flex flex-col md:w-[30%]">
           <h3 className="font-semibold text-2xl">Nuvante</h3>
-          <p className="text-[20px] mt-4">
-            Subscribe
+          <p className="text-[16px] mt-3">
+            Elevate Your Style with The NUVANTE
             <br />
           </p>
-          <p className="mt-6 mb-5">
-            Get The Latest Notifications About Offers & Deals.
+          <p className="mt-3 mb-5 text-[13px]">
+            Experience unparalleled quality, because you deserve nothing but the
+            best. Embark on this journey where your unique style intersects with
+            our passion, enabling you to flaunt the classiest products and
+            services available. Discover your next favorite today!
           </p>
-          <div className="flex items-center border border-white rounded-md overflow-hidden">
+          <div className="flex items-center border w-fit border-white rounded-md overflow-hidden">
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-4 py-3 w-full outline-none bg-black text-white text-sm"
+              className="px-4 py-3  outline-none w-[200px] bg-black text-white text-sm"
             />
             <button className="p-3 bg-white text-black">
               <Image
@@ -63,14 +66,14 @@ export default function Footer() {
         </div>
 
         {/* Support Section */}
-        <div className="w-full md:w-1/4 flex flex-col gap-6">
+        <div className=" flex flex-col gap-3">
           <h3 className="font-semibold text-lg">Support</h3>
-          <p className="text-gray-400">New Delhi, Rohini 110034, India.</p>
-          <p className="text-gray-400">founder@gmail.com</p>
-          <p className="text-gray-400">+91 9090908080</p>
+          <p className="text-gray-400">New Delhi, India.</p>
+          <p className="text-gray-400">nuvantestores@gmail.com</p>
+          <p className="text-gray-400">+91 9899044148</p>
         </div>
 
-        <div className="w-full md:w-1/4 flex flex-col gap-6">
+        <div className=" flex flex-col gap-6">
           <h3 className="font-semibold text-lg">Account</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
@@ -102,12 +105,52 @@ export default function Footer() {
         </div>
 
         {/* Quick Link Section */}
-        <div className="w-full md:w-1/4 flex flex-col gap-6">
+        <div className="  flex flex-col gap-3">
           <h3 className="font-semibold text-lg">Quick Link</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
               <a href="/Contact" className="hover:text-white">
                 Contact
+              </a>
+            </li>
+            <li>
+              <a href="/Contact" className="hover:text-white">
+                About us
+              </a>
+            </li>
+            <li>
+              <a href="/Contact" className="hover:text-white">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="/Contact" className="hover:text-white">
+                Return Policy
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="flex flex-col gap-6">
+          <h3 className="font-semibold text-lg">Our Commitment</h3>
+          <ul className="text-gray-400 flex flex-col gap-2">
+            <li>
+              <a href="#" className="hover:text-white">
+                ✓ 100% Satisfaction Guarantee
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                ✓ Customer Support
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                ✓ Premium Quality Products
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                ✓ Secured Transactions
               </a>
             </li>
           </ul>
