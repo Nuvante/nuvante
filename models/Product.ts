@@ -17,16 +17,16 @@ let productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  productStars: {
-    type: Number,
-    required: true,
-  },
-  productReviews: {
-    type: Array,
-    required: false,
-  },
   latest: {
     type: Boolean,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  materials: {
+    type: String,
     required: true,
   },
 });

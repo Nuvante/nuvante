@@ -28,18 +28,18 @@ export default function Arrivals({ fragment }: mainProp) {
 
   return (
     <>
-      <div className="mt-36 flex flex-col gap-6">
+      <div className="mt-24 flex flex-col gap-14">
         <div className="flex w-full justify-between items-center">
           <Heading
             message="Newest Arrivals"
-            secondaryMessage="Best Selling Products"
+            secondaryMessage="NUVANTE'S ORIGINALS"
           ></Heading>
-          <Link href="/Products">
+          {/* <Link href="/Products">
             <Button text="View All" width={130}></Button>
-          </Link>
+          </Link> */}
         </div>
-        <div className="flex flex-col gap-12">
-          <div className="cards flex flex-wrap gap-x-5 sm:w-auto w-[100%] gap-y-10">
+        <div className="flex flex-col gap-12 w-fit mx-auto">
+          <div className="cards flex flex-wrap gap-x-6 sm:w-auto justify-center w-[100%] gap-y-10">
             {fragment
               .sort((a, b) => {
                 return -(a.productStars - b.productStars) !== 0
@@ -60,7 +60,7 @@ export default function Arrivals({ fragment }: mainProp) {
                 ></Card>
               ))}
           </div>
-          <Link href="/Products">
+          <Link href="/Products" className="mx-auto w-fit">
             <Button text="View All Products" width={220}></Button>
           </Link>
         </div>

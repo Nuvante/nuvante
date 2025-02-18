@@ -16,20 +16,21 @@ import axios from "axios";
 const domain = process.env.DOMAIN;
 
 export default function Bread() {
-  const [hash, setHash] = useState("");
   const url_param: any = useParams();
   const [productName, setProductName] = useState<string>("Loading...");
+  const [productType, setProductType] = useState<string>("Loading...");
 
   useEffect(() => {
-    setHash(url_param.slug);
     (async () => {
       const response = await axios.post(`/api/propagation/`, {
-        id: hash === "" ? url_param.slug : hash,
+        id: url_param.slug,
         every: false,
       });
+      console.log(response.data);
       setProductName(response.data.productName);
+      setProductType(response.data.type);
     })();
-  }, [url_param.slug, hash]);
+  });
 
   return (
     <>
@@ -41,7 +42,7 @@ export default function Bread() {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink href="/">
-              <BreadcrumbPage>T-Shirt</BreadcrumbPage>
+              <BreadcrumbPage>{productType}</BreadcrumbPage>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />

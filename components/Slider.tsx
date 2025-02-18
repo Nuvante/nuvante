@@ -39,7 +39,11 @@ export function EmblaCarousel() {
             className="embla__slide"
             onClick={() => (window.location.href = image.link)}
           >
-            <img src={image.src} alt={`Slide ${index + 1}`} />
+            <img
+              className="md:h-[100vh] h-[40vh]"
+              src={image.src}
+              alt={`Slide ${index + 1}`}
+            />
           </div>
         ))}
       </div>

@@ -49,7 +49,7 @@ export default function Navbar() {
           open ? "h-[400px]" : "h-[90px]"
         } lg:overflow-visible lg:flex overflow-hidden`}
       >
-        <div className="flex lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
+        <div className="flex font-bold uppercase lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
           <div
             onClick={() => {
               selfRedirect();
@@ -67,7 +67,7 @@ export default function Navbar() {
           <div>
             <ul className="flex gap-6 lg:gap-10 ml-3 mt-2 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
               <li>
-                <a href="/" className="underline underline-offset-4">
+                <a href="/" className="">
                   Home
                 </a>
               </li>
@@ -75,7 +75,7 @@ export default function Navbar() {
                 <Link href="/Contact">Contact</Link>
               </li>
               <li>
-                <Link href="/404-error">About</Link>
+                <Link href="/about">About</Link>
               </li>
               <li>
                 <div
@@ -89,15 +89,26 @@ export default function Navbar() {
                 >
                   <Link href="/Products">Products</Link>
                   <div
-                    className={`bg-[#F5F5F5] absolute top-7 w-[160px] p-2  z-10 px-2 border ${
+                    className={`bg-[#F5F5F5] absolute top-6 w-[200px] p-2  z-10 px-2 border ${
                       dropdown ? "none" : "hidden"
                     }`}
                   >
                     <div className="flex gap-4 text-black cursor-pointer w-fit border-[#F5F5F5]">
-                      <a href="#">Nuvante Originals</a>
+                      <a href="#" className="border-b-[#F5F5F5] border-b-[2px]">
+                        Nuvante Originals
+                      </a>
                     </div>
                     <div className="flex gap-4 text-black cursor-pointer w-fit mt-4">
-                      <a href="#"> T Shirts</a>
+                      <a href="#" className="border-b-[#F5F5F5] border-b-[2px]">
+                        {" "}
+                        T Shirts
+                      </a>
+                    </div>
+                    <div className="flex gap-4 text-black cursor-pointer w-fit mt-4">
+                      <a href="#" className="border-b-[#F5F5F5] border-b-[2px]">
+                        {" "}
+                        Hoodies
+                      </a>
                     </div>
                   </div>
                 </div>

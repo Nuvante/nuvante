@@ -23,11 +23,11 @@ export default async function Page() {
   return (
     <>
       <Navbar></Navbar>
+      <Hero></Hero>
       <MajorLayout>
-        <Hero></Hero>
         <Arrivals fragment={response === null ? [] : response}></Arrivals>
         <Products fragment={response === null ? [] : response}></Products>
-        <Services></Services>
+        {/* <Services></Services> */}
       </MajorLayout>
       <Footer></Footer>
     </>

@@ -9,7 +9,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Navbar from "@/components/Navbar";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Card from "@/components/Card";
 import axios from "axios";
@@ -18,7 +17,8 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "@/context/Global";
 import Image from "next/image";
-import { motion, useSpring, useAnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 
 /**
  * 1.Pretty exhausting function (handleBag) running in O(n^2) probably. Considering the post requests to be linear.
@@ -34,6 +34,8 @@ const Page = () => {
   const [currentWishlist, setCurrentWishlist] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
+  const url_params = useParams();
+
   const {
     GlobalWishlist,
     GlobalCart,
@@ -48,8 +50,6 @@ const Page = () => {
           every: true,
         })
         .then((response) => {
-          console.log(response);
-          console.log("Here is the products response: ", response);
           return response.data;
         });
       setProducts(localProducts);
@@ -57,8 +57,8 @@ const Page = () => {
         .get(`/api/propagation_client/`)
         .then((response) => {
           if (response.data === 404) {
-            alert(
-              "There was an error fetching the wishlist from database. Try to refresh the page."
+            console.log(
+              "Couldn't get the current wishlist from the database, try refreshing the page. Developers are supposed to check /api/propagation_client"
             );
             return [];
           } else {

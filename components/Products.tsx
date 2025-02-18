@@ -19,15 +19,15 @@ type mainProp = {
 
 export default function Products({ fragment }: mainProp) {
   return (
-    <div className="mt-36 flex flex-col gap-6">
+    <div className="mt-24 flex flex-col gap-14">
       <div className="flex w-full justify-between items-center">
-        <Heading message="Products" secondaryMessage="Explore Our Products" />
-        <Link href="/Products">
+        <Heading message="Products" secondaryMessage="ALL PRODUCTS" />
+        {/* <Link href="/Products">
           <Button text="View All" width={130} />
-        </Link>
+        </Link> */}
       </div>
-      <div className="flex flex-col gap-12">
-        <div className="cards flex flex-wrap gap-x-5 gap-y-10">
+      <div className="flex flex-col gap-12 mx-auto w-fit">
+        <div className="cards flex flex-wrap gap-x-10 gap-y-10">
           {fragment.map((product, index) => (
             <Card
               key={index}
@@ -42,7 +42,7 @@ export default function Products({ fragment }: mainProp) {
             />
           ))}
         </div>
-        <Link href="/Products">
+        <Link href="/Products" className="w-fit mx-auto">
           <Button text="View All Products" width={220} />
         </Link>
       </div>

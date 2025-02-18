@@ -71,24 +71,42 @@ const page = (props: Props) => {
       // If verification was completed, set the session to active
       // and redirect the user
       if (signUpAttempt.status === "complete") {
-        await setActive({
-          session: signUpAttempt.createdSessionId,
-          redirectUrl: "/Profile",
-        });
-        const response = await axios.post(`/api/populate/`, {
-          firstName: name.split(" ")[0],
-          lastName: name.split(" ")[1],
-          password: password,
-          address: "xyz road",
-          email: emailAddress,
-        });
-        // console.log(response);
-        // console.log(emailAddress);
-        if (response.data === "success") {
-        } else {
-          // signOut({ redirectUrl: "/sign-up" });
-        }
+        const response = await axios
+          .post(`/api/populate/`, {
+            firstName: name.split(" ")[0],
+            lastName: name.split(" ")[1],
+            password: password,
+            address: "xyz road",
+            email: emailAddress,
+          })
+          .then(async (data) => {
+            if (data.data === "Success") {
+              await setActive({
+                session: signUpAttempt.createdSessionId,
+                redirectUrl: "/Profile",
+              });
+            }
+          });
+
+        console.log("couldn't generate active session");
+        alert("Couldn't generate active session, please sign up again");
+        router.push("/sign-up");
+
+        // if (response.data === "success") {
+        //   await setActive({
+        //     session: signUpAttempt.createdSessionId,
+        //     redirectUrl: "/Profile",
+        //   });
+        // } else {
+        //   alert(
+        //     "That process failed because the database couldn't process the sign-up info."
+        //   );
+        //   signOut({ redirectUrl: "/sign-up" });
+        // }
       } else {
+        alert(
+          "That process failed because connection to @clerkjs was not established."
+        );
         // If the status is not complete, check why. User may need to
         // complete further steps.
         console.error(JSON.stringify(signUpAttempt, null, 2));
