@@ -20,8 +20,11 @@ export default function Bread() {
   const [productName, setProductName] = useState<string>("Loading...");
   const [productType, setProductType] = useState<string>("Loading...");
 
+  console.log("breadcrumb is loaded!");
+
   useEffect(() => {
     (async () => {
+      console.log("async function started in breadcrumb");
       const response = await axios.post(`/api/propagation/`, {
         id: url_param.slug,
         every: false,
