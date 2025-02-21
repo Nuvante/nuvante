@@ -11,6 +11,7 @@ const search = "/search.svg";
 const heart = "/heart.svg";
 const cart = "/cart.svg";
 const caretRight = "./caret-right.svg";
+const animated_logo = "/animated.mov";
 const User = "/user.svg";
 
 //* used <Image> instead of <img> and <Link> instead of <a>
@@ -63,6 +64,9 @@ export default function Navbar() {
               height={60}
               alt="logo-right"
             ></Image>
+            {/* <video controls width="300" height="200">
+              <source src={animated_logo}></source>
+            </video> */}
           </div>
           <div>
             <ul className="flex gap-6 lg:gap-10 ml-3 mt-2 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">

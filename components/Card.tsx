@@ -11,8 +11,6 @@ type propType = {
   productName: string;
   productPrice: number;
   cancelledPrice: number;
-  reviews: number;
-  stars: number;
   status: string;
 };
 
@@ -26,8 +24,6 @@ export default function Card({
   productName,
   productPrice,
   cancelledPrice,
-  reviews,
-  stars,
   status,
 }: propType) {
   const context = useContext(GlobalContext);

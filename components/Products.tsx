@@ -11,8 +11,6 @@ type mainProp = {
     productImages: string;
     productPrice: string;
     cancelledProductPrice: string;
-    productStars: number;
-    productReviews: string[];
     latest: boolean;
   }[];
 };
@@ -22,9 +20,6 @@ export default function Products({ fragment }: mainProp) {
     <div className="mt-24 flex flex-col gap-14">
       <div className="flex w-full justify-between items-center">
         <Heading message="Products" secondaryMessage="ALL PRODUCTS" />
-        {/* <Link href="/Products">
-          <Button text="View All" width={130} />
-        </Link> */}
       </div>
       <div className="flex flex-col gap-12 mx-auto w-fit">
         <div className="cards flex flex-wrap gap-x-10 gap-y-10">
@@ -35,8 +30,6 @@ export default function Products({ fragment }: mainProp) {
               productName={product.productName}
               productPrice={Number(product.productPrice)}
               cancelledPrice={Number(product.cancelledProductPrice)}
-              reviews={product.productReviews.length}
-              stars={product.productStars}
               src={product.productImages[0]}
               status={product.latest ? "new" : "old"}
             />

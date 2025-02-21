@@ -36,8 +36,6 @@ const Page = async () => {
                     productName={product.productName}
                     productPrice={product.productPrice}
                     cancelledPrice={product.cancelledProductPrice}
-                    reviews={product.productReviews.length || 0}
-                    stars={product.productStars}
                     src={product.productImages[0]}
                     status={product.latest ? "new" : "old"}
                   />
