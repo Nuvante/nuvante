@@ -50,6 +50,7 @@ const Preview = () => {
             altered.reverse();
             setProductImages(altered);
             setCurrentProduct(data.data);
+            console.log("current product: \n", currentProduct);
           });
 
         setLoaded(true);

@@ -31,6 +31,7 @@ export async function POST(request: any) {
     const specific = await productModel
       .findOne({ _id: body.id })
       .then((data) => {
+        console.log("data from the server: \n", data);
         return data;
       });
 
