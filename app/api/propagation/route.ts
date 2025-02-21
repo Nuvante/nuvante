@@ -25,6 +25,7 @@ export async function POST(request: any) {
     }
 
     const database = await productModel.find({}).then((data) => {
+      console.log("data from the server: \n", data);
       return data;
     });
 

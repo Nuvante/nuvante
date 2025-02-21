@@ -26,8 +26,9 @@ export default function Bread() {
         id: url_param.slug,
         every: false,
       });
-      console.log(response.data);
+      console.log("the response for the breadcrumb: ", response.data);
       setProductName(response.data.productName);
+      console.log(productName);
       setProductType(response.data.type);
     })();
   });
