@@ -131,11 +131,11 @@ export default function Card({
       onClick={() => (window.location.href = `/ProductDetails/${id}`)}
       className=" w-full overflow-hidden sm:w-auto relative flex flex-col gap-4 cursor-pointer group"
     >
-      <div className="card-body flex sm:justify-center justify-center relative h-[350px] sm:w-fit w-fit mx-auto rounded-lg">
+      <div className="card-body flex sm:justify-center justify-center relative h-[300px] sm:w-fit w-fit mx-auto rounded-lg">
         <img
           src={src}
           alt={productName}
-          className="rounded-md w-[260px] h-full relative"
+          className=" w-[270px] h-full relative bg-[#F5F5F5]"
         />
         {status === "new" && (
           <h1 className="absolute top-1 left-1 rounded-lg bg-black px-3 py-1 text-white text-sm font-bold">
@@ -146,7 +146,7 @@ export default function Card({
         <button
           onClick={handleWishlistPresence}
           disabled={loadingWishlist}
-          className={`absolute rounded-full top-0 right-2 w-7 h-7 ${
+          className={`absolute rounded-full top-2 right-3 w-[30px] h-[30px] bg-white ${
             loadingWishlist ? "opacity-50" : "opacity-100"
           } hover:opacity-100 transition-opacity`}
         >
@@ -162,7 +162,7 @@ export default function Card({
             >
               <path
                 d="M8 5C5.7912 5 4 6.73964 4 8.88594C4 10.6185 4.7 14.7305 11.5904 18.8873C11.7138 18.961 11.8555 19 12 19C12.1445 19 12.2862 18.961 12.4096 18.8873C19.3 14.7305 20 10.6185 20 8.88594C20 6.73964 18.2088 5 16 5C13.7912 5 12 7.35511 12 7.35511C12 7.35511 10.2088 5 8 5Z"
-                stroke={`${GlobalWishlist.includes(id) ? "#DB4444" : "gray"}`}
+                stroke={`${GlobalWishlist.includes(id) ? "#DB4444" : "black"}`}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -173,7 +173,7 @@ export default function Card({
         <button
           onClick={handleAddToCart}
           disabled={loadingCart}
-          className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 font-bold bg-black text-white w-[260px] py-2 px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+          className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 font-bold bg-black text-white w-[270px] py-2 px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
         >
           {loadingCart
             ? "⏳"

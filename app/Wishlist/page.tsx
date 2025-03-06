@@ -155,8 +155,6 @@ const Page = () => {
                         productName={product.productName}
                         productPrice={Number(product.productPrice)}
                         cancelledPrice={product.cancelledProductPrice}
-                        reviews={product.productReviews.length} //* Assuming number of reviews (NaN)
-                        stars={product.productStars}
                         src={
                           product.productImages[0] === undefined
                             ? "https://fastly.picsum.photos/id/1050/536/354.jpg?hmac=fjxUSeQRIROZvo_be9xEf-vMhMutXf2F5yw-WaWyaWA"

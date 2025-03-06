@@ -11,7 +11,7 @@ const search = "/search.svg";
 const heart = "/heart.svg";
 const cart = "/cart.svg";
 const caretRight = "./caret-right.svg";
-const animated_logo = "/animated.mov";
+const animated_logo = "/animated.mp4";
 const User = "/user.svg";
 
 //* used <Image> instead of <img> and <Link> instead of <a>
@@ -36,7 +36,7 @@ export default function Navbar() {
     <>
       <div
         onClick={handleNavbar}
-        className="hamburger lg:hidden absolute top-[32px] right-9  flex-col gap-2 cursor-pointer flex"
+        className="hamburger lg:hidden absolute top-[40px] right-9  flex-col gap-2 cursor-pointer flex"
       >
         <div className="line"></div>
         <div className="line"></div>
@@ -47,7 +47,7 @@ export default function Navbar() {
           transition: "1s all ease",
         }}
         className={`navbar_wrapper pb-1 w-full ${
-          open ? "h-[400px]" : "h-[90px]"
+          open ? "h-[420px]" : "h-[100px]"
         } lg:overflow-visible lg:flex overflow-hidden`}
       >
         <div className="flex font-bold uppercase lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
@@ -57,19 +57,17 @@ export default function Navbar() {
             }}
             className="navbar-brand flex items-center cursor-pointer"
           >
-            <Image src={logo_l} width={54} height={30} alt="logo_left"></Image>
-            <Image
-              src={logo_r}
-              width={100}
-              height={60}
-              alt="logo-right"
-            ></Image>
-            {/* <video controls width="300" height="200">
-              <source src={animated_logo}></source>
-            </video> */}
+            <video
+              className="h-fit top-0 p-1 w-[70px] md:h-fit md:w-[80px]"
+              autoPlay
+              loop
+              muted
+            >
+              <source src={animated_logo} type="video/mp4"></source>
+            </video>
           </div>
           <div>
-            <ul className="flex gap-6 lg:gap-10 ml-3 mt-2 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
+            <ul className="flex gap-6 lg:gap-10 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
               <li>
                 <a href="/" className="">
                   Home
@@ -103,13 +101,19 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="flex gap-4 text-black cursor-pointer w-fit mt-4">
-                      <a href="#" className="border-b-[#F5F5F5] border-b-[2px]">
+                      <a
+                        href="/Products/T-shirt"
+                        className="border-b-[#F5F5F5] border-b-[2px]"
+                      >
                         {" "}
                         T Shirts
                       </a>
                     </div>
                     <div className="flex gap-4 text-black cursor-pointer w-fit mt-4">
-                      <a href="#" className="border-b-[#F5F5F5] border-b-[2px]">
+                      <a
+                        href="/Products/Hoodie"
+                        className="border-b-[#F5F5F5] border-b-[2px]"
+                      >
                         {" "}
                         Hoodies
                       </a>

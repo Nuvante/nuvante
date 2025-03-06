@@ -104,6 +104,7 @@ const Preview = () => {
               : [...GlobalCart, id];
 
             changeGlobalCart(updatedCart);
+            alert("Cart updated successfully!");
           } else if (response.data === parseInt("404")) {
             alert(
               "there was an error updating the cart! Try refreshing the page!"
@@ -111,7 +112,7 @@ const Preview = () => {
           }
         });
     } catch (error) {
-      console.error("Error updating wishlist:", error);
+      console.error("Error updating cart:", error);
     }
   };
 
@@ -263,16 +264,72 @@ const Preview = () => {
                 </>
               );
             })}
+            <div className="lg:hidden flex-col mb-10 border-black border-2 h-fit gap-3 ml-0 lg:ml-[10px] border-b-2 lg:sticky top-4 min-w-[250px] lg:w-[23%] w-[100%] flex">
+              <div className="flex flex-col gap-2 p-4">
+                <h1 className="text-[14px]">{currentProduct.productName}</h1>
+                <div className="flex gap-2">
+                  <h1 className="text-[12px] line-through">
+                    Rs. {currentProduct.cancelledProductPrice}
+                  </h1>
+                  <h1 className="text-[12px]">
+                    Rs.{currentProduct.productPrice}
+                  </h1>
+                </div>
+              </div>
+              <div className="text-[11px] px-4">
+                {currentProduct.productInfo}
+              </div>
+              <div className="text-[10px] opacity-70 px-4 border-b-black pb-4 border-b-2">
+                SHIPPING, EXCHANGES AND RETURNS
+              </div>
+              <div className="grid grid-cols-2  gap-1 w-fit mx-auto mt-6">
+                {["S", "M", "L", "XL"].map((size) => {
+                  return (
+                    <>
+                      <div
+                        className={`border-2 border-black ${
+                          size === current
+                            ? "bg-black text-white"
+                            : "bg-none text-black"
+                        } py-3 w-[120px] text-center cursor-pointer`}
+                        onClick={() => {
+                          handleSwitch(size);
+                        }}
+                      >
+                        {size}
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+              <div className="text-[9px] text-gray-900 px-4 opacity-70 pb-4">
+                This product has a larger fit than usual. Model is wearing L.
+              </div>
+
+              <div className="text-[12px] text-gray-900">
+                <button
+                  className="w-full py-3 border-black border-2"
+                  onClick={(event) => {
+                    handleAddToCart(event);
+                  }}
+                >
+                  ADD
+                </button>
+                <button className="w-full py-3 bg-black text-white">
+                  BUY IT NOW
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col border-black border-2 h-fit gap-3 ml-0 lg:ml-[10px] border-b-2 lg:sticky top-4 min-w-[250px] lg:w-[23%] w-[100%]">
+          <div className="hidden flex-col border-black border-2 h-fit gap-3 ml-0 lg:ml-[10px] border-b-2 lg:sticky top-4 min-w-[250px] lg:w-[23%] w-[100%] lg:flex">
             <div className="flex flex-col gap-2 p-4">
               <h1 className="text-[14px]">{currentProduct.productName}</h1>
               <div className="flex gap-2">
                 <h1 className="text-[12px] line-through">
-                  Rs.{currentProduct.productPrice}
+                  Rs. {currentProduct.cancelledProductPrice}
                 </h1>
                 <h1 className="text-[12px]">
-                  Rs. {currentProduct.cancelledProductPrice}
+                  Rs.{currentProduct.productPrice}
                 </h1>
               </div>
             </div>
@@ -284,7 +341,16 @@ const Preview = () => {
               {["S", "M", "L", "XL"].map((size) => {
                 return (
                   <>
-                    <div className="border-2 border-black py-3 w-[120px] text-center cursor-pointer">
+                    <div
+                      className={`border-2 border-black ${
+                        size === current
+                          ? "bg-black text-white"
+                          : "bg-none text-black"
+                      } py-3 w-[120px] text-center cursor-pointer`}
+                      onClick={() => {
+                        handleSwitch(size);
+                      }}
+                    >
                       {size}
                     </div>
                   </>
@@ -296,7 +362,14 @@ const Preview = () => {
             </div>
 
             <div className="text-[12px] text-gray-900">
-              <button className="w-full py-3 border-black border-2">ADD</button>
+              <button
+                className="w-full py-3 border-black border-2"
+                onClick={(event) => {
+                  handleAddToCart(event);
+                }}
+              >
+                ADD
+              </button>
               <button className="w-full py-3 bg-black text-white">
                 BUY IT NOW
               </button>

@@ -46,7 +46,10 @@ export default function Footer() {
                 height={25}
               ></Image>
             </a>
-            <a href="#" className="hover:text-gray-500">
+            <a
+              href="https://www.instagram.com/nuvante.in/"
+              className="hover:text-gray-500"
+            >
               <Image
                 src={gram_icon}
                 alt="gram_icon_footer"
@@ -54,7 +57,10 @@ export default function Footer() {
                 height={25}
               ></Image>
             </a>
-            <a href="#" className="hover:text-white">
+            <a
+              href="https://www.linkedin.com/company/nuvante-originals/"
+              className="hover:text-white"
+            >
               <Image
                 src={linkedin_icon}
                 alt="linkedin_icon_footer"

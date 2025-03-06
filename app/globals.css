@@ -4,8 +4,12 @@
 @tailwind utilities;
 
 body {
-  background: #fefaf1;
+  background: white;
   font-family: "Poppins", serif;
+}
+
+video {
+  pointer-events: none;
 }
 
 .navbar_wrapper {
