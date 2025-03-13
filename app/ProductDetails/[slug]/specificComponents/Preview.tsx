@@ -13,7 +13,7 @@ const delivery_icon = "/icon-delivery.png";
 const product_icon = "/product.png";
 
 const domain = process.env.DOMAIN;
-const logo = "/logo_l.svg";
+const logo = "/logo.png";
 
 const Preview = () => {
   const [hash, setHash] = useState<string | string[]>("");

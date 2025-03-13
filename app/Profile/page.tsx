@@ -17,7 +17,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimationControls } from "framer-motion";
 
-const logo = "/logo_l.svg";
+const logo = "/logo.png";
 
 const Page = () => {
   const [firstName, setFirstName] = useState<string>("");

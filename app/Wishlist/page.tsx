@@ -27,7 +27,7 @@ import { useParams } from "next/navigation";
  * 3.T̶O̶D̶O̶:̶ b̶u̶g̶: n̶u̶l̶l̶ |̶ u̶n̶d̶e̶f̶i̶n̶e̶d̶ |̶ [̶]̶ r̶e̶s̶p̶o̶n̶s̶e̶ w̶i̶l̶l̶ m̶e̶s̶s̶ w̶i̶t̶h̶ t̶h̶e̶ m̶a̶p̶ f̶u̶n̶c̶t̶i̶o̶n̶ (̶f̶i̶x̶e̶d̶)̶
  */
 
-const logo = "/logo_l.svg";
+const logo = "/logo.png";
 
 const Page = () => {
   const [products, setProducts] = useState([]);

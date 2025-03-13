@@ -7,7 +7,7 @@ import { GlobalContext } from "@/context/Global";
 import Button from "@/components/button";
 import { motion } from "framer-motion";
 
-const logo = "/logo_l.svg";
+const logo = "/logo.png";
 
 const CartTotal = ({ subtotal }: { subtotal: number }) => {
   return (
