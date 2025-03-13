@@ -67,7 +67,7 @@ export default function Navbar() {
             </video>
           </div>
           <div>
-            <ul className="flex gap-6 lg:gap-10 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
+            <ul className="tracking-wide flex gap-6 lg:gap-10 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
               <li>
                 <a href="/" className="">
                   Home
