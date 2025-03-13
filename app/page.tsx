@@ -26,7 +26,6 @@ export default async function Page() {
       <Hero></Hero>
       <MajorLayout>
         <Arrivals fragment={response === null ? [] : response}></Arrivals>
-        <Products fragment={response === null ? [] : response}></Products>
         {/* <Services></Services> */}
       </MajorLayout>
       <Footer></Footer>
