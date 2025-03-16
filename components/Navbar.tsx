@@ -48,7 +48,7 @@ export default function Navbar() {
         }}
         className={`navbar_wrapper pb-1 w-full ${
           open ? "h-[420px]" : "h-[100px]"
-        } lg:overflow-visible lg:flex overflow-hidden`}
+        } lg:overflow-visible lg:flex overflow-y-hidden`}
       >
         <div className="flex font-bold uppercase lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
           <div
