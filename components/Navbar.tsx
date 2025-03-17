@@ -53,9 +53,10 @@ export default function Navbar() {
         <div className="flex font-bold uppercase lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
           <div className="navbar-brand flex items-center cursor-pointer">
             <video
-              className="top-0 p-1 w-[50px] md:h-fit md:w-[80px]"
+              className="top-0 p-1 w-[70px] md:h-fit md:w-[80px]"
               autoPlay
               loop
+              playsInline
               muted
             >
               <source src={animated_logo} type="video/mp4"></source>
