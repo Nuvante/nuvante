@@ -48,7 +48,7 @@ export default function Navbar() {
         }}
         className={`navbar_wrapper pb-1 w-full ${
           open ? "h-[420px]" : "h-[100px]"
-        } lg:overflow-visible lg:flex overflow-visible`}
+        } lg:overflow-visible lg:flex overflow-y-hidden`}
       >
         <div className="flex font-bold uppercase lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
           <div
@@ -63,7 +63,7 @@ export default function Navbar() {
               loop
               muted
             >
-              <source src={animated_logo} type="video/mp4"></source>
+              {/* <source src={animated_logo} type="video/mp4"></source> */}
             </video>
           </div>
           <div>
