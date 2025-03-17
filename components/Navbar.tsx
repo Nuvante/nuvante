@@ -51,19 +51,14 @@ export default function Navbar() {
         } lg:overflow-visible lg:flex overflow-y-hidden`}
       >
         <div className="flex font-bold uppercase lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
-          <div
-            onClick={() => {
-              selfRedirect();
-            }}
-            className="navbar-brand flex items-center cursor-pointer"
-          >
+          <div className="navbar-brand flex items-center cursor-pointer">
             <video
-              className="h-fit top-0 p-1 w-[70px] md:h-fit md:w-[80px]"
+              className="top-0 p-1 w-[70px] md:h-fit md:w-[80px]"
               autoPlay
               loop
               muted
             >
-              {/* <source src={animated_logo} type="video/mp4"></source> */}
+              <source src={animated_logo} type="video/mp4"></source>
             </video>
           </div>
           <div>
