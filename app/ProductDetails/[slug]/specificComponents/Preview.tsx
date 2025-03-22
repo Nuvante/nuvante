@@ -168,9 +168,9 @@ const Preview = () => {
     <>
       {loaded && (
         <div className="flex preview_container justify-around lg:flex-row flex-col-reverse">
-          <div className="flex flex-col gap-4 lg:p-4 h-fit lg:h-[94vh] align-center justify-center lg:sticky lg:w-[34%]  w-[100%] top-4">
-            <div className="flex flex-col gap-4 border-black border-2 p-4 h-[fit] align-center justify-center sticky top-2">
-              <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[14px] gap-3">
+          <div className="flex flex-col gap-4 lg:p-4 lg:h-[94vh] align-center justify-center lg:sticky lg:w-[34%] lg:max-w-[800px] h-fit  w-[100%] top-4">
+            <div className="flex flex-col border-black border-2 p-4 h-[30vh] align-center justify-around sticky top-2">
+              <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[16px] gap-3">
                 <div
                   className="w-[100%] flex justify-between cursor-pointer"
                   onClick={() => {
@@ -190,7 +190,7 @@ const Preview = () => {
                   {currentProduct.description}
                 </div>
               </div>
-              <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[14px] gap-3">
+              <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[16px] gap-3">
                 <div
                   className="w-[100%] flex justify-between cursor-pointer"
                   onClick={() => {
@@ -210,7 +210,7 @@ const Preview = () => {
                   {currentProduct.materials}
                 </div>
               </div>
-              <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[14px] gap-3">
+              <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[16px] gap-3">
                 <div
                   className="w-[100%] flex justify-between cursor-pointer"
                   onClick={() => {
@@ -230,7 +230,7 @@ const Preview = () => {
                   {currentProduct.packaging}
                 </div>
               </div>
-              <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[14px] gap-3">
+              <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[16px] gap-3">
                 <div
                   className="w-[100%] flex justify-between cursor-pointer"
                   onClick={() => {
@@ -252,7 +252,7 @@ const Preview = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-4 lg:w-[60%] w-full">
+          <div className="flex flex-col gap-4 lg:w-[50%] w-full">
             {productImages.map((productImage) => {
               return (
                 <img
@@ -319,19 +319,19 @@ const Preview = () => {
               </div>
             </div>
           </div>
-          <div className="hidden flex-col border-black border-2 h-fit gap-3 ml-0 lg:ml-[10px] border-b-2 lg:sticky top-4 min-w-[250px] lg:w-[23%] w-[100%] lg:flex">
+          <div className="hidden flex-col border-black border-2 h-fit gap-3 ml-0 lg:ml-[10px] border-b-2 lg:sticky top-4 min-w-[250px] lg:w-[33%] w-[100%] lg:flex">
             <div className="flex flex-col gap-2 p-4">
-              <h1 className="text-[14px]">{currentProduct.productName}</h1>
+              <h1 className="text-[18px]">{currentProduct.productName}</h1>
               <div className="flex gap-2">
-                <h1 className="text-[12px] line-through">
+                <h1 className="text-[16px] line-through">
                   Rs. {currentProduct.cancelledProductPrice}
                 </h1>
-                <h1 className="text-[12px]">
+                <h1 className="text-[16px]">
                   Rs.{currentProduct.productPrice}
                 </h1>
               </div>
             </div>
-            <div className="text-[11px] px-4">{currentProduct.productInfo}</div>
+            <div className="text-[13px] px-4">{currentProduct.productInfo}</div>
             <div className="text-[10px] opacity-70 px-4 border-b-black pb-4 border-b-2">
               SHIPPING, EXCHANGES AND RETURNS
             </div>

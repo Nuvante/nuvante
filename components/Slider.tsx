@@ -22,7 +22,7 @@ export function EmblaCarousel() {
         {sliderImages.map((image, index) => (
           <div key={index} className="embla__slide">
             <img
-              className="md:h-[100vh] h-[40vh]"
+              className="lg:h-[100vh] h-[40vh]"
               src={image.src}
               alt={`Slide ${index + 1}`}
             />

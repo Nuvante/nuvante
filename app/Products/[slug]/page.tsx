@@ -21,6 +21,7 @@ const Page = () => {
           every: true,
         });
         setData(response.data);
+        // console.log(response);
         setLoaded(true);
       } catch (error) {
         setData([]);
@@ -45,7 +46,7 @@ const Page = () => {
                       data.map((product: any, index: any) =>
                         product.type === params.slug ? (
                           <Card
-                            id={product.id}
+                            id={product._id}
                             key={index}
                             productName={product.productName}
                             productPrice={product.productPrice}
