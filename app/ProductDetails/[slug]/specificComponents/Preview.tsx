@@ -167,9 +167,9 @@ const Preview = () => {
   return (
     <>
       {loaded && (
-        <div className="flex preview_container justify-around lg:flex-row flex-col-reverse">
-          <div className="flex flex-col gap-4 lg:p-4 lg:h-[94vh] align-center justify-center lg:sticky lg:w-[34%] lg:max-w-[800px] h-fit  w-[100%] top-4">
-            <div className="flex flex-col border-black border-2 p-4 h-[30vh] align-center justify-around sticky top-2">
+        <div className=" flex preview_container justify-between lg:flex-row flex-col-reverse gap-10 w-[100%]">
+          <div className="flex flex-col gap-4 lg:p-4 lg:h-[78vh] align-center justify-end lg:sticky lg:w-[34%] lg:max-w-[800px] h-fit  w-[100%] top-6">
+            <div className="flex flex-col border-black border-2 p-4 gap-4 justify-center sticky top-6">
               <div className="border-b-2 flex flex-col justify-between border-b-grey-200 cursor-pointer text-[16px] gap-3">
                 <div
                   className="w-[100%] flex justify-between cursor-pointer"

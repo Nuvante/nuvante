@@ -21,7 +21,6 @@ const Page = () => {
           every: true,
         });
         setData(response.data);
-        // console.log(response);
         setLoaded(true);
       } catch (error) {
         setData([]);
