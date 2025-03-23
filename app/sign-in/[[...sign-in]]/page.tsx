@@ -8,7 +8,7 @@ import { useSignIn } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 
-const sideImg = "/Side-Image.png";
+const sideImg = "/Side-Image.jpg";
 const googleLogo = "/Icon-Google.png";
 
 type Props = {};
@@ -58,9 +58,9 @@ const page = (props: Props) => {
       {!user.isSignedIn && (
         <div>
           <Navbar />
-          <div className="flex flex-col xl:flex-row xl:h-[781px] xl:w-[1305px] xl:items-center xl:justify-between xl:mt-12 items-center">
+          <div className="flex flex-col xl:flex-row xl:h-[781px] mx-auto xl:w-[1305px] xl:items-center xl:justify-around xl:mt-12 items-center">
             <div>
-              <Image src={sideImg} alt="side-image" height={781} width={805} />
+              <Image src={sideImg} alt="side-image" height={400} width={700} />
             </div>
             <div className="h-auto w-full max-w-[371px] flex flex-col justify-between items-center">
               <div className="text-left xl:text-left">

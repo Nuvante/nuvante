@@ -131,11 +131,11 @@ export default function Card({
       onClick={() => (window.location.href = `/ProductDetails/${id}`)}
       className=" w-full overflow-hidden sm:w-auto relative flex flex-col gap-4 cursor-pointer group"
     >
-      <div className="card-body flex sm:justify-center justify-center relative h-[300px] sm:w-fit w-fit mx-auto rounded-lg">
+      <div className="card-body flex sm:justify-center justify-center relative h-[380px] sm:w-fit w-fit mx-auto rounded-lg">
         <img
           src={src}
           alt={productName}
-          className=" w-[270px] h-full relative bg-[#F5F5F5]"
+          className=" w-[290px] h-full relative bg-[#F5F5F5]"
         />
         {status === "new" && (
           <h1 className="absolute top-1 left-1 rounded-lg bg-black px-3 py-1 text-white text-sm font-bold">
