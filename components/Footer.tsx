@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 
@@ -38,26 +39,13 @@ export default function Footer() {
             </button>
           </div>
           <div className="flex gap-6 mt-6 text-xl">
-            <a href="#" className="hover:text-gray-500">
-              <Image
-                src={facebook_icon}
-                alt="facebook_icon_footer"
-                width={25}
-                height={25}
-              ></Image>
-            </a>
-            <a href="#" className="hover:text-gray-500">
+            <a
+              href="https://www.instagram.com/nuvante.in/"
+              className="hover:text-gray-500"
+            >
               <Image
                 src={gram_icon}
                 alt="gram_icon_footer"
-                width={25}
-                height={25}
-              ></Image>
-            </a>
-            <a href="#" className="hover:text-white">
-              <Image
-                src={linkedin_icon}
-                alt="linkedin_icon_footer"
                 width={25}
                 height={25}
               ></Image>
@@ -114,17 +102,17 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/Contact" className="hover:text-white">
+              <a href="/about" className="hover:text-white">
                 About us
               </a>
             </li>
             <li>
-              <a href="/Contact" className="hover:text-white">
+              <a href="/privacy-policy" className="hover:text-white">
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a href="/Contact" className="hover:text-white">
+              <a href="/refund-and-cancellation" className="hover:text-white">
                 Return Policy
               </a>
             </li>
@@ -134,24 +122,16 @@ export default function Footer() {
           <h3 className="font-semibold text-lg">Our Commitment</h3>
           <ul className="text-gray-400 flex flex-col gap-2">
             <li>
-              <a href="#" className="hover:text-white">
-                ✓ 100% Satisfaction Guarantee
-              </a>
+              <p>✓ 100% Satisfaction Guarantee</p>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                ✓ Customer Support
-              </a>
+              <p>✓ Customer Support</p>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                ✓ Premium Quality Products
-              </a>
+              <p>✓ Premium Quality Products</p>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                ✓ Secured Transactions
-              </a>
+              <p>✓ Secured Transactions</p>
             </li>
           </ul>
         </div>

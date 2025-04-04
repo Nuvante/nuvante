@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import axios from "axios";
 import { GlobalContext } from "@/context/Global";
 import Button from "@/components/button";
+import { motion } from "framer-motion";
+
+const logo = "/logo.png";
 
 const CartTotal = ({ subtotal }: { subtotal: number }) => {
   return (
@@ -104,129 +107,148 @@ const CartPage = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <div className="p-4 flex justify-center">
-        <div className="flex flex-col w-[80vw] space-y-4 mt-16">
-          <div className="hidden md:flex flex-row items-center justify-between h-[72px] w-full border rounded-sm bg-white px-4">
-            <h1 className="flex-[2] text-left">Product</h1>
-            <h1 className="flex-[1] text-center">Price</h1>
-            <h1 className="flex-[2] text-center">Quantity</h1>
-            <h1 className="flex-[1] text-center">Subtotal</h1>
-          </div>
-
-          {morphedProducts.map((item) => {
-            if (!GlobalCart.includes(item._id)) return null;
-
-            return (
-              <div
-                key={item._id}
-                className="flex flex-col md:flex-row items-center justify-between border rounded-sm bg-white p-4 space-y-4 md:space-y-0"
-              >
-                <div className="relative flex-[2] flex items-center space-x-4">
-                  <img
-                    src={item.productImages[0]}
-                    alt={item.productName}
-                    className="w-12 h-12 object-cover rounded"
-                  />
-                  <button
-                    onClick={() => handleRemoveItem(item._id)}
-                    className="absolute top-[-16px] left-[-20px] text-red-500 bg-none rounded-[50%] p-1 hover:bg-red-100"
-                    aria-label="Remove item"
-                  >
-                    <img
-                      src="/cancel.png"
-                      alt="Remove"
-                      className="w-4 h-4 object-contain"
-                    />
-                  </button>
-                  <h1 className="text-left">{item.productName}</h1>
+    <>
+      <div>
+        {loading && (
+          <motion.div
+            className="w-fit mx-auto mt-20"
+            animate={{
+              rotate: 360,
+              transition: {
+                duration: 1.5,
+              },
+            }}
+          >
+            <img src={logo} alt="preloader" width={60} height={60} />
+          </motion.div>
+        )}
+        {!loading && (
+          <>
+            <Navbar />
+            <div className="p-4 flex justify-center">
+              <div className="flex flex-col w-[80vw] space-y-4 mt-16">
+                <div className="hidden md:flex flex-row items-center justify-between h-[72px] w-full border rounded-sm bg-white px-4">
+                  <h1 className="flex-[2] text-left">Product</h1>
+                  <h1 className="flex-[1] text-center">Price</h1>
+                  <h1 className="flex-[2] text-center">Quantity</h1>
+                  <h1 className="flex-[1] text-center">Subtotal</h1>
                 </div>
 
-                <h1 className="flex-[1] text-center">
-                  Rs. {item.productPrice}
-                </h1>
+                {morphedProducts.map((item) => {
+                  if (!GlobalCart.includes(item._id)) return null;
 
-                <div className="flex-[2] flex items-center justify-center space-x-2">
-                  <button
-                    onClick={() =>
-                      handleQuantityChange(
-                        item._id,
-                        (quantities[item._id] || 1) - 1
-                      )
-                    }
-                    className="px-2 py-1 border rounded bg-gray-200 hover:bg-gray-300"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="number"
-                    value={quantities[item._id] || 1}
-                    onChange={(event) =>
-                      handleQuantityChange(
-                        item._id,
-                        parseInt(event.target.value) || 1
-                      )
-                    }
-                    className="w-12 text-center border rounded"
-                    min={1}
-                  />
-                  <button
-                    onClick={() =>
-                      handleQuantityChange(
-                        item._id,
-                        (quantities[item._id] || 1) + 1
-                      )
-                    }
-                    className="px-2 py-1 border rounded bg-gray-200 hover:bg-gray-300"
-                  >
-                    +
-                  </button>
-                </div>
+                  return (
+                    <div
+                      key={item._id}
+                      className="flex flex-col md:flex-row items-center justify-between border rounded-sm bg-white p-4 space-y-4 md:space-y-0"
+                    >
+                      <div className="relative flex-[2] flex items-center space-x-4">
+                        <img
+                          src={item.productImages[0]}
+                          alt={item.productName}
+                          className="w-12 h-12 object-cover rounded"
+                        />
+                        <button
+                          onClick={() => handleRemoveItem(item._id)}
+                          className="absolute top-[-16px] left-[-20px] text-red-500 bg-none rounded-[50%] p-1 hover:bg-red-100"
+                          aria-label="Remove item"
+                        >
+                          <img
+                            src="/cancel.png"
+                            alt="Remove"
+                            className="w-4 h-4 object-contain"
+                          />
+                        </button>
+                        <h1 className="text-left">{item.productName}</h1>
+                      </div>
 
-                <h1 className="flex-[1] text-center">
-                  Rs. {(quantities[item._id] || 1) * item.productPrice}
-                </h1>
+                      <h1 className="flex-[1] text-center">
+                        Rs. {item.productPrice}
+                      </h1>
+
+                      <div className="flex-[2] flex items-center justify-center space-x-2">
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(
+                              item._id,
+                              (quantities[item._id] || 1) - 1
+                            )
+                          }
+                          className="px-2 py-1 border rounded bg-gray-200 hover:bg-gray-300"
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          value={quantities[item._id] || 1}
+                          onChange={(event) =>
+                            handleQuantityChange(
+                              item._id,
+                              parseInt(event.target.value) || 1
+                            )
+                          }
+                          className="w-12 text-center border rounded"
+                          min={1}
+                        />
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(
+                              item._id,
+                              (quantities[item._id] || 1) + 1
+                            )
+                          }
+                          className="px-2 py-1 border rounded bg-gray-200 hover:bg-gray-300"
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <h1 className="flex-[1] text-center">
+                        Rs. {(quantities[item._id] || 1) * item.productPrice}
+                      </h1>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
-      </div>
-      <div className="flex justify-between w-[81%] mx-auto my-4">
-        <div
-          onClick={() => {
-            window.location.href = "/";
-          }}
-          className="w-fit mx-auto"
-        >
-          <Button text="Return To Shop" width={200}></Button>
-        </div>
-      </div>
+            </div>
+            <div className="flex justify-between w-[81%] mx-auto my-4">
+              <div
+                onClick={() => {
+                  window.location.href = "/";
+                }}
+                className="w-fit mx-auto"
+              >
+                <Button text="Return To Shop" width={200}></Button>
+              </div>
+            </div>
 
-      <div className="flex w-[80%] mx-auto justify-center items-center  md:justify-between md:items-start mt-20 flex-col flex-wrap md:flex-row">
-        <div className="flex justify-start  my-6 w-fit">
-          <div className="flex items-center space-x-4 flex-col sm:flex-row gap-1">
-            <input
-              type="text"
-              style={{
-                height: "50px",
-                border: "2px solid black",
-                padding: "3px",
-                borderRadius: "0.375rem",
-                margin: "auto",
-              }}
-              placeholder="Coupon Code"
-              className="border rounded px-4 py-2 w-64 focus:outline-none focus:ring focus:ring-red-300"
-            />
-            <Button text="Apply Coupon" width={150} />
-          </div>
-        </div>
-        <div className="flex justify-center my-6 w-[90%] sm:w-fit">
-          <CartTotal subtotal={calculateSubtotal()} />
-        </div>
+            <div className="flex w-[80%] mx-auto justify-center items-center  md:justify-between md:items-start mt-20 flex-col flex-wrap md:flex-row">
+              <div className="flex justify-start  my-6 w-fit">
+                <div className="flex items-center space-x-4 flex-col sm:flex-row gap-1">
+                  <input
+                    type="text"
+                    style={{
+                      height: "50px",
+                      border: "2px solid black",
+                      padding: "3px",
+                      borderRadius: "0.375rem",
+                      margin: "auto",
+                    }}
+                    placeholder="Coupon Code"
+                    className="border rounded px-4 py-2 w-64 focus:outline-none focus:ring focus:ring-red-300"
+                  />
+                  <Button text="Apply Coupon" width={150} />
+                </div>
+              </div>
+              <div className="flex justify-center my-6 w-[90%] sm:w-fit">
+                <CartTotal subtotal={calculateSubtotal()} />
+              </div>
+            </div>
+            <Footer />
+          </>
+        )}
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

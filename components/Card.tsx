@@ -11,8 +11,6 @@ type propType = {
   productName: string;
   productPrice: number;
   cancelledPrice: number;
-  reviews: number;
-  stars: number;
   status: string;
 };
 
@@ -26,8 +24,6 @@ export default function Card({
   productName,
   productPrice,
   cancelledPrice,
-  reviews,
-  stars,
   status,
 }: propType) {
   const context = useContext(GlobalContext);
@@ -133,10 +129,14 @@ export default function Card({
   return (
     <div
       onClick={() => (window.location.href = `/ProductDetails/${id}`)}
-      className="card sm:w-auto w-full relative flex flex-col gap-4 cursor-pointer group"
+      className=" w-full overflow-hidden sm:w-auto relative flex flex-col gap-4 cursor-pointer group"
     >
-      <div className="card-body flex sm:justify-center justify-center relative bg-[#F5F5F5] sm:w-fit w-full p-6 rounded-lg">
-        <img src={src} alt={productName} className="rounded-md w-auto" />
+      <div className="card-body flex sm:justify-center justify-center relative h-[380px] sm:w-fit w-fit mx-auto rounded-lg">
+        <img
+          src={src}
+          alt={productName}
+          className=" w-[290px] h-full relative bg-[#F5F5F5]"
+        />
         {status === "new" && (
           <h1 className="absolute top-1 left-1 rounded-lg bg-black px-3 py-1 text-white text-sm font-bold">
             NEW
@@ -146,7 +146,7 @@ export default function Card({
         <button
           onClick={handleWishlistPresence}
           disabled={loadingWishlist}
-          className={`absolute rounded-full top-2 right-2 w-7 h-7 ${
+          className={`absolute rounded-full top-2 right-3 w-[30px] h-[30px] bg-white ${
             loadingWishlist ? "opacity-50" : "opacity-100"
           } hover:opacity-100 transition-opacity`}
         >
@@ -173,7 +173,7 @@ export default function Card({
         <button
           onClick={handleAddToCart}
           disabled={loadingCart}
-          className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black text-white w-[100%] py-2 px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+          className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 font-bold bg-black text-white w-[270px] py-2 px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
         >
           {loadingCart
             ? "⏳"
@@ -182,11 +182,13 @@ export default function Card({
             : "Add to cart"}
         </button>
       </div>
-      <div className="card-details flex flex-col gap-3">
-        <h1 className="font-semibold text-black">{productName}</h1>
-        <div className="flex gap-2">
-          <h1 className="text-[#DB4444] font-bold">Rs. {productPrice}</h1>
-          <h1 className="line-through text-gray-500">Rs. {cancelledPrice}</h1>
+      <div className="card-details flex flex-col gap-3  text-center uppercase">
+        <h1 className="font-extrabold text-black">{productName}</h1>
+        <div className="flex gap-2 text-center mx-auto w-fit uppercase">
+          <h1 className="text-[#DB4444] font-extrabold">Rs. {productPrice}</h1>
+          <h1 className="line-through text-gray-500 font-extrabold">
+            Rs. {cancelledPrice}
+          </h1>
         </div>
       </div>
     </div>

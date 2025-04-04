@@ -25,7 +25,7 @@ export const GlobalContextProvider = ({
   const [GlobalWishlist, setGlobalWishlist] = useState<string[]>([]);
   const [GlobalCart, setGlobalCart] = useState<string[]>([]);
 
-  const { isSignedIn, user } = useUser(); // Destructure isSignedIn directly
+  const { isSignedIn, user } = useUser();
 
   const changeGlobalWishlist = (updatedWishlist: string[]) => {
     setGlobalWishlist([...updatedWishlist]);
@@ -34,7 +34,7 @@ export const GlobalContextProvider = ({
         const response = await axios.get(`/api/propagation_client`);
         if (response.data === 404) {
           alert(
-            "Context error 404, error getting the cart data to the database."
+            "Context error 404, error getting the wishlist data to the database."
           );
         } else {
           setGlobalWishlist(response.data.wishlist);

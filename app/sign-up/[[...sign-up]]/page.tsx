@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { useClerk } from "@clerk/nextjs";
 import axios from "axios";
 
-const sideImg = "/Side-Image.png";
+const sideImg = "/Side-Image.jpg";
 const googleLogo = "/Icon-Google.png";
 
 type Props = {};
@@ -71,24 +71,42 @@ const page = (props: Props) => {
       // If verification was completed, set the session to active
       // and redirect the user
       if (signUpAttempt.status === "complete") {
-        await setActive({
-          session: signUpAttempt.createdSessionId,
-          redirectUrl: "/Profile",
-        });
-        const response = await axios.post(`/api/populate/`, {
-          firstName: name.split(" ")[0],
-          lastName: name.split(" ")[1],
-          password: password,
-          address: "xyz road",
-          email: emailAddress,
-        });
-        // console.log(response);
-        // console.log(emailAddress);
-        if (response.data === "success") {
-        } else {
-          // signOut({ redirectUrl: "/sign-up" });
-        }
+        const response = await axios
+          .post(`/api/populate/`, {
+            firstName: name.split(" ")[0],
+            lastName: name.split(" ")[1],
+            password: password,
+            address: "xyz road",
+            email: emailAddress,
+          })
+          .then(async (data) => {
+            if (data.data === "Success") {
+              await setActive({
+                session: signUpAttempt.createdSessionId,
+                redirectUrl: "/Profile",
+              });
+            }
+          });
+
+        console.log("couldn't generate active session");
+        alert("Couldn't generate active session, please sign up again");
+        router.push("/sign-up");
+
+        // if (response.data === "success") {
+        //   await setActive({
+        //     session: signUpAttempt.createdSessionId,
+        //     redirectUrl: "/Profile",
+        //   });
+        // } else {
+        //   alert(
+        //     "That process failed because the database couldn't process the sign-up info."
+        //   );
+        //   signOut({ redirectUrl: "/sign-up" });
+        // }
       } else {
+        alert(
+          "That process failed because connection to @clerkjs was not established."
+        );
         // If the status is not complete, check why. User may need to
         // complete further steps.
         console.error(JSON.stringify(signUpAttempt, null, 2));
@@ -135,9 +153,9 @@ const page = (props: Props) => {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col xl:flex-row xl:h-[781px] xl:w-[1305px] xl:items-center xl:justify-between xl:mt-12 items-center">
+      <div className="flex flex-col xl:flex-row xl:h-[781px] xl:w-[1305px] xl:items-center xl:justify-around xl:mt-12 items-center">
         <div>
-          <Image src={sideImg} alt="side-image" height={781} width={805} />
+          <Image src={sideImg} alt="side-image" height={400} width={600} />
         </div>
         <div className="h-auto w-full max-w-[371px] flex flex-col justify-between items-center">
           <div className="text-left xl:text-left">
@@ -181,7 +199,7 @@ const page = (props: Props) => {
             >
               Create Account
             </button>
-            <button className="h-[56px] w-full mt-3 flex flex-row items-center justify-center border border-black">
+            {/* <button className="h-[56px] w-full mt-3 flex flex-row items-center justify-center border border-black">
               <Image
                 className="mr-3"
                 src={googleLogo}
@@ -189,8 +207,8 @@ const page = (props: Props) => {
                 height={24}
                 width={24}
               />
-              <p className="font-normal">Sign up with Google</p>
-            </button>
+              <p className="font-normal">Sign up with Google</p> */}
+            {/* </button> */}
             <p className="text-center mt-3">
               Already have an account?{" "}
               <Link className="border-b border-black" href="/sign-in">

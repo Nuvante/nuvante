@@ -35,7 +35,7 @@ export default function Hero() {
             ></Image>
           </div> */}
         {/* </div> */}
-        <div className=" md:w-[100%] pt-10">
+        <div className="w-[100%] lg:h-[100vh] h-[40vh] lg:w-[100%]">
           <EmblaCarousel></EmblaCarousel>
         </div>
       </div>

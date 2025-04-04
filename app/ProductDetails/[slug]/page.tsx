@@ -6,25 +6,16 @@ import Footer from "@/components/Footer";
 import Preview from "./specificComponents/Preview";
 import Suggestion from "./specificComponents/Suggestion";
 import Heading from "@/components/Heading";
+import Pre from "./specificComponents/Pre";
 
 const Page = () => {
   return (
     <>
       <Navbar />
-      <div className="p-4">
-        <div className="mt-6 ml-4 xl:ml-32">
+      <div className="p-4 w-[94%] mx-auto">
+        <div className="mt-6 ml-4 flex flex-col gap-6">
           <Bread />
           <Preview />
-          <div className="w-full xl:w-[1170px] h-auto">
-            <div className="mt-12 xl:mt-36 flex flex-col gap-6">
-              <div className="flex w-full justify-between items-center">
-                <Heading message="Related Items" secondaryMessage="" />
-              </div>
-              <div className="flex flex-col gap-12">
-                <Suggestion />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <Footer />

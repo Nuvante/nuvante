@@ -9,7 +9,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Navbar from "@/components/Navbar";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Card from "@/components/Card";
 import axios from "axios";
@@ -18,7 +17,8 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "@/context/Global";
 import Image from "next/image";
-import { motion, useSpring, useAnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 
 /**
  * 1.Pretty exhausting function (handleBag) running in O(n^2) probably. Considering the post requests to be linear.
@@ -27,12 +27,14 @@ import { motion, useSpring, useAnimationControls } from "framer-motion";
  * 3.T̶O̶D̶O̶:̶ b̶u̶g̶: n̶u̶l̶l̶ |̶ u̶n̶d̶e̶f̶i̶n̶e̶d̶ |̶ [̶]̶ r̶e̶s̶p̶o̶n̶s̶e̶ w̶i̶l̶l̶ m̶e̶s̶s̶ w̶i̶t̶h̶ t̶h̶e̶ m̶a̶p̶ f̶u̶n̶c̶t̶i̶o̶n̶ (̶f̶i̶x̶e̶d̶)̶
  */
 
-const logo = "/logo_l.svg";
+const logo = "/logo.png";
 
 const Page = () => {
   const [products, setProducts] = useState([]);
   const [currentWishlist, setCurrentWishlist] = useState([]);
   const [loaded, setLoaded] = useState(false);
+
+  const url_params = useParams();
 
   const {
     GlobalWishlist,
@@ -48,8 +50,6 @@ const Page = () => {
           every: true,
         })
         .then((response) => {
-          console.log(response);
-          console.log("Here is the products response: ", response);
           return response.data;
         });
       setProducts(localProducts);
@@ -57,8 +57,8 @@ const Page = () => {
         .get(`/api/propagation_client/`)
         .then((response) => {
           if (response.data === 404) {
-            alert(
-              "There was an error fetching the wishlist from database. Try to refresh the page."
+            console.log(
+              "Couldn't get the current wishlist from the database, try refreshing the page. Developers are supposed to check /api/propagation_client"
             );
             return [];
           } else {
@@ -155,8 +155,6 @@ const Page = () => {
                         productName={product.productName}
                         productPrice={Number(product.productPrice)}
                         cancelledPrice={product.cancelledProductPrice}
-                        reviews={product.productReviews.length} //* Assuming number of reviews (NaN)
-                        stars={product.productStars}
                         src={
                           product.productImages[0] === undefined
                             ? "https://fastly.picsum.photos/id/1050/536/354.jpg?hmac=fjxUSeQRIROZvo_be9xEf-vMhMutXf2F5yw-WaWyaWA"

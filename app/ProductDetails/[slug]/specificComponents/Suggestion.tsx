@@ -29,7 +29,7 @@ export default function Suggestion() {
   }, [hash, url_param.slug]);
 
   return (
-    <div className="cards flex flex-wrap gap-x-5 gap-y-10">
+    <div className="cards flex flex-wrap gap-x-5 gap-y-10 w-fit mx-auto">
       {products
         .slice(0, Math.min(5, products.length))
         .map((product: any, index: any) => (

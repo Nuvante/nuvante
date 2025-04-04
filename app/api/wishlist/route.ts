@@ -1,6 +1,5 @@
 import clientModel from "@/models/Clients";
 import { NextResponse } from "next/server";
-import React from "react";
 import { currentUser } from "@clerk/nextjs/server";
 
 function popElement(array: any[], victim: any) {

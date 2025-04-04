@@ -28,7 +28,7 @@ const Page = async () => {
               <Heading message="Products" secondaryMessage="" />
             </div>
             <div className="flex flex-col gap-12">
-              <div className="cards flex flex-wrap sm:w-auto w-[100%] gap-y-10">
+              <div className="cards flex flex-wrap sm:w-auto w-[100%] gap-y-10 gap-x-10">
                 {response.map((product: any, index: number) => (
                   <Card
                     id={product.id}
@@ -36,8 +36,6 @@ const Page = async () => {
                     productName={product.productName}
                     productPrice={product.productPrice}
                     cancelledPrice={product.cancelledProductPrice}
-                    reviews={product.productReviews.length || 0}
-                    stars={product.productStars}
                     src={product.productImages[0]}
                     status={product.latest ? "new" : "old"}
                   />
