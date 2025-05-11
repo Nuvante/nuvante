@@ -83,11 +83,6 @@ export default function Navbar() {
                       dropdown ? "none" : "hidden"
                     }`}
                   >
-                    <div className="flex gap-4 text-black cursor-pointer w-fit border-[#F5F5F5]">
-                      <a href="#" className="border-b-[#F5F5F5] border-b-[2px]">
-                        Nuvante Originals
-                      </a>
-                    </div>
                     <div className="flex gap-4 text-black cursor-pointer w-fit mt-4">
                       <a
                         href="/Products/T-shirt"
@@ -256,11 +251,6 @@ export default function Navbar() {
                     dropdown ? "none" : "hidden"
                   }`}
                 >
-                  <div className="flex gap-4 text-black cursor-pointer w-fit border-[#F5F5F5]">
-                    <a href="#" className="border-b-[#F5F5F5] border-b-[2px]">
-                      Nuvante Originals
-                    </a>
-                  </div>
                   <div className="flex gap-4 text-black cursor-pointer w-fit mt-4">
                     <a
                       href="/Products/T-shirt"
