@@ -109,6 +109,7 @@ const Preview = () => {
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
@@ -118,6 +119,19 @@ const Preview = () => {
     vertical: typeof window !== "undefined" ? window.innerWidth >= 1024 : false,
     renderMode: "performance",
   });
+
+  // ✅ Autoplay functionality
+  useEffect(() => {
+    if (isHovered) return;
+
+    const interval = setInterval(() => {
+      if (instanceRef.current) {
+        instanceRef.current.next();
+      }
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   return loaded ? (
     <div className="flex preview_container justify-between lg:flex-row flex-col-reverse gap-10 w-full">
@@ -145,6 +159,8 @@ const Preview = () => {
       <div className="relative flex flex-col gap-6 lg:w-[50%] w-full">
         <div
           ref={sliderRef}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           className="keen-slider aspect-[3/4] lg:aspect-[4/5] 2xl:aspect-[5/6] w-full rounded-md overflow-hidden"
         >
           {productImages.map((img, idx) => (
@@ -155,7 +171,7 @@ const Preview = () => {
               <img
                 src={img}
                 alt={`product-${idx}`}
-                className="w-full h-full object-cover" // Updated to ensure uniform size and removed border
+                className="w-full h-full object-cover"
               />
             </div>
           ))}
@@ -230,7 +246,7 @@ const Preview = () => {
           ))}
         </div>
         <p className="text-[10px] text-gray-600 mt-3">This product has a larger fit than usual. Model is wearing L.</p>
-        <div className="flex-grow"></div> {/* To push buttons to the bottom */}
+        <div className="flex-grow"></div>
         <button className="mt-3 border-2 border-black py-3" onClick={handleAddToCart}>ADD</button>
         <button className="bg-black text-white py-3">BUY IT NOW</button>
       </div>
