@@ -21,6 +21,9 @@ const Preview = () => {
   const [loaded, setLoaded] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<any>({});
   const [collapsible, setCollapsible] = useState<boolean[]>(Array(4).fill(false));
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const id: any = hash || slug;
 
   const context = useContext(GlobalContext);
@@ -108,35 +111,38 @@ const Preview = () => {
     setCollapsible(prev => prev.map((val, i) => (i === index ? !val : val)));
   };
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
+  // Slider hook with dynamic vertical config
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     slideChanged: (s) => setCurrentSlide(s.track.details.rel),
     slides: { perView: 1, spacing: 15 },
     dragSpeed: 0.8,
-    vertical: typeof window !== "undefined" ? window.innerWidth >= 1024 : false,
+    vertical: isLargeScreen,
     renderMode: "performance",
   });
 
-  // ✅ Autoplay functionality
+  // Responsive behavior on resize
+  useEffect(() => {
+    const updateScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
+
   useEffect(() => {
     if (isHovered) return;
-
     const interval = setInterval(() => {
-      if (instanceRef.current) {
-        instanceRef.current.next();
-      }
-    }, 3000); // Change every 3 seconds
-
+      instanceRef.current?.next();
+    }, 10000);
     return () => clearInterval(interval);
   }, [isHovered]);
 
   return loaded ? (
-    <div className="flex preview_container justify-between lg:flex-row flex-col-reverse gap-10 w-full">
+    <div className="preview_container flex justify-center items-center lg:flex-row flex-col-reverse gap-10 w-full min-h-screen px-4 xl:px-20 2xl:px-48 max-w-screen-2xl mx-auto">
       {/* Left Collapsibles */}
-      <div className="flex flex-col gap-4 lg:p-6 lg:h-[78vh] lg:sticky lg:w-[34%] top-6 w-full">
+      <div className="flex flex-col gap-4 lg:p-6 self-center lg:w-[30%] w-full max-w-[500px]">
         <div className="flex flex-col border-2 border-black p-4 gap-6">
           {["DESCRIPTION", "MATERIALS", "PACKAGING", "SHIPPING & RETURNS"].map((section, i) => (
             <div key={i} className="border-b-2 border-b-gray-200 text-sm">
@@ -155,8 +161,8 @@ const Preview = () => {
         </div>
       </div>
 
-      {/* Images and Dots */}
-      <div className="relative flex flex-col gap-6 lg:w-[50%] w-full">
+      {/* Middle Carousel */}
+      <div className="relative flex flex-col gap-6 lg:w-[40%] w-full max-w-[700px] self-center">
         <div
           ref={sliderRef}
           onMouseEnter={() => setIsHovered(true)}
@@ -164,15 +170,8 @@ const Preview = () => {
           className="keen-slider aspect-[3/4] lg:aspect-[4/5] 2xl:aspect-[5/6] w-full rounded-md overflow-hidden"
         >
           {productImages.map((img, idx) => (
-            <div
-              key={idx}
-              className="keen-slider__slide flex items-center justify-center bg-white"
-            >
-              <img
-                src={img}
-                alt={`product-${idx}`}
-                className="w-full h-full object-cover"
-              />
+            <div key={idx} className="keen-slider__slide flex items-center justify-center bg-white">
+              <img src={img} alt={`product-${idx}`} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
@@ -184,7 +183,7 @@ const Preview = () => {
               key={idx}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
               className={`w-3 h-3 rounded-full ${currentSlide === idx ? "bg-black" : "bg-gray-400"}`}
-            ></button>
+            />
           ))}
         </div>
 
@@ -195,7 +194,7 @@ const Preview = () => {
               key={idx}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
               className={`w-2.5 h-2.5 rounded-full ${currentSlide === idx ? "bg-black" : "bg-gray-400"}`}
-            ></button>
+            />
           ))}
         </div>
 
@@ -225,8 +224,8 @@ const Preview = () => {
         </div>
       </div>
 
-      {/* Desktop Info */}
-      <div className="hidden lg:flex flex-col border-2 border-black gap-4 p-6 w-[33%] sticky top-6 h-full">
+      {/* Right Info */}
+      <div className="hidden lg:flex flex-col border-2 border-black gap-4 p-6 w-[30%] max-w-[500px] self-center">
         <h1 className="text-lg">{currentProduct.productName}</h1>
         <div className="flex gap-3">
           <span className="line-through text-sm">Rs. {currentProduct.cancelledProductPrice}</span>
