@@ -122,8 +122,8 @@ const Preview = () => {
   return loaded ? (
     <div className="flex preview_container justify-between lg:flex-row flex-col-reverse gap-10 w-full">
       {/* Left Collapsibles */}
-      <div className="flex flex-col gap-4 lg:p-4 lg:h-[78vh] lg:sticky lg:w-[34%] top-6 w-full">
-        <div className="flex flex-col border-2 border-black p-4 gap-4">
+      <div className="flex flex-col gap-4 lg:p-6 lg:h-[78vh] lg:sticky lg:w-[34%] top-6 w-full">
+        <div className="flex flex-col border-2 border-black p-4 gap-6">
           {["DESCRIPTION", "MATERIALS", "PACKAGING", "SHIPPING & RETURNS"].map((section, i) => (
             <div key={i} className="border-b-2 border-b-gray-200 text-sm">
               <div
@@ -142,7 +142,7 @@ const Preview = () => {
       </div>
 
       {/* Images and Dots */}
-      <div className="relative flex flex-col gap-4 lg:w-[50%] w-full">
+      <div className="relative flex flex-col gap-6 lg:w-[50%] w-full">
         <div
           ref={sliderRef}
           className="keen-slider aspect-[3/4] lg:aspect-[4/5] 2xl:aspect-[5/6] w-full rounded-md overflow-hidden"
@@ -155,14 +155,14 @@ const Preview = () => {
               <img
                 src={img}
                 alt={`product-${idx}`}
-                className="w-full max-w-full h-full object-contain border p-1 border-gray-400"
+                className="w-full h-full object-cover" // Updated to ensure uniform size and removed border
               />
             </div>
           ))}
         </div>
 
         {/* Desktop Vertical Dots */}
-        <div className="hidden lg:flex absolute top-1/2 left-[-25px] -translate-y-1/2 flex-col items-center gap-2 z-10">
+        <div className="hidden lg:flex absolute top-1/2 left-[-25px] -translate-y-1/2 flex-col items-center gap-3 z-10">
           {productImages.map((_, idx) => (
             <button
               key={idx}
@@ -173,7 +173,7 @@ const Preview = () => {
         </div>
 
         {/* Mobile Horizontal Dots */}
-        <div className="flex lg:hidden justify-center gap-2 mt-2">
+        <div className="flex lg:hidden justify-center gap-3 mt-2">
           {productImages.map((_, idx) => (
             <button
               key={idx}
@@ -184,7 +184,7 @@ const Preview = () => {
         </div>
 
         {/* Mobile Info */}
-        <div className="lg:hidden border-2 border-black flex flex-col gap-3 p-4">
+        <div className="lg:hidden border-2 border-black flex flex-col gap-4 p-6">
           <h1 className="text-sm">{currentProduct.productName}</h1>
           <div className="flex gap-2">
             <span className="line-through text-xs">Rs. {currentProduct.cancelledProductPrice}</span>
@@ -192,7 +192,7 @@ const Preview = () => {
           </div>
           <p className="text-xs">{currentProduct.productInfo}</p>
           <p className="text-[10px] opacity-70 border-b pb-2">SHIPPING, EXCHANGES AND RETURNS</p>
-          <div className="grid grid-cols-2 gap-2 mt-4">
+          <div className="grid grid-cols-2 gap-3 mt-4">
             {["S", "M", "L", "XL"].map(size => (
               <div
                 key={size}
@@ -203,35 +203,36 @@ const Preview = () => {
               </div>
             ))}
           </div>
-          <p className="text-[9px] text-gray-600 mt-2">This product has a larger fit than usual. Model is wearing L.</p>
-          <button className="mt-2 border-2 border-black py-2" onClick={handleAddToCart}>ADD</button>
-          <button className="bg-black text-white py-2">BUY IT NOW</button>
+          <p className="text-[9px] text-gray-600 mt-3">This product has a larger fit than usual. Model is wearing L.</p>
+          <button className="mt-3 border-2 border-black py-3" onClick={handleAddToCart}>ADD</button>
+          <button className="bg-black text-white py-3">BUY IT NOW</button>
         </div>
       </div>
 
       {/* Desktop Info */}
-      <div className="hidden lg:flex flex-col border-2 border-black gap-3 p-4 w-[33%] sticky top-4">
+      <div className="hidden lg:flex flex-col border-2 border-black gap-4 p-6 w-[33%] sticky top-6 h-full">
         <h1 className="text-lg">{currentProduct.productName}</h1>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <span className="line-through text-sm">Rs. {currentProduct.cancelledProductPrice}</span>
           <span className="text-sm">Rs. {currentProduct.productPrice}</span>
         </div>
         <p className="text-sm">{currentProduct.productInfo}</p>
-        <p className="text-[11px] opacity-70 border-b pb-2">SHIPPING, EXCHANGES AND RETURNS</p>
-        <div className="grid grid-cols-2 gap-2 mt-4">
+        <p className="text-[11px] opacity-70 border-b pb-3">SHIPPING, EXCHANGES AND RETURNS</p>
+        <div className="grid grid-cols-2 gap-3 mt-4">
           {["S", "M", "L", "XL"].map(size => (
             <div
               key={size}
-              className={`border-2 py-2 text-center cursor-pointer ${size === current ? "bg-black text-white" : "text-black"}`}
+              className={`border-2 py-3 text-center cursor-pointer ${size === current ? "bg-black text-white" : "text-black"}`}
               onClick={() => handleSwitch(size)}
             >
               {size}
             </div>
           ))}
         </div>
-        <p className="text-[10px] text-gray-600 mt-2">This product has a larger fit than usual. Model is wearing L.</p>
-        <button className="mt-2 border-2 border-black py-2" onClick={handleAddToCart}>ADD</button>
-        <button className="bg-black text-white py-2">BUY IT NOW</button>
+        <p className="text-[10px] text-gray-600 mt-3">This product has a larger fit than usual. Model is wearing L.</p>
+        <div className="flex-grow"></div> {/* To push buttons to the bottom */}
+        <button className="mt-3 border-2 border-black py-3" onClick={handleAddToCart}>ADD</button>
+        <button className="bg-black text-white py-3">BUY IT NOW</button>
       </div>
     </div>
   ) : (
