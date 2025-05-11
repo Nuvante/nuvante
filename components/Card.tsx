@@ -14,8 +14,6 @@ type propType = {
   status: string;
 };
 
-const heart = "/heart.svg";
-
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export default function Card({
@@ -39,15 +37,6 @@ export default function Card({
   const [loadingWishlist, setLoadingWishlist] = useState(false);
   const [loadingCart, setLoadingCart] = useState(false);
 
-  // console.log("From card.tsx: ", GlobalWishlist);
-
-  /**
-   * 1.Handles the obnoxious operations related to wishlist using a global context.
-   * 2.stopPropagation stops the default event listener on the card itself.
-   * 3.loadingWishlist handles the timer effect you see after clicking on wishlist.
-   * 4.isPresent is checking if the current id is already present in the globalWishlist/globalCart, if yes don't append, just delete, otherwise append. (kind of similar to a toggle state used when making a navbar)
-   * 5.Promises are handled so that null data is not provided to the global state.
-   */
   const handleWishlistPresence = async (event: React.MouseEvent) => {
     event.stopPropagation();
     console.log(user);
@@ -126,16 +115,19 @@ export default function Card({
     }
   };
 
+  // Check if the product is already in the wishlist
+  const isInWishlist = GlobalWishlist.includes(id);
+
   return (
     <div
       onClick={() => (window.location.href = `/ProductDetails/${id}`)}
-      className=" w-full overflow-hidden sm:w-auto relative flex flex-col gap-4 cursor-pointer group"
+      className="w-full overflow-hidden sm:w-auto relative flex flex-col gap-4 cursor-pointer group"
     >
       <div className="card-body flex sm:justify-center justify-center relative h-[380px] sm:w-fit w-fit mx-auto rounded-lg">
         <img
           src={src}
           alt={productName}
-          className=" w-[290px] h-full relative bg-[#F5F5F5]"
+          className="w-[290px] h-full relative bg-[#F5F5F5]"
         />
         {status === "new" && (
           <h1 className="absolute top-1 left-1 rounded-lg bg-black px-3 py-1 text-white text-sm font-bold">
@@ -146,7 +138,7 @@ export default function Card({
         <button
           onClick={handleWishlistPresence}
           disabled={loadingWishlist}
-          className={`absolute rounded-full top-2 right-3 w-[30px] h-[30px] bg-white ${
+          className={`absolute rounded-full top-2 right-3 w-[30px] h-[30px] bg-transparent ${
             loadingWishlist ? "opacity-50" : "opacity-100"
           } hover:opacity-100 transition-opacity`}
         >
@@ -157,12 +149,12 @@ export default function Card({
               width="30"
               height="30"
               viewBox="0 0 24 24"
-              fill={`${GlobalWishlist.includes(id) ? "#DB4444" : "none"}`}
+              fill={isInWishlist ? "#DB4444" : "none"} // Red fill when wishlisted
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M8 5C5.7912 5 4 6.73964 4 8.88594C4 10.6185 4.7 14.7305 11.5904 18.8873C11.7138 18.961 11.8555 19 12 19C12.1445 19 12.2862 18.961 12.4096 18.8873C19.3 14.7305 20 10.6185 20 8.88594C20 6.73964 18.2088 5 16 5C13.7912 5 12 7.35511 12 7.35511C12 7.35511 10.2088 5 8 5Z"
-                stroke={`${GlobalWishlist.includes(id) ? "#DB4444" : "black"}`}
+                stroke={isInWishlist ? "none" : "#DB4444"} // No outline when wishlisted
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -182,7 +174,7 @@ export default function Card({
             : "Add to cart"}
         </button>
       </div>
-      <div className="card-details flex flex-col gap-3  text-center uppercase">
+      <div className="card-details flex flex-col gap-3 text-center uppercase">
         <h1 className="font-extrabold text-black">{productName}</h1>
         <div className="flex gap-2 text-center mx-auto w-fit uppercase">
           <h1 className="text-[#DB4444] font-extrabold">Rs. {productPrice}</h1>
