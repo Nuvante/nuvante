@@ -42,7 +42,7 @@ export default function Navbar() {
             onClick={selfRedirect}
           >
             <video
-              className="top-0 p-1 w-[70px] md:h-fit md:w-[80px]"
+              className="top-0 p-1 w-[60px] md:h-fit md:w-[70px] lg:w-[80px] lg:h-[80px]"
               autoPlay
               loop
               playsInline
@@ -53,15 +53,21 @@ export default function Navbar() {
             </video>
           </div>
           <div>
-            <ul className="tracking-[2px] flex gap-6 lg:gap-10 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
+            <ul className="tracking-[2px] flex gap-4 lg:gap-8 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
               <li>
-                <a href="/">Home</a>
+                <a href="/" className="text-lg lg:text-base">
+                  Home
+                </a>
               </li>
               <li>
-                <Link href="/Contact">Contact</Link>
+                <Link href="/Contact" className="text-lg lg:text-base">
+                  Contact
+                </Link>
               </li>
               <li>
-                <Link href="/about">About</Link>
+                <Link href="/about" className="text-lg lg:text-base">
+                  About
+                </Link>
               </li>
               <li>
                 <div
@@ -69,7 +75,9 @@ export default function Navbar() {
                   onMouseEnter={() => setDropdown(true)}
                   onMouseLeave={() => setDropdown(false)}
                 >
-                  <Link href="/Products">Products</Link>
+                  <Link href="/Products" className="text-lg lg:text-base">
+                    Products
+                  </Link>
                   <div
                     className={`bg-[#F5F5F5] absolute top-6 w-[200px] p-2 z-10 px-2 border ${
                       dropdown ? "none" : "hidden"
@@ -105,14 +113,14 @@ export default function Navbar() {
             <div className="flex rounded-lg items-center bg-[#F5F5F5] px-4 w-fit ">
               <input
                 type="text"
-                className="bg-[#F5F5F5] h-[45px] outline-none w-[220px] rounded-lg text-black"
+                className="bg-[#F5F5F5] h-[35px] lg:h-[40px] outline-none w-[180px] lg:w-[220px] rounded-lg text-black text-sm lg:text-base"
                 placeholder="What are you looking for?"
               />
               <div>
                 <Image
                   src={search}
-                  width={30}
-                  height={30}
+                  width={25}
+                  height={25}
                   className="cursor-pointer"
                   alt="search"
                 />
@@ -122,8 +130,8 @@ export default function Navbar() {
               <Link href="/Wishlist">
                 <Image
                   src={heart}
-                  width={30}
-                  height={30}
+                  width={25}
+                  height={25}
                   className="cursor-pointer"
                   alt="heart"
                 />
@@ -131,8 +139,8 @@ export default function Navbar() {
               <Link href="/Cart">
                 <Image
                   src={cart}
-                  width={30}
-                  height={30}
+                  width={25}
+                  height={25}
                   className="cursor-pointer"
                   alt="cart"
                 />
@@ -142,8 +150,8 @@ export default function Navbar() {
               >
                 <Image
                   src={User}
-                  width={30}
-                  height={30}
+                  width={25}
+                  height={25}
                   className="cursor-pointer"
                   alt="user"
                 />
@@ -164,18 +172,18 @@ export default function Navbar() {
         <div className="flex justify-between items-center px-4">
           <div
             onClick={handleNavbar}
-            className="hamburger_responsive lg:hidden flex-col gap-1 cursor-pointer flex scale-50" // Adjusted size for the hamburger
+            className="hamburger_responsive lg:hidden flex-col gap-1 cursor-pointer flex scale-50"
           >
-            <div className="line w-5 h-[2px] bg-black"></div> {/* Adjusted width */}
-            <div className="line w-5 h-[2px] bg-black"></div> {/* Adjusted width */}
-            <div className="line w-5 h-[2px] bg-black"></div> {/* Adjusted width */}
+            <div className="line w-6 h-[2px] bg-black"></div>
+            <div className="line w-6 h-[2px] bg-black"></div>
+            <div className="line w-6 h-[2px] bg-black"></div>
           </div>
           <div
             className="navbar-brand flex items-center cursor-pointer w-fit"
             onClick={selfRedirect}
           >
             <video
-              className="top-0 p-1 w-[70px] md:h-fit md:w-[80px]"
+              className="top-0 p-1 w-[60px] md:h-fit md:w-[70px] lg:w-[80px] lg:h-[80px]"
               autoPlay
               loop
               playsInline
@@ -186,11 +194,20 @@ export default function Navbar() {
             </video>
           </div>
           <div className="flex lg:flex-row items-center gap-4">
+            <Link href="/Wishlist">
+              <Image
+                src={heart}
+                width={25}
+                height={25}
+                className="cursor-pointer"
+                alt="heart"
+              />
+            </Link>
             <Link href="/Cart">
               <Image
                 src={cart}
-                width={30}
-                height={30}
+                width={25}
+                height={25}
                 className="cursor-pointer"
                 alt="cart"
               />
@@ -200,8 +217,8 @@ export default function Navbar() {
             >
               <Image
                 src={User}
-                width={30}
-                height={30}
+                width={25}
+                height={25}
                 className="cursor-pointer"
                 alt="user"
               />
@@ -209,15 +226,21 @@ export default function Navbar() {
           </div>
         </div>
         <div>
-          <ul className="tracking-[2px] flex gap-6 lg:gap-10 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col font-semibold text-black lg:flex-row w-fit">
+          <ul className="tracking-[2px] flex gap-4 lg:gap-10 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col font-semibold text-black lg:flex-row w-fit">
             <li>
-              <a href="/">Home</a>
+              <a href="/" className="text-lg lg:text-base">
+                Home
+              </a>
             </li>
             <li>
-              <Link href="/Contact">Contact</Link>
+              <Link href="/Contact" className="text-lg lg:text-base">
+                Contact
+              </Link>
             </li>
             <li>
-              <Link href="/about">About</Link>
+              <Link href="/about" className="text-lg lg:text-base">
+                About
+              </Link>
             </li>
             <li>
               <div
@@ -225,7 +248,9 @@ export default function Navbar() {
                 onMouseEnter={() => setDropdown(true)}
                 onMouseLeave={() => setDropdown(false)}
               >
-                <Link href="/Products">Products</Link>
+                <Link href="/Products" className="text-lg lg:text-base">
+                  Products
+                </Link>
                 <div
                   className={`bg-[#F5F5F5] absolute top-6 w-[200px] p-2 z-10 px-2 border ${
                     dropdown ? "none" : "hidden"
@@ -260,14 +285,14 @@ export default function Navbar() {
             <div className="flex rounded-lg items-center bg-[#F5F5F5] px-4 w-fit ">
               <input
                 type="text"
-                className="bg-[#F5F5F5] h-[45px] outline-none w-[220px] rounded-lg text-black"
+                className="bg-[#F5F5F5] h-[35px] lg:h-[40px] outline-none w-[180px] lg:w-[220px] rounded-lg text-black text-sm lg:text-base"
                 placeholder="What are you looking for?"
               />
               <div>
                 <Image
                   src={search}
-                  width={30}
-                  height={30}
+                  width={25}
+                  height={25}
                   className="cursor-pointer"
                   alt="search"
                 />
