@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -14,21 +13,16 @@ const caretRight = "./caret-right.svg";
 const animated_logo = "/animated.mp4";
 const User = "/user.svg";
 
-//* used <Image> instead of <img> and <Link> instead of <a>
-//* Otherwise standard implementation of a navbar.
-
 export default function Navbar() {
   const [open, setOpen] = useState<Boolean>(false);
   const user = useUser();
   const [dropdown, setDropdown] = useState<Boolean>(false);
 
   const selfRedirect = () => {
-    //* pass
     window.location.href = "/";
   };
 
   const handleNavbar = () => {
-    //* pretty similar to !false or !true, apparently xors the current navbar state by 1.
     setOpen((prevOpen) => !prevOpen);
   };
 
@@ -45,9 +39,7 @@ export default function Navbar() {
         <div className="flex font-bold uppercase lg:justify-between justify-start lg:flex-row flex-col lg:items-center mt-4 navbar w-[90%] mx-auto">
           <div
             className="navbar-brand flex items-center cursor-pointer w-fit"
-            onClick={() => {
-              window.location.href = "/";
-            }}
+            onClick={selfRedirect}
           >
             <video
               className="top-0 p-1 w-[70px] md:h-fit md:w-[80px]"
@@ -55,9 +47,7 @@ export default function Navbar() {
               loop
               playsInline
               muted
-              onClick={() => {
-                window.location.href = "/";
-              }}
+              onClick={selfRedirect}
             >
               <source src={animated_logo} type="video/mp4"></source>
             </video>
@@ -65,9 +55,7 @@ export default function Navbar() {
           <div>
             <ul className="tracking-[2px] flex gap-6 lg:gap-10 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
               <li>
-                <a href="/" className="">
-                  Home
-                </a>
+                <a href="/">Home</a>
               </li>
               <li>
                 <Link href="/Contact">Contact</Link>
@@ -78,16 +66,12 @@ export default function Navbar() {
               <li>
                 <div
                   className="relative flex flex-col"
-                  onMouseEnter={() => {
-                    setDropdown(true);
-                  }}
-                  onMouseLeave={() => {
-                    setDropdown(false);
-                  }}
+                  onMouseEnter={() => setDropdown(true)}
+                  onMouseLeave={() => setDropdown(false)}
                 >
                   <Link href="/Products">Products</Link>
                   <div
-                    className={`bg-[#F5F5F5] absolute top-6 w-[200px] p-2  z-10 px-2 border ${
+                    className={`bg-[#F5F5F5] absolute top-6 w-[200px] p-2 z-10 px-2 border ${
                       dropdown ? "none" : "hidden"
                     }`}
                   >
@@ -101,7 +85,6 @@ export default function Navbar() {
                         href="/Products/T-shirt"
                         className="border-b-[#F5F5F5] border-b-[2px]"
                       >
-                        {" "}
                         T Shirts
                       </a>
                     </div>
@@ -110,7 +93,6 @@ export default function Navbar() {
                         href="/Products/Hoodie"
                         className="border-b-[#F5F5F5] border-b-[2px]"
                       >
-                        {" "}
                         Hoodies
                       </a>
                     </div>
@@ -125,15 +107,15 @@ export default function Navbar() {
                 type="text"
                 className="bg-[#F5F5F5] h-[45px] outline-none w-[220px] rounded-lg text-black"
                 placeholder="What are you looking for?"
-              ></input>
-              <div className="">
+              />
+              <div>
                 <Image
                   src={search}
                   width={30}
-                  className="cursor-pointer"
                   height={30}
+                  className="cursor-pointer"
                   alt="search"
-                ></Image>
+                />
               </div>
             </div>
             <div className="flex lg:flex-row items-center gap-4">
@@ -144,7 +126,7 @@ export default function Navbar() {
                   height={30}
                   className="cursor-pointer"
                   alt="heart"
-                ></Image>
+                />
               </Link>
               <Link href="/Cart">
                 <Image
@@ -153,12 +135,10 @@ export default function Navbar() {
                   height={30}
                   className="cursor-pointer"
                   alt="cart"
-                ></Image>
+                />
               </Link>
               <Link
-                href={`${
-                  user.isLoaded && user.isSignedIn ? "/Profile" : "/sign-in"
-                }`}
+                href={user.isLoaded && user.isSignedIn ? "/Profile" : "/sign-in"}
               >
                 <Image
                   src={User}
@@ -166,7 +146,7 @@ export default function Navbar() {
                   height={30}
                   className="cursor-pointer"
                   alt="user"
-                ></Image>
+                />
               </Link>
             </div>
           </div>
@@ -184,17 +164,15 @@ export default function Navbar() {
         <div className="flex justify-between items-center px-4">
           <div
             onClick={handleNavbar}
-            className="hamburger_responsive lg:hidden flex-col gap-2 cursor-pointer flex"
+            className="hamburger_responsive lg:hidden flex-col gap-1 cursor-pointer flex scale-50" // Adjusted size for the hamburger
           >
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
+            <div className="line w-5 h-[2px] bg-black"></div> {/* Adjusted width */}
+            <div className="line w-5 h-[2px] bg-black"></div> {/* Adjusted width */}
+            <div className="line w-5 h-[2px] bg-black"></div> {/* Adjusted width */}
           </div>
           <div
             className="navbar-brand flex items-center cursor-pointer w-fit"
-            onClick={() => {
-              window.location.href = "/";
-            }}
+            onClick={selfRedirect}
           >
             <video
               className="top-0 p-1 w-[70px] md:h-fit md:w-[80px]"
@@ -202,9 +180,7 @@ export default function Navbar() {
               loop
               playsInline
               muted
-              onClick={() => {
-                window.location.href = "/";
-              }}
+              onClick={selfRedirect}
             >
               <source src={animated_logo} type="video/mp4"></source>
             </video>
@@ -217,12 +193,10 @@ export default function Navbar() {
                 height={30}
                 className="cursor-pointer"
                 alt="cart"
-              ></Image>
+              />
             </Link>
             <Link
-              href={`${
-                user.isLoaded && user.isSignedIn ? "/Profile" : "/sign-in"
-              }`}
+              href={user.isLoaded && user.isSignedIn ? "/Profile" : "/sign-in"}
             >
               <Image
                 src={User}
@@ -230,16 +204,14 @@ export default function Navbar() {
                 height={30}
                 className="cursor-pointer"
                 alt="user"
-              ></Image>
+              />
             </Link>
           </div>
         </div>
         <div>
           <ul className="tracking-[2px] flex gap-6 lg:gap-10 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col font-semibold text-black lg:flex-row w-fit">
             <li>
-              <a href="/" className="">
-                Home
-              </a>
+              <a href="/">Home</a>
             </li>
             <li>
               <Link href="/Contact">Contact</Link>
@@ -250,16 +222,12 @@ export default function Navbar() {
             <li>
               <div
                 className="relative flex flex-col"
-                onMouseEnter={() => {
-                  setDropdown(true);
-                }}
-                onMouseLeave={() => {
-                  setDropdown(false);
-                }}
+                onMouseEnter={() => setDropdown(true)}
+                onMouseLeave={() => setDropdown(false)}
               >
                 <Link href="/Products">Products</Link>
                 <div
-                  className={`bg-[#F5F5F5] absolute top-6 w-[200px] p-2  z-10 px-2 border ${
+                  className={`bg-[#F5F5F5] absolute top-6 w-[200px] p-2 z-10 px-2 border ${
                     dropdown ? "none" : "hidden"
                   }`}
                 >
@@ -273,7 +241,6 @@ export default function Navbar() {
                       href="/Products/T-shirt"
                       className="border-b-[#F5F5F5] border-b-[2px]"
                     >
-                      {" "}
                       T Shirts
                     </a>
                   </div>
@@ -282,7 +249,6 @@ export default function Navbar() {
                       href="/Products/Hoodie"
                       className="border-b-[#F5F5F5] border-b-[2px]"
                     >
-                      {" "}
                       Hoodies
                     </a>
                   </div>
@@ -296,15 +262,15 @@ export default function Navbar() {
                 type="text"
                 className="bg-[#F5F5F5] h-[45px] outline-none w-[220px] rounded-lg text-black"
                 placeholder="What are you looking for?"
-              ></input>
-              <div className="">
+              />
+              <div>
                 <Image
                   src={search}
                   width={30}
-                  className="cursor-pointer"
                   height={30}
+                  className="cursor-pointer"
                   alt="search"
-                ></Image>
+                />
               </div>
             </div>
           </div>
