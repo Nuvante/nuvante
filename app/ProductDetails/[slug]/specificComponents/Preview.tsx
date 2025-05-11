@@ -135,7 +135,7 @@ const Preview = () => {
     if (isHovered) return;
     const interval = setInterval(() => {
       instanceRef.current?.next();
-    }, 10000);
+    }, 7000);
     return () => clearInterval(interval);
   }, [isHovered]);
 
