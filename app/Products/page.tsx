@@ -28,7 +28,7 @@ const Page = async () => {
               <Heading message="Products" secondaryMessage="" />
             </div>
             <div className="flex flex-col gap-12 w-fit mx-auto">
-              <div className="cards flex flex-wrap sm:gap-x-6 gap-x-2 sm:w-auto sm:justify-center justify-center w-[100%] gap-y-10">
+              <div className="cards flex flex-wrap sm:gap-x-6 gap-x-2 sm:w-auto sm:justify-center justify-center w-[100%] gap-y-16">
                 {response.map((product: any, index: number) => (
                   <Card
                     id={product.id}
