@@ -112,7 +112,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex lg:flex-row items-center gap-4">
-              {/* Wishlist Icon Before Cart */}
+              {/* Wishlist Icon Only */}
               <Link href="/Wishlist">
                 <Image src={heart} width={25} height={25} className="cursor-pointer" alt="wishlist" />
               </Link>
@@ -196,11 +196,9 @@ export default function Navbar() {
                 </div>
               </div>
             </li>
+            {/* Wishlist Text Only on Mobile */}
             <li>
-              <Link href="/Wishlist" className="text-lg flex items-center gap-2">
-                <Image src={heart} width={20} height={20} alt="wishlist" />
-                Wishlist
-              </Link>
+              <Link href="/Wishlist" className="text-lg">Wishlist</Link>
             </li>
           </ul>
 
