@@ -66,7 +66,7 @@ export default function Card({
             console.log(updatedWishlist);
           } else if (response.data === parseInt("404")) {
             alert(
-              "there was an error updating the wishlist! Try refreshing the page!"
+              "There was an error updating the wishlist! Try refreshing the page!"
             );
             setLoadingWishlist(false);
           }
@@ -106,7 +106,7 @@ export default function Card({
             setLoadingCart(false);
           } else if (response.data === parseInt("404")) {
             alert(
-              "there was an error updating the cart! Try refreshing the page!"
+              "There was an error updating the cart! Try refreshing the page!"
             );
           }
         });
@@ -121,13 +121,13 @@ export default function Card({
   return (
     <div
       onClick={() => (window.location.href = `/ProductDetails/${id}`)}
-      className="w-full overflow-hidden sm:w-auto relative flex flex-col gap-4 cursor-pointer group"
+      className="w-full overflow-hidden sm:w-[300px] md:w-[330px] lg:w-[350px] xl:w-[380px] relative flex flex-col gap-4 cursor-pointer group"
     >
-      <div className="card-body flex sm:justify-center justify-center relative h-[380px] sm:w-fit w-fit mx-auto rounded-lg">
+      <div className="card-body flex sm:justify-center justify-center relative sm:h-[500px] md:h-[550px] lg:h-[600px] xl:h-[650px] h-[450px] w-full mx-auto rounded-lg">
         <img
           src={src}
           alt={productName}
-          className="w-[290px] h-full relative bg-[#F5F5F5]"
+          className="w-full h-full object-cover relative bg-[#F5F5F5]"
         />
         {status === "new" && (
           <h1 className="absolute top-1 left-1 rounded-lg bg-black px-3 py-1 text-white text-sm font-bold">
