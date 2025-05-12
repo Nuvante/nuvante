@@ -94,7 +94,7 @@ export default function Navbar() {
           </ul>
 
           <div className="gap-4 lg:flex lg:flex-row flex flex-col lg:mt-0 mt-6">
-            <div className="flex rounded-lg items-center bg-[#F5F5F5] px-4 w-fit ">
+            <div className="flex rounded-lg items-center bg-[#F5F5F5] px-4 w-fit">
               <input
                 type="text"
                 className="bg-[#F5F5F5] h-[35px] lg:h-[40px] outline-none w-[180px] lg:w-[220px] rounded-lg text-black text-sm lg:text-base"
@@ -110,10 +110,17 @@ export default function Navbar() {
                 />
               </div>
             </div>
+
             <div className="flex lg:flex-row items-center gap-4">
+              {/* Wishlist Icon Before Cart */}
+              <Link href="/Wishlist">
+                <Image src={heart} width={25} height={25} className="cursor-pointer" alt="wishlist" />
+              </Link>
+
               <Link href="/Cart">
                 <Image src={cart} width={25} height={25} className="cursor-pointer" alt="cart" />
               </Link>
+
               <Link href={user.isLoaded && user.isSignedIn ? "/Profile" : "/sign-in"}>
                 <Image src={User} width={25} height={25} className="cursor-pointer" alt="user" />
               </Link>
@@ -138,6 +145,7 @@ export default function Navbar() {
             <div className="line w-6 h-[2px] bg-current"></div>
             <div className="line w-6 h-[2px] bg-current"></div>
           </div>
+
           <div
             className="navbar-brand flex items-center cursor-pointer w-fit"
             onClick={selfRedirect}
@@ -148,7 +156,6 @@ export default function Navbar() {
               loop
               playsInline
               muted
-              onClick={selfRedirect}
             >
               <source
                 src={isDarkTheme ? animated_logo_dark : animated_logo_light}
@@ -156,6 +163,7 @@ export default function Navbar() {
               ></source>
             </video>
           </div>
+
           <div className="flex items-center gap-4">
             <Link href="/Cart">
               <Image src={cart} width={25} height={25} className="cursor-pointer" alt="cart" />
@@ -188,7 +196,6 @@ export default function Navbar() {
                 </div>
               </div>
             </li>
-            {/* ✅ Wishlist Icon in Hamburger Menu */}
             <li>
               <Link href="/Wishlist" className="text-lg flex items-center gap-2">
                 <Image src={heart} width={20} height={20} alt="wishlist" />

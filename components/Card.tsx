@@ -121,13 +121,13 @@ export default function Card({
   return (
     <div
       onClick={() => (window.location.href = `/ProductDetails/${id}`)}
-      className="w-[145px] overflow-hidden sm:w-[300px] md:w-[330px] lg:w-[350px] xl:w-[380px] relative flex flex-col gap-4 cursor-pointer group"
+      className="w-[165px] overflow-hidden sm:w-[300px] md:w-[330px] lg:w-[350px] xl:w-[380px] relative flex flex-col gap-4 cursor-pointer group"
     >
-      <div className="card-body flex sm:justify-center justify-center relative sm:w-full sm:h-[500px] md:h-[550px] lg:h-[600px] xl:h-[650px] h-[220px] w-[145px] mx-auto rounded-lg">
+      <div className="card-body flex sm:justify-center justify-center relative sm:w-full sm:h-[500px] md:h-[550px] lg:h-[600px] xl:h-[650px] h-[220px] w-[160px] mx-auto rounded-lg">
         <img
           src={src}
           alt={productName}
-          className="sm:w-full h-full w-[145px] object-cover relative bg-[#F5F5F5]"
+          className="sm:w-full h-full w-[160px] object-cover relative bg-[#F5F5F5]"
         />
         {status === "new" && (
           <h1 className="absolute top-1 left-1 rounded-lg bg-black px-3 py-1 text-white text-sm font-bold">

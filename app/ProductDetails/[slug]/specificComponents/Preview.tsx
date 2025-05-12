@@ -135,7 +135,7 @@ const Preview = () => {
   }, [isHovered]);
 
   return loaded ? (
-    <div className="preview_container flex justify-center items-center lg:flex-row flex-col-reverse gap-10 w-full min-h-screen px-4 xl:px-20 2xl:px-48 max-w-screen-2xl mx-auto">
+    <div className="preview_container flex justify-center items-center lg:flex-row flex-col-reverse gap-10 w-full px-4 xl:px-20 2xl:px-48 max-w-screen-2xl mx-auto">
       {/* Left Collapsibles */}
       <div className="flex flex-col gap-4 lg:p-6 self-center lg:w-[30%] w-full max-w-[500px]">
         <div className="flex flex-col border-2 border-black p-4 gap-6">
