@@ -6,11 +6,11 @@ const domain = process.env.DOMAIN;
 
 const sliderImages = [
   {
-    src: "./nuvante_web.jpg",
+    src: "https://cdn.jsdelivr.net/gh/AmeyKuradeAK/nuvante-cdn/Image/nuvante_web.jpg",
     link: `/ProductDetails/67630548e9a7266a1f0b3533`,
   },
   {
-    src: "./nuvante_web.jpg",
+    src: "https://cdn.jsdelivr.net/gh/AmeyKuradeAK/nuvante-cdn/Image/nuvante_web.jpg",
     link: `/ProductDetails/67630548e9a7266a1f0b3533`,
   },
 ];
