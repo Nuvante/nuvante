@@ -31,7 +31,7 @@ export default function Arrivals({ fragment }: mainProp) {
           </Link> */}
         </div>
         <div className="flex flex-col gap-12 w-fit mx-auto">
-          <div className="cards flex flex-wrap sm:gap-x-6 sm:w-auto sm:justify-center justify-center w-[100%] gap-y-16">
+          <div className="cards flex flex-wrap sm:gap-x-6 gap-x-4 sm:w-auto sm:justify-center justify-center w-[100%] gap-y-16">
             {fragment.map((product, index) => (
               <Card
                 id={product.id}
