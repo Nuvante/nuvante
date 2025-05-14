@@ -37,7 +37,7 @@ const Preview = () => {
     try {
       const { data } = await axios.post(`/api/propagation/`, { id, every: false });
       const images = data.productImages || [];
-      setProductImages(images.reverse());
+      setProductImages(images);
       setCurrentProduct(data);
       setLoaded(true);
     } catch (error) {
@@ -175,7 +175,7 @@ const Preview = () => {
           ref={sliderRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className={`keen-slider w-full h-[75vh] lg:h-auto aspect-[3/4] lg:aspect-[4/5] 2xl:aspect-[5/6] rounded-md overflow-hidden`}
+          className={`keen-slider w-full h-[75vh] lg:h-auto xl:h-[700px] 2xl:h-[800px] aspect-[3/4] lg:aspect-[4/5] 2xl:aspect-[5/6] rounded-md overflow-hidden`}
         >
           {productImages.map((img, idx) => (
             <div key={idx} className="keen-slider__slide flex items-center justify-center bg-white">

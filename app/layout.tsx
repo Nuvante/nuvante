@@ -4,6 +4,7 @@ import "./globals.css";
 import connect from "@/db";
 import { ClerkProvider } from "@clerk/nextjs";
 import { GlobalContextProvider } from "@/context/Global";
+import clientModel from "@/models/Clients";
 
 //? an inline function to connect to mongodb atlas using mongoose.
 (async () => {
