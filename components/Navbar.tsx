@@ -48,7 +48,7 @@ export default function Navbar() {
             onClick={selfRedirect}
           >
             <video
-              className="top-0 p-1 w-[60px] md:h-fit md:w-[70px] lg:w-[80px] lg:h-[80px]"
+              className="top-0 p-1 w-[90px] md:h-fit md:w-[110px] lg:w-[90px] lg:h-[80px] xl:w-[120px] 2xl:w-[130px]"
               autoPlay
               loop
               playsInline
@@ -65,12 +65,6 @@ export default function Navbar() {
           <ul className="tracking-[2px] flex gap-4 lg:gap-8 ml-3 mt-4 lg:mt-0 lg:ml-0 lg:items-center flex-col text-black lg:flex-row w-fit">
             <li>
               <a href="/" className="text-lg lg:text-base">Home</a>
-            </li>
-            <li>
-              <Link href="/Contact" className="text-lg lg:text-base">Contact</Link>
-            </li>
-            <li>
-              <Link href="/about" className="text-lg lg:text-base">About</Link>
             </li>
             <li
               className="relative flex flex-col"
@@ -91,10 +85,16 @@ export default function Navbar() {
                 </div>
               </div>
             </li>
+            <li>
+              <Link href="/about" className="text-lg lg:text-base">About</Link>
+            </li>
+            <li>
+              <Link href="/Contact" className="text-lg lg:text-base">Contact</Link>
+            </li>
           </ul>
 
           <div className="gap-4 lg:flex lg:flex-row flex flex-col lg:mt-0 mt-6">
-            <div className="flex rounded-lg items-center bg-[#F5F5F5] px-4 w-fit">
+            <div className="hidden rounded-lg items-center bg-[#F5F5F5] px-4 w-fit">
               <input
                 type="text"
                 className="bg-[#F5F5F5] h-[35px] lg:h-[40px] outline-none w-[180px] lg:w-[220px] rounded-lg text-black text-sm lg:text-base"
@@ -132,7 +132,7 @@ export default function Navbar() {
       {/* Mobile Navbar */}
       <div
         style={{ transition: "1s all ease" }}
-        className={`navbar_responsive lg:hidden flex flex-col py-3 overflow-y-hidden ${open ? "h-[400px]" : "h-[90px]"}`}
+        className={`navbar_responsive lg:hidden flex flex-col py-3 overflow-y-hidden ${open ? "h-[400px]" : "h-[60px]"}`}
       >
         <div className="flex justify-between items-center px-4">
           <div
