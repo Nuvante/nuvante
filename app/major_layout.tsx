@@ -7,7 +7,7 @@ export default function MajorLayout({
 }) {
   return (
     <>
-      <div className={`flex md:mt-96 lg:mt-20 md:w-[94%] w-[94%] flex-col mx-auto`}>
+      <div className={`flex md:mt-72 xl:mt-0 lg:mt-0 md:w-[94%] w-[94%] flex-col mx-auto`}>
         {children}
       </div>
     </>

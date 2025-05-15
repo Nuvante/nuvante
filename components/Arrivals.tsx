@@ -20,7 +20,7 @@ export default function Arrivals({ fragment }: mainProp) {
   //* used it later in the code. at 42.
   return (
     <>
-      <div className="mt-28 2xl:mt-3 xl:mt-0 md:mt-7 lg:mt-0 flex flex-col gap-14">
+      <div className="mt-28 md:mt-0 xl:mt-0 lg:mt-0 flex flex-col gap-14">
         <div className="flex w-full justify-between items-center 2xl:mb-7 xl:mb-3">
           <Heading
             message="Newest Arrivals"
