@@ -37,6 +37,6 @@ let clientSchema = new mongoose.Schema({
 
 // 👇 Force it to use the "clients" collection in MongoDB
 let clientModel =
-  mongoose.models.Client || mongoose.model("Client", clientSchema, "clients");
+  mongoose.models.Client || mongoose.model("Client", clientSchema);
 
 export default clientModel;
