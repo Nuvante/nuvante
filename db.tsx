@@ -6,7 +6,9 @@ const api_key: any = process.env.NEXT_PUBLIC_API_KEY;
 const connect = async () => {
   try {
     if (mongoose.connections[0].readyState) return;
-    await mongoose.connect(api_key);
+    await mongoose.connect(api_key, {
+      dbName: "test", // 👈 This forces Mongoose to use the 'test' DB
+    });
     console.log("Connection with the database was successfully established!");
   } catch (error) {
     console.error(
