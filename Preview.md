@@ -1,3 +1,4 @@
+```js
 // Preview.tsx
 "use client";
 import React, { useState, useEffect, useContext } from "react";
@@ -135,14 +136,14 @@ const Preview = () => {
   }, [isHovered]);
 
   return loaded ? (
-    <div className="preview_container flex justify-center items-center lg:flex-row flex-col-reverse gap-10 w-full px-4 xl:px-16 2xl:px-20 max-w-[2100px] mx-auto">
+    <div className="preview_container flex justify-center items-center lg:flex-row flex-col-reverse gap-10 w-full px-4 xl:px-20 2xl:px-48 max-w-screen-2xl mx-auto">
       {/* Left Collapsibles */}
-      <div className="flex flex-col gap-4 lg:p-6 self-center xl:mr-12 2xl:mr-20 lg:w-[30%] w-full max-w-[500px] xl:max-w-[420px] 2xl:max-w-[480px]">
+      <div className="flex flex-col gap-4 lg:p-6 self-center lg:w-[30%] w-full max-w-[500px]">
         <div className="flex flex-col border-2 border-black p-4 gap-6">
           {["DESCRIPTION", "MATERIALS", "PACKAGING", "SHIPPING & RETURNS"].map((section, i) => (
-            <div key={i} className="border-b-2 border-b-gray-200 text-sm">
+            <div key={i} className="border-b-2 border-b-gray-200 text-sm lg:text-base xl:text-lg 2xl:text-xl">
               <div
-                className="flex justify-between cursor-pointer text-base sm:text-lg"
+                className="flex justify-between cursor-pointer text-base sm:text-lg lg:text-xl xl:text-2xl"
                 onClick={() => toggleCollapsible(i)}
               >
                 <span>{section}</span>
@@ -157,27 +158,25 @@ const Preview = () => {
       </div>
 
       {/* Middle Carousel */}
-      <div className="relative flex flex-col gap-6 lg:w-[42%] w-full max-w-[740px] self-center xl:max-w-[640px] 2xl:max-w-[720px]">
-        {/* Vertical Thumbnails on Desktop */}
-        <div className="absolute hidden lg:hidden xl:flex flex-col gap-3 left-[-90px] top-1/2 -translate-y-1/2 overflow-hidden max-h-[600px] scrollbar-thin">
-          {productImages.map((img, idx) => (
-            <img
+      <div className="relative flex flex-col gap-6 lg:w-[40%] w-full max-w-[700px] self-center">
+        {/* Dot + Arrow Navigation for Desktop */}
+        <div className="absolute md:hidden lg:flex top-1/2 -translate-y-1/2 left-[-45px] flex-col gap-3 z-10 hidden sm:flex items-center">
+          <button onClick={() => instanceRef.current?.prev()} className="text-xl lg:text-2xl font-bold mb-2">&#8593;</button>
+          {productImages.map((_, idx) => (
+            <button
               key={idx}
-              src={img}
-              alt={`thumb-${idx}`}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
-              className={`w-16 h-20 object-cover rounded-md cursor-pointer border-2 transition-all ${
-                currentSlide === idx ? "border-black scale-105" : "border-gray-300"
-              }`}
+              className={`w-3 h-3 rounded-full ${currentSlide === idx ? "bg-black" : "bg-gray-400"}`}
             />
           ))}
+          <button onClick={() => instanceRef.current?.next()} className="text-xl lg:text-2xl font-bold mt-2">&#8595;</button>
         </div>
 
         <div
           ref={sliderRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="keen-slider w-full h-[75vh] md:h-[600px] lg:h-[600px] xl:h-[800px] 2xl:h-[900px] aspect-[4/5] rounded-md overflow-hidden"
+          className={`keen-slider w-full h-[75vh] md:h-[600px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] aspect-[4/5] lg:aspect-[4/5] 2xl:aspect-[5/6] rounded-md overflow-hidden`}
         >
           {productImages.map((img, idx) => (
             <div key={idx} className="keen-slider__slide flex items-center justify-center bg-white">
@@ -186,19 +185,17 @@ const Preview = () => {
           ))}
         </div>
 
-        {/* Horizontal Thumbnails on Mobile */}
-        <div className="flex xl:hidden gap-3 justify-center overflow-x-auto py-2">
-          {productImages.map((img, idx) => (
-            <img
+        {/* Mobile Dot + Arrow Navigation */}
+        <div className="flex lg:hidden justify-center items-center gap-3 mt-2">
+          <button onClick={() => instanceRef.current?.prev()} className="text-xl sm:text-2xl font-bold">&#8592;</button>
+          {productImages.map((_, idx) => (
+            <button
               key={idx}
-              src={img}
-              alt={`thumb-mobile-${idx}`}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
-              className={`w-16 h-20 object-cover rounded-md cursor-pointer flex-shrink-0 border-2 transition-all ${
-                currentSlide === idx ? "border-black scale-105" : "border-gray-300"
-              }`}
+              className={`w-2.5 h-2.5 rounded-full ${currentSlide === idx ? "bg-black" : "bg-gray-400"}`}
             />
           ))}
+          <button onClick={() => instanceRef.current?.next()} className="text-xl sm:text-2xl font-bold">&#8594;</button>
         </div>
 
         {/* Mobile Info */}
@@ -228,30 +225,42 @@ const Preview = () => {
       </div>
 
       {/* Right Info */}
-      <div className="hidden lg:flex flex-col border-2 border-black gap-4 p-6 w-[30%] max-w-[500px] xl:max-w-[420px] 2xl:max-w-[480px] self-center">
-        <h1 className="text-2xl lg:text-xl">{currentProduct.productName}</h1>
-        <div className="flex gap-3">
-          <span className="line-through text-sm lg:text-xs">Rs. {currentProduct.cancelledProductPrice}</span>
-          <span className="text-sm lg:text-xs">Rs. {currentProduct.productPrice}</span>
+      <div className="hidden lg:flex flex-col border-2 border-black lg:h-[500px] xl:h-[650px] 2xl:h-[750px] gap-2 p-4 w-[40%] max-w-[500px] self-center">
+        <h1 className="text-lg lg:text-xl xl:text-4xl 2xl:text-5xl">{currentProduct.productName}</h1>
+        <div className="flex gap-2">
+          <span className="line-through text-xs lg:text-sm xl:text-lg 2xl:text-xl">Rs. {currentProduct.cancelledProductPrice}</span>
+          <span className="text-xs lg:text-sm xl:text-lg 2xl:text-xl">Rs. {currentProduct.productPrice}</span>
         </div>
-        <p className="text-sm lg:text-xs">{currentProduct.productInfo}</p>
-        <p className="text-[11px] opacity-70 border-b pb-3 lg:text-[9px] lg:pb-[0.4rem]">SHIPPING, EXCHANGES AND RETURNS</p>
-        <div className="grid grid-cols-2 gap-3 mt-4 lg:gap-2 lg:mt-2">
+        <p className="text-xs lg:text-sm xl:text-lg 2xl:text-xl">{currentProduct.productInfo}</p>
+        <p className="text-[8px] lg:text-[10px] xl:text-sm 2xl:text-base opacity-70 border-b pb-2">SHIPPING, EXCHANGES AND RETURNS</p>
+        <div className="grid grid-cols-2 gap-2 mt-2">
           {["S", "M", "L", "XL"].map(size => (
             <div
               key={size}
-              className={`border-2 py-3 text-center cursor-pointer lg:py-1.5 ${size === current ? "bg-black text-white" : "text-black"}`}
+              className={`border-2 py-2 text-center cursor-pointer text-sm lg:text-base xl:text-2xl 2xl:text-3xl ${size === current ? "bg-black text-white" : "text-black"
+                }`}
               onClick={() => handleSwitch(size)}
             >
               {size}
             </div>
           ))}
         </div>
-        <p className="text-[10px] text-gray-600 mt-3 lg:text-[8px] lg:mt-1.5">This product has a larger fit than usual. Model is wearing L.</p>
+        <p className="text-[7px] lg:text-[9px] xl:text-sm 2xl:text-base text-gray-600 mt-2">
+          This product has a larger fit than usual. Model is wearing L.
+        </p>
         <div className="flex-grow"></div>
-        <button className="mt-3 lg:mt-1.5 border-2 border-black py-2 lg:py-1.5 lg:text-sm" onClick={handleAddToCart}>ADD</button>
-        <button className="bg-black text-white py-2 lg:py-1.5 lg:text-sm">BUY IT NOW</button>
+        <button
+          className="mt-2 border-2 border-black py-2 text-sm lg:text-base xl:text-2xl 2xl:text-3xl"
+          onClick={handleAddToCart}
+        >
+          ADD
+        </button>
+        <button className="bg-black text-white py-2 text-sm lg:text-base xl:text-2xl 2xl:text-3xl">
+          BUY IT NOW
+        </button>
       </div>
+
+
     </div>
   ) : (
     <motion.div className="w-fit mx-auto mt-20" animate={{ rotate: 360 }} transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}>
@@ -261,3 +270,4 @@ const Preview = () => {
 };
 
 export default Preview;
+```
