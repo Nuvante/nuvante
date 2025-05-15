@@ -33,6 +33,6 @@ let productSchema = new mongoose.Schema({
 
 // 👇 Explicitly define the collection name "products"
 let productModel =
-  mongoose.models.Product || mongoose.model("Product", productSchema, "products");
+  mongoose.models.Product || mongoose.model("Product", productSchema);
 
 export default productModel;
