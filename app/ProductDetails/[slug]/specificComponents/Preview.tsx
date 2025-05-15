@@ -135,9 +135,9 @@ const Preview = () => {
   }, [isHovered]);
 
   return loaded ? (
-    <div className="preview_container flex justify-center items-center lg:flex-row flex-col-reverse gap-10 w-full px-4 xl:px-16 2xl:px-20 max-w-[2100px] mx-auto">
+    <div className="preview_container flex justify-center items-center lg:flex-row flex-col-reverse gap-10 w-full xl:px-16 2xl:px-20 max-w-[2100px] mx-auto">
       {/* Left Collapsibles */}
-      <div className="flex flex-col gap-4 lg:p-6 self-center xl:mr-12 2xl:mr-20 lg:w-[30%] w-full max-w-[500px] xl:max-w-[420px] 2xl:max-w-[480px]">
+      <div className="flex flex-col gap-4 px-4 lg:p-6 self-center xl:mr-12 2xl:mr-20 lg:w-[30%] w-full max-w-[500px] xl:max-w-[420px] 2xl:max-w-[480px]">
         <div className="flex flex-col border-2 border-black p-4 gap-6">
           {["DESCRIPTION", "MATERIALS", "PACKAGING", "SHIPPING & RETURNS"].map((section, i) => (
             <div key={i} className="border-b-2 border-b-gray-200 text-sm">
@@ -157,7 +157,7 @@ const Preview = () => {
       </div>
 
       {/* Middle Carousel */}
-      <div className="relative flex flex-col gap-6 lg:w-[42%] w-full max-w-[740px] self-center xl:max-w-[640px] 2xl:max-w-[720px]">
+      <div className="relative flex flex-col gap-6 lg:w-[42%] md:w-[94%] w-full max-w-[740px] self-center xl:max-w-[640px] 2xl:max-w-[720px]">
         {/* Vertical Thumbnails on Desktop */}
         <div className="absolute hidden lg:hidden xl:flex flex-col gap-3 left-[-90px] top-1/2 -translate-y-1/2 overflow-hidden max-h-[600px] scrollbar-thin">
           {productImages.map((img, idx) => (
@@ -166,24 +166,24 @@ const Preview = () => {
               src={img}
               alt={`thumb-${idx}`}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
-              className={`w-16 h-20 object-cover rounded-md cursor-pointer border-2 transition-all ${
-                currentSlide === idx ? "border-black scale-105" : "border-gray-300"
-              }`}
+              className={`w-16 h-20 object-cover lg:rounded-md cursor-pointer border-2 transition-all ${currentSlide === idx ? "border-black scale-105" : "border-gray-300"
+                }`}
             />
           ))}
         </div>
-
-        <div
-          ref={sliderRef}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          className="keen-slider w-full h-[75vh] md:h-[600px] lg:h-[600px] xl:h-[800px] 2xl:h-[900px] aspect-[4/5] rounded-md overflow-hidden"
-        >
-          {productImages.map((img, idx) => (
-            <div key={idx} className="keen-slider__slide flex items-center justify-center bg-white">
-              <img src={img} alt={`product-${idx}`} className="w-full h-full object-cover" />
-            </div>
-          ))}
+        <div className="w-full md:w-[90%] mx-auto">
+          <div
+            ref={sliderRef}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="keen-slider w-full h-[75vh] md:w-[200px] md:h-[550px] lg:h-[600px] xl:h-[800px] 2xl:h-[900px] aspect-[4/5] lg:rounded-md overflow-hidden mx-auto"
+          >
+            {productImages.map((img, idx) => (
+              <div key={idx} className="keen-slider__slide flex items-center justify-center bg-white">
+                <img src={img} alt={`product-${idx}`} className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Horizontal Thumbnails on Mobile */}
@@ -194,15 +194,14 @@ const Preview = () => {
               src={img}
               alt={`thumb-mobile-${idx}`}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
-              className={`w-16 h-20 object-cover rounded-md cursor-pointer flex-shrink-0 border-2 transition-all ${
-                currentSlide === idx ? "border-black scale-105" : "border-gray-300"
-              }`}
+              className={`w-16 h-20 object-cover cursor-pointer flex-shrink-0 border-2 transition-all ${currentSlide === idx ? "border-black scale-105" : "border-gray-300"
+                }`}
             />
           ))}
         </div>
 
         {/* Mobile Info */}
-        <div className="lg:hidden border-2 border-black flex flex-col gap-2 p-6">
+        <div className="lg:hidden border-2 border-black w-[94%] flex ml-3 flex-col gap-2 p-6">
           <h1 className="text-2xl sm:text-3xl font-semibold xl:text-4xl 2xl:text-5xl">{currentProduct.productName}</h1>
           <div className="flex gap-2 text-lg sm:text-xl xl:text-2xl 2xl:text-3xl">
             <span className="line-through text-gray-500">Rs. {currentProduct.cancelledProductPrice}</span>
