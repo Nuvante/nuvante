@@ -271,3 +271,5 @@ const Preview = () => {
 
 export default Preview;
 ```
+
+Hard Reset doe
