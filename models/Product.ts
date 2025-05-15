@@ -31,11 +31,8 @@ let productSchema = new mongoose.Schema({
   },
 });
 
-//* For a single --forced groping.
-// let productModel = mongoose.model("Product", productSchema);
-
-//* For better practice, for continuity, iterative model.
+// 👇 Explicitly define the collection name "products"
 let productModel =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+  mongoose.models.Product || mongoose.model("Product", productSchema, "products");
 
 export default productModel;
