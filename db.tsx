@@ -1,7 +1,7 @@
 import React from "react";
 import mongoose from "mongoose";
 
-const api_key: any = process.env.NEXT_PUBLIC_API_KEY;
+const api_key: any = process.env.MONGODB_URI;
 
 const connect = async () => {
   try {
